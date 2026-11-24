@@ -1,0 +1,7 @@
+@model TripScheduleVm
+@{ViewData["Title"]="Hành khách theo chuyến";}
+<partial name="_StaffNav"/><section class="page-heading operations-heading"><h1>Danh sách hành khách theo chuyến</h1><p class="screen-description">Mở danh sách hành khách theo chuyến để phục vụ tác nghiệp.</p></section><partial name="_TripScheduleFilter" model="Model"/><div class="panel table-wrap"><table><thead><tr><th>Chuyến</th><th>Khởi hành</th><th>Xe</th><th>Tài xế</th><th>Trạng thái</th><th></th></tr></thead><tbody>@foreach(var t in Model.Trips){<tr><td>#@t.Id · @t.Route.Label</td><td>@BusinessTime.Text(t.DepartureUtc)</td><td>@t.Vehicle.Plate</td><td>@(t.Driver?.FullName??"Chưa phân công")<br/><small>Phụ: @(t.CoDriver?.FullName??"Chưa phân công")</small></td><td>@BusinessTime.TripLabel(t.Status)</td><td><a asp-action="Passengers" asp-route-id="@t.Id">Xem hành khách →</a></td></tr>}</tbody></table></div>
+
+@if(Model.Total==0){<section class="empty panel"><h2>Không tìm thấy chuyến xe</h2><p>Hãy chọn ngày khác hoặc điều chỉnh bộ lọc.</p></section>}
+
+<partial name="_TripSchedulePagination" model="Model"/>

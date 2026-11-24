@@ -1,0 +1,208 @@
+﻿PROMPT NÂNG CẤP BUSBOOKING THÀNH BUSGO — LÀM SẠCH GIAO DIỆN VÀ BỔ SUNG ĐIỂM ĐÓN/TRẢ
+
+1. TÊN ĐỀ TÀI, CHUYÊN NGÀNH VÀ SOURCE PHẢI GIỮ NGUYÊN
+
+Tôi đang làm đồ án chuyên ngành Thương mại điện tử.
+
+Tên đề tài chính thức giữ nguyên:
+XÂY DỰNG HỆ THỐNG QUẢN LÝ XE KHÁCH VÀ ĐẶT VÉ TRỰC TUYẾN TÍCH HỢP CƠ CHẾ GIỮ CHỖ THEO THỜI GIAN THỰC
+
+Tôi đính kèm source:
+QuanLyXeKhach_DatVe_GiuCho_REALTIME_STOPS_SEATS_REVIEWED(1).zip
+và ảnh trang chọn ghế hiện tại.
+
+Hãy sửa trực tiếp source ZIP này. Không tạo lại project hoặc chỉ gửi mockup, HTML tĩnh, code rời hay báo cáo. Thực hiện thay đổi, kiểm tra và bàn giao ZIP source mới.
+
+Chỉ thay đổi ba nhóm việc tôi yêu cầu:
+- Đổi tên thương hiệu hiển thị trên website thành BusGo.
+- Nâng phần trình bày trên TẤT CẢ các trang theo website đặt vé thương mại điện tử chuyên nghiệp; bỏ các chú thích học tập, mô phỏng và kỹ thuật không cần thiết với người dùng.
+- Bổ sung đầy đủ điểm đón/trả cho chiều Đà Lạt → TP. Hồ Chí Minh trên các chuyến hiện có, đúng thứ tự và thời gian, không chỉ có hai nhãn chung “Điểm đầu” / “Điểm cuối”.
+
+Các yêu cầu và nghiệp vụ còn lại giữ nguyên. Những quy tắc UI cũ yêu cầu luôn hiển thị nhãn “đồ án”, “dữ liệu học tập”, “mô phỏng” được thay bằng yêu cầu làm sạch giao diện ở lần này. Giữ thông tin học thuật và giới hạn dữ liệu trong tài liệu bàn giao; không tự sửa đề cương Word hoặc tên đề tài.
+
+2. GIỮ NGUYÊN CÔNG NGHỆ, DATABASE VÀ CHỨC NĂNG
+
+- ASP.NET Core MVC .NET 9, TargetFramework net9.0, C#, Razor Views.
+- SDK .NET 9 và package Identity/EF Core tương thích hiện có; không chuyển .NET 8 hoặc .NET 10.
+- SQL Server, DbContext, migrations/snapshot, Identity, Cookie Authentication, RBAC.
+- Bootstrap, CSS/JS/animation, SignalR, worker giữ chỗ và Chart.js hiện tại.
+- Bốn vai trò Admin, Staff, Driver, Customer; chuyển hướng đăng nhập đúng vai trò.
+- Tuyến, xe, sơ đồ ghế, chuyến/phân công, tìm chuyến, giữ/đặt vé, đổi/hủy, thu/hoàn trực tiếp, lịch sử vé, hành khách, dashboard, tài khoản, nhật ký và Liên hệ.
+- Ảnh local và giấy phép/ghi công của các tài nguyên đang có.
+
+Giữ nguyên ID chuyến, tuyến, xe, mã ghế/ID ghế, giờ đi/đến, giá, phân công, vé/hold, tài khoản, thanh toán và dữ liệu liên hệ. Không xóa hoặc tạo lại chuyến để có bộ dữ liệu trông đẹp hơn.
+
+Website đã kết nối SQL Server trên máy tôi. Trước đó đã gặp thiếu cột do migration chưa áp dụng và tài khoản chạy web thiếu CREATE TABLE. Không tự coi lỗi đó là cần cài lại SQL Server, reset DB hoặc đổi connection string. Giữ history/baseline đang dùng; nếu cần cập nhật thì hướng dẫn đúng migration còn thiếu và đúng quyền triển khai. Tài khoản chạy web không cần bị cấp quyền quản trị toàn bộ database chỉ để đổi thương hiệu/UI.
+
+Không thêm SQLite/InMemory/JSON backend, fallback giả, hosting/tunnel, thanh toán ngân hàng, GPS, trung chuyển, AI, marketplace nhiều nhà xe, ví/voucher/loyalty, forum hoặc ứng dụng mobile.
+
+3. AUDIT SOURCE THỰC TẾ TRƯỚC KHI SỬA
+
+Kiểm tra đầy đủ Razor, CSS, JavaScript, chuỗi do service/API sinh ra và nội dung lấy từ database; không chỉ tìm chú thích trong file cshtml.
+
+Các vị trí đã thấy trong bản đầu vào, cần đọc và xác minh lại:
+- Views/Shared/_Layout.cshtml, _AdminLayout.cshtml, _WorkspaceSidebar.cshtml, _BookingStops.cshtml.
+- Views/Home, Trips, Bookings, Account, Contact, Admin, Staff, Driver và các trang lỗi/Nguồn ảnh nếu có.
+- wwwroot/js/seats.js và stop-editor.js; các câu thông báo, địa chỉ fallback, tóm tắt, lời nhắc có mặt.
+- Services/PhotoCatalog.cs và các thành phần branding.
+- Services/TripStopMaintenance.cs, TripStopService.cs, BookingService.cs; mô hình TripStop, SeatHold, Booking và các migration đã có.
+
+Đọc tài liệu yêu cầu/nghiệp vụ trong ZIP. Không nói đã đọc Word hoặc ảnh nhận xét cũ nếu không được đính kèm trong phiên này. Lập danh sách trang → file → thay đổi → testcase. Không làm mất các chức năng đã hoàn thành ở bản STOPS_SEATS.
+
+4. ĐỔI THƯƠNG HIỆU GIAO DIỆN THÀNH BUSGO
+
+Tên website hiển thị thống nhất: BusGo.
+
+Rà và sửa toàn bộ nơi xuất hiện thương hiệu cũ “véxe.” / “Vé Xe”, gồm:
+- Header, logo chữ, footer, sidebar/workspace, title trình duyệt và metadata hiện có.
+- Login/Register/Profile, Liên hệ, chính sách, thông báo của ứng dụng và các trang lỗi.
+- Các SVG tự sở hữu có chữ thương hiệu cũ, favicon hoặc biểu tượng thương hiệu nếu cần.
+- Nội dung mô tả do project tự viết ở trang nguồn ảnh và cấu hình thông tin liên hệ.
+
+Thiết kế wordmark/logo chữ BusGo riêng, đơn giản, đọc rõ trên mobile, giữ gam trắng–xanh ngọc/xanh lá. Không sao chép logo FUTA hoặc doanh nghiệp BusGo khác, không lấy logo thương hiệu có sẵn trên Google.
+
+Đây là đổi thương hiệu hiển thị, KHÔNG bắt buộc đổi tên kỹ thuật:
+- Giữ BusBooking.sln, BusBooking.csproj, namespace, assembly, DbContext, tên database, UserSecretsId, cookie, route, role và migration history để không làm mất cấu hình/phiên đăng nhập.
+- Không đổi mã vé VX đã phát hành hoặc tên tài khoản chỉ để giống tên mới.
+- Không thay chữ trong ảnh bên thứ ba, xóa watermark hoặc sửa ghi công tác giả thành BusGo.
+- Không tự nhận sở hữu domain busgo.vn/busgo.com, hotline, pháp nhân, địa chỉ văn phòng hoặc thương hiệu đã đăng ký. Chỉ dùng các thông tin vận hành tôi đã cung cấp/cấu hình.
+
+Tên đề tài đầy đủ và chuyên ngành phải giữ trong README/tài liệu học thuật. Không cần đặt cả tiêu đề đồ án dài và badge học tập trong footer/header của website giao dịch; đó là phần trình bày được tôi cho phép thay ở lần này.
+
+5. BỎ CHÚ THÍCH HỌC TẬP/KỸ THUẬT KHÔNG CẦN THIẾT TRÊN TẤT CẢ CÁC TRANG
+
+Tôi muốn website nhìn như sản phẩm đặt vé thực tế, không phải giao diện có nhiều lời giải thích dành cho người chấm đồ án.
+
+Bỏ hoặc chuyển khỏi giao diện giao dịch các câu như:
+- “Điểm trong dữ liệu học tập; chưa cấu hình địa chỉ cụ thể.”
+- “Lịch điểm mô phỏng phục vụ học tập; không phải lịch vận tải chính thức hoặc ETA giao thông trực tiếp.”
+- “Quy định học tập: có mặt trước 15 phút.”
+- “ĐỒ ÁN · DỮ LIỆU THỬ NGHIỆM”, “Lịch & giá là dữ liệu học tập”.
+- “Đây là website phục vụ học tập.”
+- Các mô tả implementation về SQL Server, transaction, server, token, snapshot, migration, idempotency… không giúp khách ra quyết định đặt vé.
+- Các đoạn giới thiệu backend/schema/cấu trúc đề tài lặp lại trên trang chủ, trang tìm chuyến, footer, form, trang tài khoản và các workspace.
+
+Không chỉ dùng CSS display:none để che cả một vùng có nút hoặc thông tin cần thiết. Sửa nguồn sinh nội dung, điều kiện hiển thị và Razor/JS liên quan; tránh khoảng trắng, card xanh trống hoặc aria-describedby trỏ tới phần tử không còn tồn tại.
+
+Đối với nội dung lấy từ DB có tiền tố như “Điểm học tập · …”, được xử lý nhãn trình bày để người dùng chỉ thấy tên điểm phù hợp. Không sửa hàng loạt tên/ID trong DB hoặc snapshot vé lịch sử chỉ để đổi cách hiển thị.
+
+ĐẶC BIỆT: TripStopMaintenance hiện nhận diện dữ liệu mẫu bằng mô tả tuyến, tên endpoint và các điều kiện khác. Không find/replace “học tập” trên toàn bộ source/database làm hỏng cơ chế nhận diện, backfill hoặc quy tắc giữ lịch cũ. Metadata IsIllustrative, dấu nguồn dữ liệu và thông tin kỹ thuật có thể giữ nội bộ/tài liệu; không gán false hàng loạt để biến lịch mẫu thành lịch được xác minh.
+
+Cách thay thế giao diện mong muốn:
+- Địa chỉ thật đã cấu hình: hiển thị địa chỉ.
+- Chưa có địa chỉ đáng tin: ẩn dòng địa chỉ phụ; không để câu giải thích dài, không bịa số nhà/văn phòng hoặc lấp bằng placeholder thường trực.
+- Có giờ đón: “Vui lòng có mặt trước 10:45 ngày 04/11/2026 tại [tên điểm].” Giá trị phải được tính từ lịch đang chọn, không hard-code từ ảnh.
+- Thời lượng: “Khoảng 7 giờ” hoặc “7 giờ 20 phút”, thay vì một đoạn kỹ thuật kèm 420 phút, nhưng phép tính vẫn từ hai điểm đã chọn.
+- Lỗi tải ghế: “Không tải được danh sách ghế. Vui lòng thử lại.” Nút thử lại thật, chi tiết lỗi ghi log phía server; không trả success giả.
+- Vé cũ thiếu lựa chọn điểm: câu ngắn như “Liên hệ hỗ trợ để xác nhận điểm đón/trả”, chỉ có link/kênh hỗ trợ thật. Không bịa điểm đã được khách chọn trước đây.
+
+6. GIỮ THÔNG TIN THỰC SỰ CẦN CHO KHÁCH VÀ TÁC NGHIỆP
+
+Việc làm sạch UI không có nghĩa xóa mọi hướng dẫn hoặc validation.
+
+Phải giữ và viết gọn:
+- Tuyến, ngày giờ, điểm đón/trả, địa chỉ đã xác minh/cấu hình, thời gian cần có mặt.
+- Giá mỗi ghế, tổng tiền, giá chốt và trạng thái thu/hoàn; không đánh đồng đặt vé với đã thanh toán.
+- Countdown giữ chỗ 5 phút, hết hạn, lỗi tranh chấp ghế, chọn tối đa 6 ghế, trạng thái ghế của tôi/người khác/đã đặt.
+- Chính sách đặt/đổi/hủy và việc thanh toán trực tiếp hiện có; giá vẫn theo toàn chuyến, không tự định giá theo chặng.
+- Label/validation field, xác nhận thao tác quan trọng, trạng thái loading/error, empty state và thông báo kết quả server thật.
+- Trong Admin/Staff/Driver, giữ giải thích tác nghiệp cần thiết như trạng thái khóa lịch, ý nghĩa khoản thu/hoàn, quyền sửa. Bỏ nhãn học tập và đoạn thuyết minh code, không bỏ ràng buộc nghiệp vụ.
+- Ghi công ảnh/giấy phép bắt buộc phải còn ở vị trí phù hợp, ví dụ trang Nguồn ảnh; không xem đó là chú thích thừa rồi xóa quyền sử dụng tài sản.
+
+Thông tin học thuật, nguồn lịch mẫu và giới hạn xác minh chuyển vào Documentation/README/TEST_RESULTS. Không thêm chứng nhận, lượng khách, đánh giá, số năm hoạt động, hotline hoặc cam kết thời gian thực không có căn cứ để trang trông như doanh nghiệp thật.
+
+7. NÂNG PHẦN TRÌNH BÀY TẤT CẢ CÁC TRANG, GIỮ TRẮNG–XANH
+
+Rà đầy đủ:
+- Trang chủ, tìm chuyến, chọn ghế/đặt vé, Vé của tôi, chi tiết vé.
+- Login, Register, Profile, chính sách, Liên hệ, trang lỗi/trạng thái, Nguồn ảnh.
+- Dashboard Admin và tất cả bảng/form/quản lý lịch điểm, chuyến, xe, sơ đồ, tài khoản, liên hệ, nhật ký.
+- Workspace Staff, yêu cầu đổi/hủy, bán vé/thu/hoàn, danh sách hành khách; Driver/lịch/phân công/trạng thái chuyến.
+
+Tập trung bố cục và typography: heading ngắn, khoảng cách hợp lý, card sạch, form rõ, CTA nổi bật, bảng đủ chỗ, không còn đoạn chú thích dài hoặc vùng trống sau khi xóa chữ. Mọi nút/link/filter đưa lên màn hình phải có chức năng thật. Giữ cấu trúc và phong cách đã có, không thay frontend framework hoặc mở rộng module.
+
+Giữ responsive 375/390/768/1024/1440px, menu/sidebar, keyboard focus, semantic HTML, alt, tương phản, reduced motion và animation nhẹ. Không làm đẹp trang chủ rồi bỏ quên các trang tác nghiệp.
+
+8. HOÀN THIỆN ĐIỂM ĐÓN/TRẢ CHIỀU ĐÀ LẠT → TP. HỒ CHÍ MINH
+
+Trong ảnh hiện tại dropdown có hai endpoint chung: “Điểm đầu · Đà Lạt” và “Điểm cuối · TP. Hồ Chí Minh”. Cần hoàn thiện danh sách điểm cụ thể/trung gian hợp lệ cho chiều này, không chỉ đổi tên hai option cho đẹp.
+
+Kiểm tra nguyên nhân thực tế ở DB và code, không mặc định chắc chắn:
+- TripStopMaintenance đã có template chiều Đà Lạt → TP. Hồ Chí Minh, tổng 420 phút: Đức Trọng +90 phút, Bảo Lộc +180 phút; đây là ví dụ cấu hình học tập hiện có, không phải lịch nhà xe được kiểm chứng.
+- Chạy bổ sung hiện còn phụ thuộc tên tuyến chính xác, tổng thời gian, mô tả học tập, biển TEST, trạng thái pristine và điều kiện “không có bất kỳ SeatHold nào”.
+- Vì vậy chuyến đã từng giữ/đặt có thể bị bỏ qua, kể cả sau khi một hold đã hết hạn; không tự kết luận cứ chạy lại seed là giải quyết được.
+
+Yêu cầu sửa:
+- Áp dụng cho các chuyến hiện tại đúng tuyến/đúng chiều và chuyến mới sau này; không hard-code chỉ TripId 6, không đổi sang chuyến khác.
+- Đọc danh sách điểm đang có, giữ điểm tùy chỉnh người dùng đã tạo và giữ mọi ID/lựa chọn/snapshot cũ.
+- Bổ sung điểm còn thiếu bằng service/command có kiểm soát, chạy lại không trùng; không chỉ sửa SeedData cho database mới.
+- Nếu chỉ THÊM điểm mới vào chuyến Scheduled chưa khởi hành, có thể xây dựng nhánh cập nhật chỉ-thêm an toàn: dùng trip gate/transaction ngắn, giữ nguyên ID/thứ tự/giờ/cờ của mọi điểm đã tồn tại, không xóa/sửa điểm khách đã chọn, không đổi hold hoặc booking. Bổ sung tại khoảng thứ tự còn trống; không renumber điểm cũ.
+- Không bỏ toàn bộ guard khóa lịch vì muốn có dropdown. Chỉ cho phép phần bổ sung đã chứng minh không làm thay đổi cam kết hiện tại; các thao tác sửa/xóa/đổi giờ điểm đã phát sinh dữ liệu vẫn bị bảo vệ. Chuyến đã chạy/hoàn thành không tự chèn lại lịch sử.
+- Sau commit cập nhật Revision và đồng bộ UI theo cơ chế hiện tại nếu cần; không đưa lựa chọn cá nhân ra SignalR công khai.
+- Nếu điều kiện không đủ để cập nhật an toàn, báo đúng lý do trong công cụ quản trị/log; không âm thầm bỏ qua rồi báo mọi chuyến đã cập nhật, không xóa hold/vé để vượt guard.
+- Có cách cấu hình/duyệt lịch điểm trong Admin cho tuyến/chuyến sau này, không đòi sửa code mỗi lần thêm chuyến.
+
+Điểm đón/trả phải có dữ liệu thực trong SQL Server. Tên bến/văn phòng/địa chỉ nếu dùng phải có căn cứ, phù hợp chiều tuyến, không tự lấy điểm/giờ FUTA hoặc nhận là văn phòng BusGo. Khi chưa có địa chỉ đáng tin thì để trống trường đó và không hiển thị dòng giải thích thừa ở UI.
+
+Không biến việc gỡ nhãn mô phỏng thành tuyên bố lịch đã được xác minh: giữ nguồn/cờ nội bộ và hồ sơ lịch trong tài liệu; giao diện hiển thị đúng tên/giờ đang được cấu hình, không quảng cáo ETA trực tiếp hay dịch vụ trung chuyển chưa có.
+
+9. GIỜ ĐIỂM VÀ LƯU VÉ PHẢI TIẾP TỤC ĐÚNG
+
+- Giữ Trip.DepartureUtc/ArrivalUtc, xe, tuyến, giá và phân công.
+- Điểm đầu/cuối khớp giờ toàn chuyến, điểm giữa có offset và thứ tự hợp lệ. Chiều về có lịch riêng, không đảo danh sách chiều đi rồi giữ nguyên giờ.
+- Hiển thị UTC+7, ngày dd/MM/yyyy, giờ 24 giờ, qua ngày/nửa đêm đúng; không hard-code ngày/giờ của ảnh.
+- Khi đổi điểm, cập nhật tên/địa chỉ nếu có, giờ đón/trả, thời lượng, giờ phải có mặt và tóm tắt.
+- Server kiểm điểm thuộc đúng TripId của hold, cờ đón/trả, hoạt động, thứ tự; không tin giờ/giá do client gửi.
+- Giữ điểm đã chọn trên hold, refresh và nhiều hold; confirm lưu snapshot tên/địa chỉ/giờ vào vé. Không sửa snapshot lịch sử để đổi branding hoặc cách diễn đạt.
+- Giá và quyền chiếm ghế tiếp tục theo toàn chuyến; không thêm segment inventory hoặc tự hạ giá vì khách chọn điểm giữa.
+- Lệnh bổ sung danh sách điểm không làm tự đổi lựa chọn điểm của khách đang giữ ghế và không gia hạn ExpiresAt.
+
+10. DATABASE VÀ CÁC TÍNH NĂNG KHÔNG LIÊN QUAN
+
+Ưu tiên không thêm migration: đổi brand/UI và thêm dữ liệu điểm thường không cần schema mới.
+
+Nếu thực sự cần schema, chỉ migration tăng thêm, đồng bộ model/DbContext/snapshot và tài liệu. Giữ InitialSqlServer, AddContactMessages, AddTripStops và __EFMigrationsHistory đã có. Không tạo Initial mới, fake/baseline migration là đã áp dụng, drop bảng, xóa DB hoặc chạy SQL legacy chồng EF.
+
+Hướng dẫn SSMS/EF đúng quyền nếu cần, dựa trên lịch sử/schema thật. Cung cấp phương án triển khai bằng tài khoản có quyền migration, không đưa mật khẩu vào ZIP/terminal log hoặc bắt tài khoản web có quyền sysadmin/db_owner thường trực. Lỗi quyền phải báo đúng, không che bằng dữ liệu mẫu.
+
+Giữ hold 300 giây, transaction ngắn/constraint chống double booking, owner/token/idempotency, expiry worker và điều kiện SQL cuối confirm. SignalR chỉ đồng bộ sau commit. Giữ anti-forgery, authorization/ownership, đăng nhập theo vai trò, thay vé nguyên tử và thu/hoàn trực tiếp.
+
+11. KIỂM THỬ TRƯỚC BÀN GIAO
+
+Thực hiện restore/build/run .NET 9 + SQL Server khi có môi trường, ghi log thật. Không ghi VERIFIED hoặc PASS runtime từ kiểm tra cú pháp.
+
+Kiểm thử tối thiểu:
+- Không còn thương hiệu cũ trên các trang, tab trình duyệt, logo/sidebar/footer và thành phần động cần đổi; tên đề tài/namespace/database lịch sử không bị đổi sai phạm vi.
+- Không còn các câu học tập/mô phỏng/kỹ thuật bị yêu cầu bỏ trên giao diện, kể cả JS fallback và snapshot vé cũ được trình bày lại. Không còn card/khối trống hoặc label/aria bị hỏng.
+- Địa chỉ trống không hiện placeholder thừa; tên điểm/giờ thực sự có thì không bị xóa cùng chú thích.
+- Trang chủ/tìm chuyến/đặt vé/tài khoản/chính sách/Liên hệ/Admin/Staff/Driver đều hoạt động.
+- Chiều Đà Lạt → TP.HCM có danh sách điểm phù hợp và giờ đúng; dữ liệu tùy chỉnh được giữ; chuyến có hold/vé được cập nhật chỉ-thêm an toàn theo điều kiện đã thiết kế.
+- Chạy lệnh cập nhật hai lần không trùng, không xóa/sửa điểm/vé/hold cũ; so sánh ID, tuyến, xe, giờ, giá, phân công trước/sau.
+- Hai tài khoản tranh cùng ghế, hold 300 giây không bị gia hạn, summary/checkout đúng, refresh/multi-hold/đổi vé vẫn giữ đúng lựa chọn.
+- Điểm sai chuyến/ngược thứ tự bị từ chối, giá theo toàn chuyến giữ nguyên, snapshot vé cũ không đổi.
+- Desktop/mobile 375/390/768/1024/1440px, menu, keyboard, focus, Reduce Motion, console/network, không tràn ngang.
+- Không phát sinh HTTP 500, lỗi DI/Razor/DbContext hoặc thiếu schema; lỗi quyền SQL không bị báo success giả.
+
+Tái sử dụng test đã có, giữ kết quả SQL/concurrency trung thực. Chỉ PASS cho test đã chạy; thiếu SQL/runtime/browser thì ghi CHƯA KIỂM CHỨNG và chỉ rõ bước chưa hoàn tất. Screenshot phải từ website thực sự chạy; không dùng mockup thay bằng chứng.
+
+12. TÀI LIỆU VÀ ZIP BÀN GIAO
+
+Cập nhật README, UI_CHANGELOG, FILE_CHANGES, PICKUP_DROPOFF_GUIDE, TEST_RESULTS và DATABASE_CHANGELOG nếu có thay đổi schema/data. Giữ nguyên tài liệu yêu cầu gốc, nguồn ảnh, giới hạn lịch mẫu và các tài liệu học thuật; không đưa những đoạn giải thích đó trở lại UI giao dịch như banner bắt buộc.
+
+Ghi riêng:
+- Các trang/chuỗi đã bỏ hoặc viết lại, chuỗi cần giữ vì có ý nghĩa giao dịch.
+- Những nơi đổi thương hiệu sang BusGo và các tên kỹ thuật được giữ.
+- Vì sao chiều Đà Lạt → TP.HCM thiếu điểm, cách cập nhật database đang có, guard bảo vệ lịch sử và kết quả chạy lại.
+- Bảng điểm/offset/giờ sau cập nhật và nguồn/căn cứ cấu hình; không tự tạo báo cáo TripId của DB máy tôi khi chưa truy cập được.
+- Kết quả build/run/HTTP/browser, PASS/FAIL/CHƯA KIỂM CHỨNG và giới hạn còn lại.
+
+Xuất một ZIP source mới:
+BusGo_UI_CLEANUP_STOPS_REVIEWED.zip
+
+Chỉ đổi REVIEWED thành VERIFIED khi thực sự build/run/test với SQL Server và các luồng cốt lõi đạt. Tên ZIP/website đổi sang BusGo không đồng nghĩa đổi tên đề tài hoặc cấu trúc project.
+
+ZIP phải có solution/project .NET 9 hiện tại, toàn bộ Controllers/Services/Models/Views/Identity/DbContext/migrations/worker/SignalR, CSS/JS/animation, ảnh và thư viện local, dữ liệu/command bổ sung điểm, test và tài liệu. Không đóng gói bin/obj/.vs/node_modules, secrets, mật khẩu/connection string nhạy cảm, DB/backup riêng hoặc dữ liệu cá nhân thật.
+
+Phản hồi cuối gồm link ZIP, tóm tắt ba nhóm thay đổi, cách cập nhật dữ liệu hiện có không mất lịch sử, kết quả test và screenshot thật nếu có, cách mở BusBooking.sln/chạy SqlServer bằng cấu hình hiện tại.
+
+HÃY LÀM TRÊN SOURCE ĐÍNH KÈM VÀ BÀN GIAO ZIP THẬT. GIỮ NGUYÊN ĐỀ TÀI, CHUYÊN NGÀNH, CÔNG NGHỆ VÀ TẤT CẢ NGHIỆP VỤ/YÊU CẦU CÒN LẠI. CHỈ ĐỔI BRAND BUSGO, LÀM SẠCH/NÂNG UI VÀ HOÀN THIỆN ĐIỂM ĐÓN/TRẢ NHƯ TRÊN.

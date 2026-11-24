@@ -1,0 +1,336 @@
+{
+  "kind": "STATIC_SOURCE_ONLY",
+  "does_not_verify": [
+    "C# compilation",
+    "Razor",
+    "SQL Server",
+    "HTTP",
+    "browser",
+    "concurrency",
+    "300 second hold"
+  ],
+  "checks": [
+    {
+      "name": "json:global.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "json:Tests/package.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "json:BusBooking/appsettings.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "json:BusBooking/appsettings.Development.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "json:.config/dotnet-tools.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "json:BusBooking/Properties/launchSettings.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "csproj:BusBooking/BusBooking.csproj",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "csproj:Tests/BusBooking.RedirectTests/BusBooking.RedirectTests.csproj",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "csproj:Tests/BusBooking.SqlTests/BusBooking.SqlTests.csproj",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "solution_project_paths",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "sql_server_only",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "microsoft_versions_aligned",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "asset:images/bus-journey.svg",
+      "status": "PASS",
+      "detail": "BusBooking/Views/Home/Index.cshtml"
+    },
+    {
+      "name": "asset:images/landscape.svg",
+      "status": "PASS",
+      "detail": "BusBooking/Views/Home/Index.cshtml"
+    },
+    {
+      "name": "asset:lib/chartjs/chart.umd.js",
+      "status": "PASS",
+      "detail": "BusBooking/Views/Admin/Index.cshtml"
+    },
+    {
+      "name": "asset:js/dashboard.js",
+      "status": "PASS",
+      "detail": "BusBooking/Views/Admin/Index.cshtml"
+    },
+    {
+      "name": "asset:images/bus-small.svg",
+      "status": "PASS",
+      "detail": "BusBooking/Views/Trips/Index.cshtml"
+    },
+    {
+      "name": "asset:lib/signalr/signalr.min.js",
+      "status": "PASS",
+      "detail": "BusBooking/Views/Trips/Details.cshtml"
+    },
+    {
+      "name": "asset:js/seats.js",
+      "status": "PASS",
+      "detail": "BusBooking/Views/Trips/Details.cshtml"
+    },
+    {
+      "name": "asset:images/favicon.svg",
+      "status": "PASS",
+      "detail": "BusBooking/Views/Shared/_AdminLayout.cshtml"
+    },
+    {
+      "name": "asset:lib/bootstrap/css/bootstrap.min.css",
+      "status": "PASS",
+      "detail": "BusBooking/Views/Shared/_AdminLayout.cshtml"
+    },
+    {
+      "name": "asset:css/site.css",
+      "status": "PASS",
+      "detail": "BusBooking/Views/Shared/_AdminLayout.cshtml"
+    },
+    {
+      "name": "asset:css/ui.css",
+      "status": "PASS",
+      "detail": "BusBooking/Views/Shared/_AdminLayout.cshtml"
+    },
+    {
+      "name": "asset:css/admin.css",
+      "status": "PASS",
+      "detail": "BusBooking/Views/Shared/_AdminLayout.cshtml"
+    },
+    {
+      "name": "asset:lib/bootstrap/js/bootstrap.bundle.min.js",
+      "status": "PASS",
+      "detail": "BusBooking/Views/Shared/_AdminLayout.cshtml"
+    },
+    {
+      "name": "asset:js/site.js",
+      "status": "PASS",
+      "detail": "BusBooking/Views/Shared/_AdminLayout.cshtml"
+    },
+    {
+      "name": "asset:js/admin.js",
+      "status": "PASS",
+      "detail": "BusBooking/Views/Shared/_AdminLayout.cshtml"
+    },
+    {
+      "name": "asset:images/favicon.svg",
+      "status": "PASS",
+      "detail": "BusBooking/Views/Shared/_Layout.cshtml"
+    },
+    {
+      "name": "asset:lib/bootstrap/css/bootstrap.min.css",
+      "status": "PASS",
+      "detail": "BusBooking/Views/Shared/_Layout.cshtml"
+    },
+    {
+      "name": "asset:css/site.css",
+      "status": "PASS",
+      "detail": "BusBooking/Views/Shared/_Layout.cshtml"
+    },
+    {
+      "name": "asset:css/ui.css",
+      "status": "PASS",
+      "detail": "BusBooking/Views/Shared/_Layout.cshtml"
+    },
+    {
+      "name": "asset:lib/bootstrap/js/bootstrap.bundle.min.js",
+      "status": "PASS",
+      "detail": "BusBooking/Views/Shared/_Layout.cshtml"
+    },
+    {
+      "name": "asset:js/site.js",
+      "status": "PASS",
+      "detail": "BusBooking/Views/Shared/_Layout.cshtml"
+    },
+    {
+      "name": "asset:images/bus-journey.svg",
+      "status": "PASS",
+      "detail": "BusBooking/Views/Account/Login.cshtml"
+    },
+    {
+      "name": "asset:images/bus-journey.svg",
+      "status": "PASS",
+      "detail": "BusBooking/Views/Account/Profile.cshtml"
+    },
+    {
+      "name": "asset:images/bus-journey.svg",
+      "status": "PASS",
+      "detail": "BusBooking/Views/Account/Register.cshtml"
+    },
+    {
+      "name": "document:README",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "document:REQUIREMENTS_TRACEABILITY",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "document:DATABASE_DESIGN",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "document:ERD",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "document:USE_CASE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "document:ACTIVITY_DIAGRAMS",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "document:SEQUENCE_DIAGRAMS",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "document:SEAT_STATE_MACHINE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "document:HOLD_ALGORITHM",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "document:REALTIME_DESIGN",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "document:PERMISSION_MATRIX",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "document:SQL_SERVER_SETUP",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "document:ASSET_SOURCES",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "document:TEST_RESULTS",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "document:CONCURRENCY_TEST_REPORT",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "document:PERFORMANCE_REPORT",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "document:LIMITATIONS",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "document:DEFENSE_GUIDE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "license:bootstrap/LICENSE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "license:signalr/LICENSE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "license:chartjs/LICENSE",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "js_syntax:BusBooking/wwwroot/js/site.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "js_syntax:BusBooking/wwwroot/js/dashboard.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "js_syntax:BusBooking/wwwroot/js/seats.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "js_syntax:BusBooking/wwwroot/js/admin.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "js_syntax:Tests/browser.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "js_syntax:Tests/login-redirect-browser.mjs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "js_syntax:Tests/ui-browser.mjs",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "files": 142,
+  "failed": 0
+}

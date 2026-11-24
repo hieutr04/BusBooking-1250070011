@@ -1,0 +1,21 @@
+@model List<Trip>
+@{ViewData["Title"]="Lịch tài xế";}
+<section class="page-heading operations-heading role-heading">
+    <div><span class="eyebrow">LỊCH TÀI XẾ</span><h1>Lịch phân công của tôi</h1><p>Mở chuyến để xem danh sách hành khách và cập nhật tiến trình.</p></div>
+</section>
+<dl class="driver-overview" aria-label="Tóm tắt các chuyến đang hiển thị">
+    <div><dt>Chuyến hiển thị</dt><dd>@Model.Count</dd></div>
+    <div><dt>Sắp khởi hành</dt><dd>@Model.Count(t=>t.Status==TripStatus.Scheduled&&t.DepartureUtc>DateTime.UtcNow)</dd></div>
+    <div><dt>Đang chuẩn bị hoặc đang chạy</dt><dd>@Model.Count(t=>t.Status is TripStatus.Boarding or TripStatus.InProgress)</dd></div>
+</dl>
+@if(Model.Count==0){<div class="panel empty"><h2>Chưa có chuyến được phân công</h2><p>Lịch sẽ hiển thị khi điều hành phân công chuyến cho bạn.</p></div>}
+<div class="driver-schedule">
+    @foreach(var t in Model){
+        var departure=BusinessTime.Vietnam(t.DepartureUtc);
+        <article class="panel driver-trip">
+            <div class="driver-departure"><strong>@departure.ToString("HH:mm")</strong><span>@departure.ToString("dd/MM/yyyy")</span></div>
+            <div><span class="pill">@BusinessTime.TripLabel(t.Status)</span><h2>@t.Route.Label</h2><p>@t.Vehicle.Plate · @t.Vehicle.Name</p><small>Đến dự kiến @BusinessTime.Text(t.ArrivalUtc)</small></div>
+            <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@t.Id">Hành khách và tiến trình →</a>
+        </article>
+    }
+</div>

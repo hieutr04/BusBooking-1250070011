@@ -1,0 +1,19 @@
+@model ContactOptions
+@if(Model.ValidHotline!=null||Model.ValidEmail!=null||Model.ValidPhone!=null||Model.ValidWebsite!=null||!string.IsNullOrWhiteSpace(Model.SupportAddress)||!string.IsNullOrWhiteSpace(Model.SupportHours)){
+<dl class="contact-channels support-channels">
+@if(Model.ValidHotline is string hotline){<div><dt>Hotline</dt><dd><a class="support-hotline" href="tel:@Model.HotlineLink">@hotline</a></dd></div>}
+@if(!string.IsNullOrWhiteSpace(Model.SupportAddress)){<div><dt>Địa chỉ</dt><dd>@Model.SupportAddress</dd></div>}
+@if(Model.ValidPhone is string phone){<div><dt>Điện thoại</dt><dd><a href="tel:@Model.PhoneLink">@phone</a></dd></div>}
+@if(Model.ValidEmail is string email){<div><dt>Email</dt><dd><a href="mailto:@email">@email</a></dd></div>}
+@if(Model.ValidWebsite is string website){<div><dt>Website</dt><dd><a href="@website" target="_blank" rel="noopener noreferrer">@website</a></dd></div>}
+@if(!string.IsNullOrWhiteSpace(Model.SupportHours)){<div><dt>Thời gian hỗ trợ</dt><dd>@Model.SupportHours</dd></div>}
+</dl>}
+<div class="support-social" aria-label="Kênh mạng xã hội">
+    @foreach(var channel in new[]{("Facebook","facebook",Model.FacebookLink),("Zalo","zalo",Model.ZaloLink)}){
+        if(channel.Item3 is string link){
+            <a class="social-channel" href="@link" target="_blank" rel="noopener noreferrer"><span class="social-icon @channel.Item2" aria-hidden="true">@(channel.Item2=="facebook"?"f":"Z")</span>@channel.Item1</a>
+        }else{
+            <span class="social-channel" title="Chưa có liên kết chính thức"><span class="social-icon @channel.Item2" aria-hidden="true">@(channel.Item2=="facebook"?"f":"Z")</span>@channel.Item1</span>
+        }
+    }
+</div>

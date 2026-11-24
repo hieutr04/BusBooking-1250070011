@@ -1,0 +1,20 @@
+@using System.Security.Claims
+@model List<Ticket>
+@{var trip=(Trip)ViewBag.Trip;ViewData["Title"]="Danh sách hành khách";}
+<section class="page-heading operations-heading"><span class="eyebrow">CHUYẾN #@trip.Id</span><h1>@trip.Route.Label</h1><p>@BusinessTime.Text(trip.DepartureUtc) · @BusinessTime.TripLabel(trip.Status) · @Model.Count hành khách còn hiệu lực</p></section>
+@if(User.IsInRole("Driver")){<section class="panel"><div class="panel-heading"><h2>Tiến trình chuyến</h2><span class="pill">@BusinessTime.TripLabel(trip.Status)</span></div><p>Chuyển theo thứ tự chuẩn bị chạy → đang chạy → hoàn thành. Chuyển sang chuẩn bị chạy sẽ đóng bán và nhả giữ chỗ chưa thành vé.</p>@if(trip.Status is TripStatus.Scheduled or TripStatus.Boarding or TripStatus.InProgress){var next=trip.Status==TripStatus.Scheduled?TripStatus.Boarding:trip.Status==TripStatus.Boarding?TripStatus.InProgress:TripStatus.Completed;<form asp-controller="Driver" asp-action="Progress" method="post"><input name="id" value="@trip.Id" type="hidden"/><input name="next" value="@next" type="hidden"/><button class="btn btn-primary" data-confirm="Xác nhận chuyển trạng thái chuyến?">Chuyển sang: @BusinessTime.TripLabel(next)</button></form>}</section>}
+@{
+    var mayCheckIn=TicketCheckIn.MayCheckIn(trip,User.FindFirstValue(ClaimTypes.NameIdentifier)!,User.IsInRole("Admin"),User.IsInRole("Driver"));
+}
+@if(mayCheckIn){<partial name="_CheckInForm" model="trip"/>}
+@if(User.IsInRole("Admin")||User.IsInRole("Staff")){
+    <div class="actions"><a class="btn btn-outline-primary" asp-controller="Staff" asp-action="ExportPassengers" asp-route-id="@trip.Id">Tải danh sách hành khách CSV</a></div>
+}
+<div class="list-meta"><strong>@Model.Count hành khách có vé hiệu lực</strong><span>Thông tin đón/trả theo vé</span></div><div class="panel table-wrap"><table><thead><tr><th>Ghế</th><th>Hành khách</th><th>Mã vé</th><th>Check-in</th><th>Người liên hệ</th><th>Điện thoại</th><th>Điểm đón / trả (VN)</th></tr></thead><tbody>@foreach(var t in Model){<tr><td><strong>@t.Seat.Code</strong></td><td>@t.PassengerName</td><td>@t.Booking.Code</td><td>@(t.CheckedInUtc is DateTime checkedIn?BusinessTime.Text(checkedIn):"Chưa lên xe")</td><td>@t.Booking.ContactName</td><td>@t.Booking.ContactPhone</td><td>@if(t.Booking.PickupAtUtc.HasValue&&t.Booking.DropoffAtUtc.HasValue){<span>@StopPresentation.Name(t.Booking.PickupName) · @BusinessTime.Text(t.Booking.PickupAtUtc.Value)</span><br/><span>@StopPresentation.Name(t.Booking.DropoffName) · @BusinessTime.Text(t.Booking.DropoffAtUtc.Value)</span>}else{<span>Cần xác nhận điểm đón/trả</span>}</td></tr>}</tbody></table>@if(Model.Count==0){<p class="empty">Chưa có hành khách đã đặt vé.</p>}</div>
+
+@section Scripts {
+    @if(mayCheckIn&&TicketCheckIn.IsBoarding(trip)){
+        <script src="~/lib/jsqr/dist/jsQR.js" asp-append-version="true"></script>
+        <script src="~/js/check-in.js" asp-append-version="true"></script>
+    }
+}

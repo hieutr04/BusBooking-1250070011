@@ -1,0 +1,24 @@
+{
+  "scope": "Static syntax, DOM contract and byte comparisons only. Not build/runtime verification.",
+  "csharp_files": 46,
+  "csharp_syntax_errors": [],
+  "css_top_level_parse_errors": [],
+  "duplicate_trip_dom_ids": [],
+  "missing_js_dom_ids": [],
+  "protected_original_files_unchanged": {
+    "BusBooking.sln": true,
+    "BusBooking/BusBooking.csproj": true,
+    "global.json": true,
+    "BusBooking/Data/Migrations/20261029000100_InitialSqlServer.cs": true,
+    "BusBooking/Data/Migrations/InitialModelV1.cs": true,
+    "BusBooking/Data/Migrations/20261102000100_AddContactMessages.cs": true,
+    "BusBooking/Controllers/AccountController.cs": true,
+    "BusBooking/Services/LoginDestination.cs": true,
+    "BusBooking/Services/ContactService.cs": true,
+    "BusBooking/Controllers/ContactController.cs": true,
+    "BusBooking/BackgroundServices/HoldExpiryWorker.cs": true,
+    "BusBooking/Services/ReportService.cs": true
+  },
+  "original_images_unchanged": true,
+  "original_image_files": 10
+}

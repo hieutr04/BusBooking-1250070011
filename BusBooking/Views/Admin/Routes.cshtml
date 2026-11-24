@@ -1,0 +1,5 @@
+@model List<BusRoute>
+@{ViewData["Title"]="Quản lý tuyến";}
+<partial name="_AdminNav"/><div class="section-heading page-heading operations-heading"><div><span class="eyebrow">DANH MỤC</span><h1>Tuyến xe</h1><p class="screen-description">Hành trình và thời lượng dự kiến. Ngừng dùng danh mục không tự hủy chuyến đã công bố.</p></div><a class="btn btn-primary" asp-action="RouteEdit">+ Thêm tuyến</a></div><div class="list-meta"><strong>@Model.Count bản ghi đang hiển thị</strong><span>Thời gian Việt Nam · UTC+7</span></div><div class="panel table-wrap"><table><thead><tr><th>Tuyến</th><th>Thời gian dự kiến</th><th>Hoạt động</th><th></th></tr></thead><tbody>@foreach(var x in Model){<tr><td>@x.Label</td><td>@StopPresentation.Duration(x.DurationMinutes)</td><td>@(x.IsActive?"Đang dùng":"Ngừng dùng")</td><td><a asp-action="RouteEdit" asp-route-id="@x.Id">Chỉnh sửa</a></td></tr>}</tbody></table></div>
+
+@if(Model.Count==0){<section class="empty panel"><h2>Chưa có dữ liệu phù hợp</h2><p>Không tìm thấy bản ghi phù hợp.</p></section>}

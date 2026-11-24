@@ -1,0 +1,14 @@
+{
+  "scope": "Static migration review only, not SQL/EF execution",
+  "migration": "20261103000100_AddTripStops",
+  "up_additive": true,
+  "sql_backfill_insert_only": true,
+  "cta": "Đặt vé",
+  "hold_seconds": 300,
+  "http_smoke": {
+    "url": "http://127.0.0.1:5190/",
+    "curl_exit": 7,
+    "status": "CHƯA KIỂM CHỨNG",
+    "detail": "Connection refused; MVC app could not start due to CoreCLR."
+  }
+}

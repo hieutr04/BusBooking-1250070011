@@ -1,0 +1,36 @@
+@model ContactForm
+@inject Microsoft.Extensions.Options.IOptions<ContactOptions> ContactSettings
+@{
+    ViewData["Title"]="Liên hệ";
+    var contact=ContactSettings.Value;
+}
+<nav class="public-breadcrumb" aria-label="Đường dẫn"><a asp-controller="Home" asp-action="Index">Trang chủ</a><span aria-hidden="true">/</span><span aria-current="page">Liên hệ</span></nav>
+<section class="contact-heading"><span class="eyebrow">LẮNG NGHE TỪNG HÀNH TRÌNH</span><h1>Liên hệ với chúng tôi</h1><p>Thông tin hành trình, đặt vé và hỗ trợ tài khoản.</p></section>
+<div class="contact-grid">
+    <aside class="contact-information panel" aria-labelledby="contact-info-title">
+        <span class="contact-brand-icon">@await Html.PartialAsync("_Icon","bus")</span><h2 id="contact-info-title">Bus Center</h2>
+        @if(!string.IsNullOrWhiteSpace(contact.LegalName)){<p class="contact-legal-name">@contact.LegalName</p>}
+        @await Html.PartialAsync("_SupportChannels",contact)
+        <div class="contact-form-channel"><span class="eyebrow">KÊNH LIÊN HỆ</span><h3>Gửi lời nhắn cho chúng tôi</h3><p>Điền biểu mẫu bên cạnh để gửi câu hỏi hoặc góp ý về hành trình của bạn.</p><a class="text-action" href="#FullName">Viết lời nhắn @await Html.PartialAsync("_Icon","arrow")</a></div>
+        <a class="text-action contact-policy-link" asp-controller="Home" asp-action="Policy">Chính sách đặt, đổi / trả vé →</a>
+    </aside>
+    <section class="contact-form-panel panel" aria-labelledby="contact-form-title">
+        <span class="eyebrow">CHIA SẺ VỚI CHÚNG TÔI</span><h2 id="contact-form-title">Gửi thông tin liên hệ</h2>
+        <p>Những trường có dấu <span aria-hidden="true">*</span> là bắt buộc.</p>
+        <form asp-controller="Contact" asp-action="Index" method="post" id="contact-form">
+            <div asp-validation-summary="All" class="validation" role="alert" id="contact-summary" tabindex="-1"></div>
+            <input asp-for="SubmissionToken" type="hidden"/>
+            <div class="contact-fields">
+                <div class="field"><label asp-for="FullName">Họ và tên <span aria-hidden="true">*</span></label><input asp-for="FullName" autocomplete="name" required minlength="2" maxlength="100" aria-describedby="FullName-error"/><span asp-validation-for="FullName" id="FullName-error"></span></div>
+                <div class="field"><label asp-for="Email">Email liên hệ <span aria-hidden="true">*</span></label><input asp-for="Email" type="email" autocomplete="email" required maxlength="254" aria-describedby="Email-error"/><span asp-validation-for="Email" id="Email-error"></span></div>
+            </div>
+            <div class="field"><label asp-for="Phone"></label><input asp-for="Phone" type="tel" autocomplete="tel" maxlength="25" aria-describedby="Phone-error"/><span asp-validation-for="Phone" id="Phone-error"></span></div>
+            <div class="field"><label asp-for="Subject">Tiêu đề <span aria-hidden="true">*</span></label><input asp-for="Subject" required minlength="3" maxlength="160" aria-describedby="Subject-error"/><span asp-validation-for="Subject" id="Subject-error"></span></div>
+            <div class="field"><label asp-for="Body">Nội dung liên hệ <span aria-hidden="true">*</span></label><textarea asp-for="Body" rows="7" required minlength="10" maxlength="4000" aria-describedby="Body-error contact-privacy contact-counter"></textarea><div class="contact-field-meta"><span asp-validation-for="Body" id="Body-error"></span><span id="contact-counter" aria-live="off">0 / 4.000</span></div></div>
+            <p class="small-note" id="contact-privacy">Không nhập mật khẩu, số thẻ hoặc thông tin thanh toán nhạy cảm. Chỉ quản trị viên được xem nội dung liên hệ.</p>
+            <button class="btn btn-primary contact-submit" type="submit">@await Html.PartialAsync("_Icon","mail") <span>Gửi liên hệ</span></button>
+            <p class="contact-form-note">Thanh toán vé bằng QR và bấm Hoàn tất để nhận vé điện tử.</p>
+        </form>
+    </section>
+</div>
+@section Scripts {<script src="~/js/contact.js" asp-append-version="true"></script>}

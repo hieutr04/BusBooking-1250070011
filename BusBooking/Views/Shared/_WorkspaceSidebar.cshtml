@@ -1,0 +1,17 @@
+@{
+ var admin=User.IsInRole("Admin");var staff=User.IsInRole("Staff");
+ var links=new List<(string C,string A,string Text,string Icon)>();
+ if(admin)links.AddRange(new[]{("Admin","Index","Tổng quan","dashboard"),("Admin","Routes","Tuyến xe","route"),("Admin","Drivers","Tài xế","users"),("Admin","Vehicles","Quản lý xe","bus"),("Admin","Layouts","Sơ đồ ghế","seat"),("Admin","Trips","Chuyến & phân công","calendar"),("Admin","HoldMonitor","Giám sát giữ chỗ","clock"),("Admin","Users","Tài khoản","users"),("Staff","Index","Vé & thu tiền","ticket"),("Staff","Requests","Yêu cầu đổi / trả","history"),("Admin","Audit","Nhật ký","history"),("AdminContacts","Index","Liên hệ","mail")});
+ else if(staff)links.AddRange(new[]{("Staff","Index","Tra cứu & xử lý vé","search"),("Staff","Sell","Bán vé hỗ trợ","ticket"),("Staff","Requests","Yêu cầu đổi / trả","history"),("Staff","Trips","Hành khách theo chuyến","users")});
+ else links.Add(("Driver","Index","Lịch được phân công","calendar"));
+ var controller=ViewContext.RouteData.Values["controller"]?.ToString()??"";
+ var action=ViewContext.RouteData.Values["action"]?.ToString()??"Index";
+ var activeAction=controller=="AdminContacts"?"Index":action switch {"RouteEdit"=>"Routes","DriverEdit" or "DriverPassword"=>"Drivers","VehicleEdit"=>"Vehicles","LayoutEdit"=>"Layouts","TripEdit" or "TripStops" or "TripBatch"=>"Trips","Passengers"=>"Trips",_=>action};
+}
+<div class="sidebar-brand"><a class="brand" asp-controller="Home" asp-action="Index"><span class="brand-icon"><img src="~/images/buscenter-mark.svg" width="42" height="42" alt="" aria-hidden="true"/></span><span class="brand-wordmark">Bus <span class="brand-accent">Center</span><small>KHÔNG GIAN ĐIỀU HÀNH</small></span></a><button class="btn-close d-lg-none" type="button" data-bs-dismiss="offcanvas" data-bs-target="#workspace-sidebar" aria-label="Đóng điều hướng"></button></div>
+<div class="sidebar-caption" id="workspace-nav-title">@(admin?"QUẢN TRỊ HỆ THỐNG":staff?"PHÒNG VÉ":"TÀI XẾ")</div>
+<nav class="sidebar-links" aria-labelledby="workspace-nav-title">
+@foreach(var link in links){var active=controller.Equals(link.C,StringComparison.OrdinalIgnoreCase)&&activeAction.Equals(link.A,StringComparison.OrdinalIgnoreCase);if(controller=="Bookings"&&link.C=="Staff"&&link.A=="Index")active=true;
+<a asp-controller="@link.C" asp-action="@link.A" class="@(active?"active":null)" aria-current="@(active?"page":null)">@await Html.PartialAsync("_Icon",link.Icon=="dashboard"?"lucide-dashboard":link.Icon)<span>@link.Text</span>@if(active){<span class="active-indicator" aria-hidden="true"></span>}</a>}
+</nav>
+<div class="sidebar-bottom"><span class="system-label"><i aria-hidden="true"></i> Điều hành</span><p>Giữ chỗ 5 phút · Thanh toán QR</p><a asp-controller="Home" asp-action="Policy">Chính sách đặt & đổi trả ↗</a></div>

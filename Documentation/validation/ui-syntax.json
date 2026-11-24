@@ -1,0 +1,50 @@
+{
+  "kind": "SYNTAX_ONLY_NOT_BUILD_OR_BROWSER",
+  "utc": "2026-11-01T14:17:05.915612+00:00",
+  "csharp_files": [
+    "BusBooking/Program.cs",
+    "Tests/BusBooking.RedirectTests/Program.cs",
+    "Tests/BusBooking.SqlTests/Program.cs",
+    "BusBooking/Data/SeedData.cs",
+    "BusBooking/Data/AppDbContextFactory.cs",
+    "BusBooking/Data/AppDbContext.cs",
+    "BusBooking/ViewModels/Forms.cs",
+    "BusBooking/Hubs/SeatsHub.cs",
+    "BusBooking/Services/ExceptionFilter.cs",
+    "BusBooking/Services/RealtimePublisher.cs",
+    "BusBooking/Services/RealtimeMetrics.cs",
+    "BusBooking/Services/BookingService.cs",
+    "BusBooking/Services/Infrastructure.cs",
+    "BusBooking/Services/ReportService.cs",
+    "BusBooking/Services/LoginDestination.cs",
+    "BusBooking/Services/CatalogService.cs",
+    "BusBooking/BackgroundServices/HoldExpiryWorker.cs",
+    "BusBooking/Models/Entities.cs",
+    "BusBooking/Controllers/AdminController.cs",
+    "BusBooking/Controllers/DriverController.cs",
+    "BusBooking/Controllers/SeatsApiController.cs",
+    "BusBooking/Controllers/TripsController.cs",
+    "BusBooking/Controllers/HomeController.cs",
+    "BusBooking/Controllers/AccountController.cs",
+    "BusBooking/Controllers/StaffController.cs",
+    "BusBooking/Controllers/BookingsController.cs",
+    "BusBooking/Data/Migrations/InitialModelV1.cs",
+    "BusBooking/Data/Migrations/20261029000100_InitialSqlServer.cs",
+    "BusBooking/Data/Migrations/AppDbContextModelSnapshot.cs"
+  ],
+  "csharp_errors": [],
+  "css": [
+    {
+      "file": "BusBooking/wwwroot/css/site.css",
+      "errors": []
+    },
+    {
+      "file": "BusBooking/wwwroot/css/admin.css",
+      "errors": []
+    },
+    {
+      "file": "BusBooking/wwwroot/css/ui.css",
+      "errors": []
+    }
+  ]
+}

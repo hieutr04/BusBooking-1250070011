@@ -1,0 +1,1296 @@
+{
+  "utc": "2026-11-03T09:42:11.342309+00:00",
+  "scope": "Static source/packaging regression. Does not compile Razor/C#, execute SQL or test browser layout.\nUsage: python Tests/buscenter-review.py --baseline INPUT_BUSGO.zip\nRequires tree-sitter, tree-sitter-c-sharp, tinycss2 and Node.\n",
+  "checks": [
+    {
+      "name": "C# syntax BusBooking/Program.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Data/StopModelV1.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Data/AppDbContext.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Data/SeedData.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Data/AppDbContextFactory.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Data/ContactModelV1.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/BackgroundServices/HoldExpiryWorker.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Controllers/TripsController.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Controllers/SeatsApiController.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Controllers/BookingsController.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Controllers/AdminController.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Controllers/ContactController.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Controllers/PhotosController.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Controllers/DriverController.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Controllers/AccountController.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Controllers/AdminContactsController.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Controllers/StaffController.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Controllers/HomeController.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Models/Entities.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Models/TripStop.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Models/ContactMessage.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Hubs/SeatsHub.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/ViewModels/Forms.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/ViewModels/StopAppendForms.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/ViewModels/SpecificStopForm.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/ViewModels/TripStopForms.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/ViewModels/ContactForms.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Services/DalatStopMaintenance.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Services/BookingService.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Services/TripStopAppendService.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Services/RealtimeMetrics.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Services/ReportService.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Services/ExceptionFilter.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Services/StopChoicePolicy.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Services/TripStopMaintenance.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Services/SpecificStopMaintenance.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Services/LoginDestination.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Services/StopAppendPlanner.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Services/ContactService.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Services/Infrastructure.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Services/TripStopService.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Services/StopPresentation.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Services/CatalogService.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Services/RealtimePublisher.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Services/ContactOptions.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Services/PhotoCatalog.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Services/ContactTokens.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Services/AuditPresentation.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Services/SpecificStopPlanner.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Data/Migrations/AppDbContextModelSnapshot.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Data/Migrations/20261029000100_InitialSqlServer.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Data/Migrations/20261103000100_AddTripStops.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Data/Migrations/InitialModelV1.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax BusBooking/Data/Migrations/20261102000100_AddContactMessages.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax Tests/BusBooking.RedirectTests/Program.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax Tests/BusBooking.SqlTests/StopAppendPlannerTests.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax Tests/BusBooking.SqlTests/Program.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "C# syntax Tests/BusBooking.SqlTests/StopChoicePolicyTests.cs",
+      "status": "PASS",
+      "detail": "Parsing only; no type checking or Razor compilation."
+    },
+    {
+      "name": "JS syntax stop-editor.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "JS syntax seat-layout.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "JS syntax dashboard.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "JS syntax contact.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "JS syntax site.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "JS syntax seats.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "JS syntax layout-previews.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "JS syntax admin.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "CSS syntax booking.css",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "CSS syntax photos-contact.css",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "CSS syntax site.css",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "CSS syntax busgo.css",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "CSS syntax admin.css",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "CSS syntax ui.css",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "CSS syntax buscenter.css",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/_ViewStart.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/_ViewStart.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/_ViewImports.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/_ViewImports.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Admin/LayoutEdit.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Admin/LayoutEdit.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Admin/Index.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Admin/Index.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset lib/chartjs/chart.umd.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset js/dashboard.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Admin/Users.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Admin/Users.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Admin/TripEdit.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Admin/TripEdit.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Admin/Layouts.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Admin/Layouts.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset js/layout-previews.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Admin/RouteEdit.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Admin/RouteEdit.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Admin/TripStops.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Admin/TripStops.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset js/stop-editor.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Admin/Vehicles.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Admin/Vehicles.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Admin/VehicleEdit.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Admin/VehicleEdit.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Admin/Routes.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Admin/Routes.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Admin/Trips.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Admin/Trips.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Admin/Audit.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Admin/Audit.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Shared/_Photo.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Shared/_Photo.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Shared/_AdminNav.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Shared/_AdminNav.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Shared/_SupportChannels.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Shared/_SupportChannels.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Shared/Passengers.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Shared/Passengers.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Shared/_Layout.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Shared/_Layout.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset images/favicon.svg",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset lib/bootstrap/css/bootstrap.min.css",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset css/site.css",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset css/ui.css",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset css/photos-contact.css",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset css/booking.css",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset css/busgo.css",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset css/buscenter.css",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset images/buscenter-mark.svg",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset lib/bootstrap/js/bootstrap.bundle.min.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset js/seat-layout.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset js/site.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Shared/_BookingStops.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Shared/_BookingStops.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Shared/_StaffNav.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Shared/_StaffNav.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Shared/_Icon.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Shared/_Icon.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Shared/_WorkspaceSidebar.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Shared/_WorkspaceSidebar.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset images/buscenter-mark.svg",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Shared/Problem.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Shared/Problem.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Shared/_AdminLayout.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Shared/_AdminLayout.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset images/favicon.svg",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset lib/bootstrap/css/bootstrap.min.css",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset css/site.css",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset css/ui.css",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset css/admin.css",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset css/photos-contact.css",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset css/booking.css",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset css/busgo.css",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset css/buscenter.css",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset lib/bootstrap/js/bootstrap.bundle.min.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset js/seat-layout.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset js/site.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset js/admin.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Photos/Index.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Home/Policy.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Home/Policy.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Home/Index.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Home/Index.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/AdminContacts/Details.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/AdminContacts/Details.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/AdminContacts/Index.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/AdminContacts/Index.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Bookings/Details.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Bookings/Details.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Bookings/Index.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Bookings/Index.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Staff/Index.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Staff/Index.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Staff/Requests.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Staff/Requests.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Staff/Trips.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Staff/Trips.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Trips/Details.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Trips/Details.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset lib/signalr/signalr.min.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset js/seats.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Trips/Index.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Trips/Index.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Driver/Index.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Driver/Index.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Contact/Index.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Contact/Index.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Local asset js/contact.js",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Account/Login.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Account/Login.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Account/Profile.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Account/Profile.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No old display brand Views/Account/Register.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No image credit caption Views/Account/Register.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Shared brand/Credits _Layout.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Shared brand/Credits _AdminLayout.cshtml",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No caption node in photo partial",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Credits page full metadata",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Hero eager image + no reveal-only content",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Hero mobile image explicit visible",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Search GET names unchanged",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "No credit height subtraction",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Contact channels shared",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Specific service gate before plan/persist",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Specific service publishes after commit",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Specific service no hold/booking/point removal writes",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "New points retain configured/illustrative provenance",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Reviewed source bounded to audit column",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Admin new POST antiforgery/role",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Full edit still protects ALL historical holds",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "All baseline files retained",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged .config/dotnet-tools.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/BusBooking.csproj",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/Controllers/AccountController.cs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/Controllers/AdminContactsController.cs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/Controllers/ContactController.cs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/Data/AppDbContext.cs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/Data/AppDbContextFactory.cs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/Data/ContactModelV1.cs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/Data/Migrations/20261029000100_InitialSqlServer.cs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/Data/Migrations/20261102000100_AddContactMessages.cs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/Data/Migrations/20261103000100_AddTripStops.cs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/Data/Migrations/AppDbContextModelSnapshot.cs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/Data/Migrations/InitialModelV1.cs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/Data/SeedData.cs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/Data/StopModelV1.cs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/Hubs/SeatsHub.cs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/Models/ContactMessage.cs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/Models/Entities.cs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/Models/TripStop.cs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/Properties/launchSettings.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/Services/ContactService.cs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/Services/ContactTokens.cs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/Services/Infrastructure.cs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/Services/LoginDestination.cs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/Services/RealtimePublisher.cs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/Services/ReportService.cs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/appsettings.Development.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/appsettings.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/wwwroot/images/banners/contact-journey.webp",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/wwwroot/images/buses/coach-exterior.webp",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/wwwroot/images/buses/coach-hero.webp",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/wwwroot/images/destinations/da-lat.webp",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/wwwroot/images/destinations/ho-chi-minh-city.webp",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking/wwwroot/images/destinations/nha-trang.webp",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged BusBooking.sln",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged Database/20261102000100_AddContactMessages.sql",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged Database/REVIEW_TRIP_STOPS.sql",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged Database/SCHEMA_REVIEW_ONLY.sql",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged Documentation/INPUT_BUSGO_REQUIREMENTS_ORIGINAL.txt",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged Documentation/INPUT_IMAGES_CONTACT_REQUIREMENTS_ORIGINAL.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged Documentation/INPUT_REQUIREMENTS_ORIGINAL.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged Documentation/INPUT_STOPS_SEATS_REQUIREMENTS.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged Documentation/INPUT_UI_REQUIREMENTS_ORIGINAL.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged Tests/BusBooking.RedirectTests/BusBooking.RedirectTests.csproj",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged Tests/BusBooking.SqlTests/BusBooking.SqlTests.csproj",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Protected unchanged global.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Booking core unchanged outside point eligibility",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Original stop ownership/order/time validation retained",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Auth config retained BusBooking.Auth",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Auth config retained AddIdentity",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Auth config retained AddAntiforgery",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "Auth config retained ConfigureApplicationCookie",
+      "status": "PASS",
+      "detail": ""
+    }
+  ]
+}

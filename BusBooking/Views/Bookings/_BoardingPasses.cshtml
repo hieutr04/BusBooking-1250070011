@@ -1,0 +1,16 @@
+@model Booking
+<section class="panel boarding-passes" id="boarding-passes" aria-labelledby="boarding-title">
+    <h2 id="boarding-title">Vé điện tử lên xe</h2>
+    <p>Mỗi ghế có một mã check-in. Mở mã để nhân viên hoặc tài xế quét khi lên xe.</p>
+    @foreach(var ticket in Model.Tickets.Where(t=>t.IsActive).OrderBy(t=>t.Seat.Code)){
+        <details class="boarding-pass">
+            <summary><strong>Ghế @ticket.Seat.Code</strong> · @ticket.PassengerName <span class="pill">@(ticket.CheckedInUtc.HasValue?"Đã lên xe":"Mở mã check-in")</span></summary>
+            @if(ticket.CheckedInUtc is DateTime time){
+                <p>Đã check-in lúc @BusinessTime.Text(time).</p>
+            }else{
+                <img class="boarding-qr" src="@TicketCheckIn.Image(ticket.Id)" width="216" height="216" loading="lazy" alt="QR check-in ghế @ticket.Seat.Code"/>
+                <p>Mã nhập tay <code>@ticket.Id.ToString("N")</code></p>
+            }
+        </details>
+    }
+</section>

@@ -1,0 +1,30 @@
+{
+  "Trips": [
+    {
+      "TripId": 0,
+      "Revision": 0,
+      "Points": [
+        {
+          "Name": "",
+          "Address": "",
+          "OffsetMinutes": 0,
+          "CanPickup": true,
+          "CanDropoff": false,
+          "Area": "",
+          "SourceReference": "",
+          "OperatorConfirmed": false
+        },
+        {
+          "Name": "",
+          "Address": "",
+          "OffsetMinutes": 0,
+          "CanPickup": false,
+          "CanDropoff": true,
+          "Area": "",
+          "SourceReference": "",
+          "OperatorConfirmed": false
+        }
+      ]
+    }
+  ]
+}

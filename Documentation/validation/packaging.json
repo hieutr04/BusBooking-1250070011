@@ -1,0 +1,324 @@
+{
+  "kind": "PACKAGING_AND_SOURCE_ONLY_NOT_RUNTIME",
+  "utc": "2026-11-01T14:26:27.558290+00:00",
+  "status": "PASS",
+  "input_zip": "QuanLyXeKhach_DatVe_GiuCho_REALTIME_REVIEWED(2).zip",
+  "archive": "QuanLyXeKhach_DatVe_GiuCho_REALTIME_UI_UPGRADED_REVIEWED.zip",
+  "baseline_files": 116,
+  "baseline_razor": 31,
+  "final_razor": 34,
+  "protected_core": {
+    "kind": "CORE_HASH_PRESERVATION_NOT_RUNTIME_TEST",
+    "protected_count": 29,
+    "violations": [],
+    "status": "PASS",
+    "exception": "AccountController.cs: role-aware server login redirect only"
+  },
+  "forbidden_entries": [],
+  "changes": [
+    {
+      "status": "CHANGED",
+      "path": "ASSET_SOURCES.md"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/Controllers/AccountController.cs"
+    },
+    {
+      "status": "ADDED",
+      "path": "BusBooking/Services/LoginDestination.cs"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/Views/Account/Login.cshtml"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/Views/Account/Profile.cshtml"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/Views/Account/Register.cshtml"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/Views/Admin/Audit.cshtml"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/Views/Admin/Index.cshtml"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/Views/Admin/LayoutEdit.cshtml"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/Views/Admin/Layouts.cshtml"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/Views/Admin/RouteEdit.cshtml"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/Views/Admin/Routes.cshtml"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/Views/Admin/TripEdit.cshtml"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/Views/Admin/Trips.cshtml"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/Views/Admin/Users.cshtml"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/Views/Admin/VehicleEdit.cshtml"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/Views/Admin/Vehicles.cshtml"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/Views/Bookings/Details.cshtml"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/Views/Bookings/Index.cshtml"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/Views/Driver/Index.cshtml"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/Views/Home/Index.cshtml"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/Views/Home/Policy.cshtml"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/Views/Shared/Passengers.cshtml"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/Views/Shared/Problem.cshtml"
+    },
+    {
+      "status": "ADDED",
+      "path": "BusBooking/Views/Shared/_AdminLayout.cshtml"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/Views/Shared/_AdminNav.cshtml"
+    },
+    {
+      "status": "ADDED",
+      "path": "BusBooking/Views/Shared/_Icon.cshtml"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/Views/Shared/_Layout.cshtml"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/Views/Shared/_StaffNav.cshtml"
+    },
+    {
+      "status": "ADDED",
+      "path": "BusBooking/Views/Shared/_WorkspaceSidebar.cshtml"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/Views/Staff/Index.cshtml"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/Views/Staff/Requests.cshtml"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/Views/Staff/Trips.cshtml"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/Views/Trips/Details.cshtml"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/Views/Trips/Index.cshtml"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/Views/_ViewStart.cshtml"
+    },
+    {
+      "status": "ADDED",
+      "path": "BusBooking/wwwroot/css/admin.css"
+    },
+    {
+      "status": "ADDED",
+      "path": "BusBooking/wwwroot/css/ui.css"
+    },
+    {
+      "status": "ADDED",
+      "path": "BusBooking/wwwroot/js/admin.js"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/wwwroot/js/dashboard.js"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking/wwwroot/js/site.js"
+    },
+    {
+      "status": "CHANGED",
+      "path": "BusBooking.sln"
+    },
+    {
+      "status": "ADDED",
+      "path": "DESIGN_REFERENCE_REVIEW.md"
+    },
+    {
+      "status": "ADDED",
+      "path": "Documentation/INPUT_UI_REQUIREMENTS_ORIGINAL.md"
+    },
+    {
+      "status": "ADDED",
+      "path": "Documentation/baseline/SOURCE_BASELINE_SHA256.json"
+    },
+    {
+      "status": "ADDED",
+      "path": "Documentation/baseline/TEST_RESULTS_BEFORE_UI.md"
+    },
+    {
+      "status": "ADDED",
+      "path": "Documentation/baseline/csharp-syntax.json"
+    },
+    {
+      "status": "ADDED",
+      "path": "Documentation/baseline/packaging.json"
+    },
+    {
+      "status": "ADDED",
+      "path": "Documentation/baseline/runtime-attempts.json"
+    },
+    {
+      "status": "ADDED",
+      "path": "Documentation/baseline/static-checks.json"
+    },
+    {
+      "status": "ADDED",
+      "path": "Documentation/validation/contrast-samples.json"
+    },
+    {
+      "status": "ADDED",
+      "path": "Documentation/validation/core-preservation.json"
+    },
+    {
+      "status": "ADDED",
+      "path": "Documentation/validation/ui-runtime-attempts.json"
+    },
+    {
+      "status": "ADDED",
+      "path": "Documentation/validation/ui-source-check.json"
+    },
+    {
+      "status": "ADDED",
+      "path": "Documentation/validation/ui-static-checks.json"
+    },
+    {
+      "status": "ADDED",
+      "path": "Documentation/validation/ui-syntax.json"
+    },
+    {
+      "status": "ADDED",
+      "path": "FILE_CHANGES.md"
+    },
+    {
+      "status": "CHANGED",
+      "path": "LIMITATIONS.md"
+    },
+    {
+      "status": "ADDED",
+      "path": "LOGIN_REDIRECT_FIX.md"
+    },
+    {
+      "status": "CHANGED",
+      "path": "PERMISSION_MATRIX.md"
+    },
+    {
+      "status": "CHANGED",
+      "path": "README.md"
+    },
+    {
+      "status": "CHANGED",
+      "path": "REQUIREMENTS_TRACEABILITY.md"
+    },
+    {
+      "status": "CHANGED",
+      "path": "START_HERE.txt"
+    },
+    {
+      "status": "CHANGED",
+      "path": "Scripts/verify.ps1"
+    },
+    {
+      "status": "CHANGED",
+      "path": "TEST_RESULTS.md"
+    },
+    {
+      "status": "ADDED",
+      "path": "Tests/BusBooking.RedirectTests/BusBooking.RedirectTests.csproj"
+    },
+    {
+      "status": "ADDED",
+      "path": "Tests/BusBooking.RedirectTests/Program.cs"
+    },
+    {
+      "status": "CHANGED",
+      "path": "Tests/README.md"
+    },
+    {
+      "status": "ADDED",
+      "path": "Tests/UI_TEST_GUIDE.md"
+    },
+    {
+      "status": "CHANGED",
+      "path": "Tests/browser.mjs"
+    },
+    {
+      "status": "ADDED",
+      "path": "Tests/login-redirect-browser.mjs"
+    },
+    {
+      "status": "CHANGED",
+      "path": "Tests/source-check.py"
+    },
+    {
+      "status": "ADDED",
+      "path": "Tests/ui-browser.mjs"
+    },
+    {
+      "status": "ADDED",
+      "path": "UI_CHANGELOG.md"
+    },
+    {
+      "status": "ADDED",
+      "path": "UI_PAGE_AUDIT.md"
+    }
+  ],
+  "runtime_verification": "BLOCKED CoreCLR; no SQL Server/HTTP/browser evidence; not VERIFIED",
+  "no_actual_screenshots": true,
+  "new_migrations": 0,
+  "archive_crc": "PASS (final ZIP verified after build)"
+}

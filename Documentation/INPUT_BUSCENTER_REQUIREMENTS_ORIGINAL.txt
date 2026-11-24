@@ -1,0 +1,221 @@
+﻿PROMPT NÂNG CẤP BUSGO THÀNH BUS CENTER — LIÊN HỆ, ĐIỂM ĐÓN/TRẢ, ẢNH VÀ BANNER TRANG CHỦ
+
+1. PHẠM VI: CHỈ SỬA NHỮNG NỘI DUNG ĐƯỢC YÊU CẦU
+
+Tôi đang thực hiện đồ án chuyên ngành Thương mại điện tử.
+
+Giữ nguyên tên đề tài chính thức:
+XÂY DỰNG HỆ THỐNG QUẢN LÝ XE KHÁCH VÀ ĐẶT VÉ TRỰC TUYẾN TÍCH HỢP CƠ CHẾ GIỮ CHỖ THEO THỜI GIAN THỰC
+
+Đầu vào: BusGo_UI_CLEANUP_STOPS_REVIEWED(1).zip hoặc đúng bản mới nhất tôi đính kèm, cùng các ảnh chỉ ra vấn đề giao diện.
+
+Hãy trực tiếp chỉnh source này, không tạo lại project, không đổi đề tài/chuyên ngành hoặc viết lại backend. Nhiệm vụ lần này chỉ gồm:
+
+1) Đổi tên website hiển thị từ BusGo thành Bus Center.
+2) Hoàn thiện trang Liên hệ tham khảo FUTA, thay bằng thông tin riêng của website, form hoạt động thật.
+3) Sửa điểm đón và điểm trả của các chuyến vì hiện vẫn chung chung/chưa đúng, tham khảo nguồn công khai như FUTA/Vexere và kiểm tra logic hành trình.
+4) Bỏ toàn bộ các dòng nguồn/tác giả/“Ảnh minh họa”/“Nguồn & giấy phép” đặt ngay dưới ảnh trong giao diện giao dịch; xử lý nguồn ảnh theo phương án phù hợp giấy phép ở mục 7.
+5) Làm lại phần đầu trang chủ đang trống: banner/hình ảnh hấp dẫn, bố cục thương mại điện tử đặt vé chuyên nghiệp, form tìm chuyến nổi bật.
+
+Sau khi sửa đầy đủ, kiểm thử và bàn giao ZIP source mới. Không chỉ gửi kế hoạch, mockup, HTML tĩnh, báo cáo, code rời hoặc một prompt tiếp theo.
+
+2. NHỮNG THÀNH PHẦN PHẢI GIỮ NGUYÊN
+
+- ASP.NET Core MVC .NET 9, C#, Razor Views, TargetFramework net9.0 và SDK/package tương thích hiện có; không chuyển .NET 8/.NET 10.
+- SQL Server, EF Core/migrations/snapshot, ASP.NET Core Identity, Cookie Authentication và RBAC.
+- Bootstrap 5, CSS/JS/animation, SignalR, BackgroundService hết hạn hold, Chart.js hiện có.
+- Bốn vai trò Admin, Staff, Driver, Customer; login redirect, authorization và ownership.
+- Quản lý tuyến/xe/sơ đồ ghế/chuyến/phân công, tìm chuyến, ghế realtime, giữ chỗ 5 phút, đặt/xác nhận vé, đổi/hủy, thu/hoàn trực tiếp, danh sách hành khách, tài khoản, dashboard, nhật ký và Liên hệ.
+- ID/mã ghế, hình học TripSeat, giá vé, giờ khởi hành/đến, tuyến, xe, trạng thái, phân công, hold/vé/khách hàng/thanh toán hiện có.
+- Mọi chức năng đã chạy trong bản BusGo; giữ gam trắng–xanh ngọc/xanh lá và responsive.
+
+Không thêm thanh toán ngân hàng, ví, voucher/loyalty, GPS, quản lý xe trung chuyển, marketplace nhiều nhà xe, AI, forum, mobile app, SQLite/InMemory/JSON backend hoặc cơ chế fallback giả.
+
+Đổi thương hiệu hiển thị không có nghĩa đổi BusBooking.sln/BusBooking.csproj, namespace, database, UserSecretsId, tên cookie, route, role hoặc mã vé cũ. Giữ tên đề tài trong README/tài liệu học thuật, không ép tiêu đề đồ án dài trở lại header/footer công khai.
+
+3. AUDIT THỰC TẾ VÀ THAM KHẢO NGUỒN
+
+Đọc source và các ảnh đính kèm trước khi sửa. Không giả vờ đọc được Word/ảnh nhận xét giảng viên cũ nếu phiên này không có; dùng hồ sơ yêu cầu đã lưu trong ZIP và yêu cầu mới này để giữ phạm vi.
+
+Các vị trí cụ thể hiện có trong ZIP, cần kiểm lại theo bản được gửi:
+- Views/Home/Index.cshtml đã có hero-art/hero-photo và PhotoCatalog.CoachHero; cần tìm vì sao phần đầu vẫn trống/ảnh chưa có hiệu quả, không mặc định chưa viết ảnh.
+- Views/Shared/_Photo.cshtml đang sinh figcaption.photo-credit; card tuyến trong Home/Index có p.photo-credit riêng.
+- Services/PhotoCatalog.cs có ảnh xe/điểm đến/hành trình, bao gồm nhiều ảnh CC BY và một ảnh CC BY-SA.
+- Views/Contact/Index.cshtml đã có form lưu liên hệ và khối thông tin; ContactOptions hiện có SupportEmail/SupportPhone/SupportAddress. Khối thông tin chỉ xuất hiện khi cấu hình có giá trị, nên khi trống trang gần như chỉ có mô tả và ảnh.
+- Services/TripStopMaintenance.cs, StopAppendPlanner.cs, TripStopAppendService.cs, TripStopService.cs, StopPresentation.cs, BookingService.cs và seats.js đang xử lý điểm theo chuyến.
+- Template hiện có dùng tên địa phương Đức Trọng/Bảo Lộc/Cam Ranh/Cam Lâm với offset mẫu. Không xem những địa phương đó tự động là bến xe/văn phòng hoặc mọi điểm đều được đón/trả.
+
+Khảo sát bằng công cụ web được hỗ trợ:
+- https://futabus.vn/ — cấu trúc homepage, hero/banner, form tìm chuyến.
+- https://futabus.vn/lien-he — khối thông tin doanh nghiệp và form bên cạnh.
+- https://futabus.vn/huong-dan-dat-ve-tren-web — cách tổ chức luồng chọn ghế/điểm đón/trả.
+- https://vexere.com/ — homepage, kết quả/chọn chuyến nếu truy cập được.
+- https://vexere.com/vi-VN/huong-dan-thanh-toan-tren-website.html — tham khảo bước chọn ghế/điểm/hành khách, không sao chép phương thức thanh toán ngoài phạm vi.
+- Trang tuyến/nhà xe/điểm đón trả chính thức hoặc nguồn bến xe đáng tin để kiểm tra địa điểm.
+
+Nếu homepage/phiên đặt vé Vexere hoặc FUTA không mở được, ghi đúng phần chưa xem; sử dụng ảnh tôi gửi và các trang công khai truy cập được, không báo đã khảo sát thao tác chưa thực hiện. Không đặt vé/giữ ghế hoặc dùng tài khoản thật trên website tham khảo.
+
+Không clone HTML/CSS, logo, banner, hotline, địa chỉ công ty hoặc bộ dữ liệu nhà xe của họ. Không mang màu cam FUTA thay design system trắng–xanh của website này. Không biến tham khảo Vexere thành marketplace nhiều nhà xe mới.
+
+4. ĐỔI THƯƠNG HIỆU THÀNH BUS CENTER
+
+Tên mặc định tôi chọn cho bản này: Bus Center; viết thống nhất đúng tên này. Không mất thời gian hỏi lại tên hoặc đổi sang nhiều tên khác nhau. Đây là tên giao diện, không phải tuyên bố sở hữu nhãn hiệu/domain/pháp nhân.
+
+Đổi toàn bộ thương hiệu cũ xuất hiện trên UI: header/logo chữ/favicon tự sở hữu nếu cần, title trình duyệt, footer, sidebar/workspace, login/register/profile, Liên hệ, chính sách, trang lỗi và các mô tả do project tự viết.
+
+Có thể làm wordmark Bus Center/biểu tượng BC hình xe gọn, tự thiết kế bằng font/icon/SVG gốc, hợp gam trắng–xanh. Logo desktop/mobile đọc rõ và không tràn navbar.
+
+Không sửa chữ của tác giả ảnh thành Bus Center; không chỉnh/xóa logo/watermark trên ảnh bên thứ ba. Không bịa domain buscenter.vn, hotline, giấy phép kinh doanh, danh hiệu hoặc đối tác. Không đổi tên kỹ thuật và dữ liệu định danh chỉ để đổi thương hiệu.
+
+5. HOÀN THIỆN TRANG LIÊN HỆ NHƯ WEBSITE VẬN TẢI CHUYÊN NGHIỆP
+
+Giữ route/form/ContactService/ContactMessages và phần tiếp nhận Admin hiện có. Không tạo lại một hệ thống liên hệ khác.
+
+Tham khảo bố cục FUTA tôi gửi, thiết kế riêng cho Bus Center:
+- Tiêu đề “Liên hệ với chúng tôi”, breadcrumb gọn.
+- Desktop hai cột: bên trái thông tin Bus Center, bên phải form “Gửi thông tin liên hệ”. Mobile một cột.
+- Khối thông tin trình bày rõ tên đơn vị/thương hiệu, địa chỉ, website nếu có, điện thoại/hotline, email, thời gian hỗ trợ nếu đã được cung cấp. Chỉ hiển thị các trường có dữ liệu thực phù hợp.
+- Dùng icon vừa phải, label/value phân cấp rõ; giảm các câu giới thiệu chung đang lặp. Ảnh phụ nếu giữ phải gọn, không chiếm phần chính của thông tin hỗ trợ.
+- Footer và navbar có link Liên hệ, thông tin hỗ trợ đồng bộ với trang này.
+
+THÔNG TIN LIÊN HỆ MỚI:
+- Tên hiển thị: Bus Center.
+- Tên pháp nhân (nếu có): lấy từ thông tin tôi cung cấp/cấu hình, không tự tạo tên “Công ty cổ phần…” giả.
+- Địa chỉ, điện thoại/hotline, email, website, giờ hỗ trợ: ưu tiên dữ liệu đúng đã cấu hình trong project hoặc tôi cung cấp thêm.
+
+Tôi chưa ghi số điện thoại/email/địa chỉ mới cụ thể trong yêu cầu này. Vì vậy không chép số 19006067, địa chỉ Lê Văn Lương hoặc email hotro@futa.vn từ ảnh FUTA thành của Bus Center; không bịa một bộ thông tin trông thật. Hoàn thiện cấu hình ContactOptions/appsettings hoặc user-secrets dễ thay, có file hướng dẫn điền các giá trị còn thiếu. Nếu thiếu dữ liệu vận hành, nêu rõ trong bàn giao, không tự nhận đã cập nhật đầy đủ thông tin thật. Không hiện các placeholder dài “dữ liệu học tập/chưa cấu hình” trên trang công khai; giữ form là kênh liên hệ hoạt động trong lúc chờ thông tin.
+
+Không thêm fax, dropdown nhiều công ty, hotline 24/7, bản đồ hoặc kênh mạng xã hội giả chỉ vì FUTA có. Link tel:/mailto: chỉ có khi giá trị hợp lệ; không tạo nút mở địa chỉ không thuộc website.
+
+Form giữ Họ tên, Email, Điện thoại, Tiêu đề, Nội dung; có validation tiếng Việt, focus/loading/error và anti-forgery. Lưu SQL thật trước khi báo “Đã ghi nhận liên hệ”, không nói đã gửi email nếu chưa có gửi email thật. Giữ rate limiting, token chống gửi trùng, PRG, quyền chỉ Admin đọc nội dung và encode dữ liệu. Không cần SMTP/SMS/ticket CRM mới.
+
+6. SỬA ĐIỂM ĐÓN/TRẢ: PHẢI CỤ THỂ, ĐÚNG TUYẾN VÀ ĐÚNG QUYỀN ĐÓN/TRẢ
+
+Vấn đề trong ảnh: dropdown đang hiện tên thành phố hoặc địa phương giữa đường, ví dụ TP. Hồ Chí Minh, Bảo Lộc, Đức Trọng, Cam Ranh, Cam Lâm, Nha Trang. Đó chưa phải thông tin bến xe/văn phòng/điểm hẹn cụ thể. Không chỉ đổi chữ hiển thị; phải kiểm dữ liệu và logic.
+
+Phân biệt rõ:
+- Nơi đi/nơi đến: thành phố hoặc khu vực của tuyến, dùng tìm chuyến.
+- Điểm đón: nơi cụ thể khách lên xe, có tên bến/văn phòng/điểm hẹn và địa chỉ đã được cấu hình/xác minh.
+- Điểm trả: nơi cụ thể khách xuống xe.
+- Điểm dừng trung gian: không tự được đón/trả nếu chưa có cấu hình nghiệp vụ cho phép.
+
+Khảo sát riêng các chiều đang có, tối thiểu TP.HCM → Đà Lạt, Đà Lạt → TP.HCM và TP.HCM → Nha Trang. Mở nguồn gốc của địa điểm/lịch, ghi URL, ngày kiểm tra, tuyến/chiều và đơn vị cung cấp. Không coi tên điểm riêng của một hãng xe là điểm Bus Center tự có quyền khai thác; không trộn điểm đón hãng A với điểm trả hãng B rồi gọi là lịch chính thức của Bus Center.
+
+Yêu cầu dữ liệu/UI:
+- Mỗi chuyến có danh sách điểm đón và trả phù hợp hành trình; dropdown hiển thị giờ + tên địa điểm cụ thể, địa chỉ bên dưới khi có dữ liệu đáng tin.
+- Đón mặc định phải thuộc khu vực xuất phát của tuyến; trả mặc định thuộc khu vực đến. Không đưa mọi điểm giữa đường vào cả hai dropdown chỉ vì CanPickup/CanDropoff đang cùng true.
+- Chỉ cho chọn điểm giữa khi được cấu hình đón/trả rõ ràng và phù hợp nghiệp vụ hiện có. Không tự mở bán theo chặng, không cho tái bán một ghế trên các đoạn khác nhau và không đổi giá theo quãng đường.
+- Không lấy một tên thành phố chung rồi tự ghép địa chỉ bất kỳ thành điểm xe thật.
+- Điểm trả phải sau điểm đón, đúng TripId/chiều tuyến, cờ hoạt động và cờ đón/trả; server kiểm lại mọi ID, không tin nhãn/giờ từ client.
+- Dropdown có thể dùng searchable listbox dễ đọc như nguồn tham khảo nếu số điểm nhiều; native select cũng được khi danh sách ngắn và đủ chức năng. Không tạo radio “Trung chuyển” hoặc bản đồ định vị khi chưa có backend/dữ liệu phù hợp.
+
+VỀ THỜI GIAN:
+- Giữ nguyên DepartureUtc/ArrivalUtc của chuyến hiện tại; không xóa/đổi chuyến để khớp lịch FUTA/Vexere.
+- Giờ đầu/cuối theo lịch chuyến gốc, giờ điểm ở giữa theo offset đã được cấu hình có căn cứ, tăng đúng thứ tự. Chiều ngược có lịch riêng.
+- Không sao chép giờ chạy của nhà xe thật ở ngày khác rồi gắn vào dữ liệu chuyến này; không tự chia đều thời gian rồi gọi là giờ chính thức.
+- Chỉ xác minh được địa điểm chưa có nghĩa đã xác minh được giờ xe của Bus Center. Lịch cấu hình/mẫu giữ nguồn nội bộ và ghi rõ giới hạn trong tài liệu; không đưa lại banner học tập dài vào UI, không quảng cáo ETA trực tiếp.
+- Khi đổi điểm, cập nhật đúng tên, địa chỉ, ngày/giờ đón/trả, lời nhắc có mặt và thời lượng. Hiển thị UTC+7, dd/MM/yyyy, 24 giờ; xử lý qua ngày/nửa đêm.
+- Nếu không có nguồn đủ tin cậy cho điểm cụ thể, ghi rõ phần thiếu trong tài liệu và cho Admin cấu hình, không bịa địa chỉ/quan hệ nhà xe để báo hoàn thành.
+
+VỀ DATABASE ĐÃ CÓ VÀ VÉ CŨ:
+- Có phương án cập nhật idempotent cho TripStops đã tồn tại, không chỉ sửa seed của database mới.
+- Đọc StopAppendPlanner/TripStopAppendService hiện có; không xóa hay viết lại toàn bộ chỉ để thay danh sách.
+- Không hard-code TripId 6 hoặc một ngày chạy. Hỗ trợ các chuyến hiện có và chuyến mới qua Admin.
+- Không ghi đè lịch/địa chỉ tùy chỉnh đã được quản trị viên duyệt.
+- Với điểm đã được hold/vé tham chiếu, giữ nguyên ID, snapshot và lịch cam kết. Nếu cần thay lựa chọn mới, dùng bổ sung/phiên bản phù hợp hoặc chỉ sửa chuyến chưa có ràng buộc; không xóa điểm/hold/vé để vượt guard.
+- Khách đang giữ ghế tiếp tục hoàn tất lựa chọn hợp lệ đã được xác nhận; việc sửa danh sách cho lượt đặt mới không làm mất hold hoặc gia hạn ExpiresAt. Booking đã xác nhận không thay tên/giờ lịch sử.
+- Có dry-run/báo cáo trước-sau, transaction ngắn/trip gate, tăng Revision sau cập nhật và đồng bộ UI khi cần. Chạy lại không trùng điểm hoặc phát sinh vé.
+- Lựa chọn điểm được lưu trên hold, refresh/multi-hold phục hồi đúng; confirm/đổi vé lưu snapshot và đọc lại được trong vé/phòng vé/danh sách hành khách.
+
+Tạo STOP_SOURCE_REVIEW.md và STOP_DATA_UPDATE_GUIDE.md nêu rõ điểm nào xác minh địa chỉ, điểm nào là lịch cấu hình, thay đổi nào áp dụng DB cũ, trường hợp bị bảo vệ/bỏ qua và lý do. Không dùng chữ “đã sửa đúng toàn bộ” khi chỉ đổi nhãn hoặc chưa kiểm DB.
+
+7. BỎ HẾT DÒNG NGUỒN NGAY DƯỚI ẢNH, GIỮ QUYỀN SỬ DỤNG PHÙ HỢP
+
+Tôi không muốn thấy dưới hero, card tuyến, ảnh xe, ảnh liên hệ các dòng như:
+“Ảnh minh họa · VynedJ · Nguồn & giấy phép”, “Ảnh: Tri Nguyen …”, tên tác giả lặp trên mỗi card.
+
+Hãy loại bỏ toàn bộ các caption nguồn này khỏi bố cục giao dịch. Rà cả _Photo.cshtml, card tuyến viết riêng, PhotoDisplay và CSS photo-credit; không chỉ sửa một trang. Không để khoảng trống, border, chiều cao calc trừ phần credit, figcaption rỗng hoặc link nằm trong thẻ a khác sau khi sửa.
+
+Source hiện dùng CC BY/CC BY-SA, nên triển khai theo một trong các cách sau cho từng ảnh:
+- Nếu giấy phép cho phép cách ghi công đó phù hợp, chuyển thông tin tác giả/ảnh gốc/giấy phép/chỉnh sửa sang trang Nguồn ảnh hoặc Credits riêng, có một link footer gọn; không đặt credit ngay dưới từng ảnh.
+- Nếu không bảo đảm đáp ứng giấy phép sau khi bỏ caption, thay ảnh bằng ảnh tự sở hữu/CC0 hoặc nguồn cho phép không ghi công công khai, chẳng hạn ảnh có điều kiện phù hợp từ Pexels. Xác minh đúng ảnh và giấy phép, tải local và ghi hồ sơ nội bộ.
+- Không chỉ xóa mọi ghi công của ảnh bắt buộc Attribution, không giấu nguồn vào riêng Markdown trong ZIP rồi mặc định đã đáp ứng nghĩa vụ trên website, không đổi tên tác giả thành Bus Center hoặc xóa watermark.
+
+Kết quả tôi muốn: tất cả ảnh trên màn hình giao dịch sạch, không có dòng nguồn phía dưới; hồ sơ ASSET_SOURCES.md vẫn đầy đủ, ghi công công khai cần thiết được xử lý đúng nơi hoặc thay bằng tài sản phù hợp. Đó là yêu cầu triển khai, không phải lý do để giữ nguyên caption dưới ảnh như bản cũ.
+
+Giữ alt text chính xác và không tự nhận xe trong ảnh là đội xe của Bus Center. Không dùng URL Google tạm/hotlink; mọi ảnh cần chạy offline ở localhost và có fallback local không lặp lỗi.
+
+8. LÀM LẠI KHỐI ĐẦU TRANG CHỦ: BANNER ẢNH + FORM TÌM CHUYẾN
+
+Ảnh tôi gửi cho thấy phần đầu còn nhiều khoảng trắng, chỉ có headline/mô tả. Hãy audit DOM/src/CSS/breakpoint/reveal/loading để biết ảnh đang không render, bị ẩn hay bố cục phân bổ chưa hợp lý. Source vốn đã có hero-photo, nên không thêm một banner nữa mà bỏ mặc nguyên nhân vùng trống.
+
+Thiết kế thành đầu trang rõ ràng và thu hút, có thể chọn một phương án phù hợp:
+- Hero banner ngang có ảnh xe/hành trình, overlay nhẹ bảo đảm chữ đọc được và form tìm chuyến gắn sát/phủ một phần ở đáy banner.
+- Hoặc hero hai cột cân đối, ảnh chiếm vùng đủ lớn bên cạnh tiêu đề và form ngay bên dưới, không để nửa màn hình trống.
+
+Yêu cầu cụ thể:
+- Bus Center ở header; headline ngắn, thông điệp rõ; giữ CTA tìm/chọn chuyến và quy trình thật.
+- Ảnh chất lượng, phù hợp chủ đề vận tải/du lịch, ưu tiên ngang 16:9 hoặc tỷ lệ banner hợp lý; không kéo giãn/cắt mất xe/chi tiết chính.
+- Có thể dùng 1 banner đẹp hoặc 2–3 banner điều khiển thủ công nếu có đủ ảnh hợp lệ. Không tạo carousel giả, autoplay thiếu pause hoặc ảnh quảng cáo/voucher không có chương trình thật.
+- Form Nơi đi/Nơi đến/Ngày đi + Tìm chuyến là thao tác chính, giữ GET binding/route/validation/giá trị đã chọn và điều kiện tìm kiếm hiện có. Không thêm vé khứ hồi, mã giảm giá, nhà xe đa hãng hoặc số hành khách nếu chưa có nghiệp vụ tương ứng.
+- Desktop không có khoảng đệm đầu trang quá lớn hoặc hero cao hết viewport đẩy form tìm chuyến xuống sâu. Mobile ảnh/text/form theo thứ tự dễ dùng, không làm nút/label tràn hoặc ẩn ảnh do media query sai.
+- Hero ưu tiên load ảnh, có kích thước dự phòng tránh layout shift; ảnh dưới fold lazy-load. Dùng CSS Grid/Flex, tối ưu WebP/JPG, không tải ảnh gốc hàng chục MB hoặc animation library nặng.
+- Không đưa caption nguồn dưới banner; áp dụng mục 7. Không đưa lại nhãn mô phỏng/đồ án, không bịa chứng nhận, doanh thu/lượt khách/đánh giá/khuyến mại để lấp khoảng trống.
+
+Mọi asset bổ sung nằm trong wwwroot/images/, có nguồn và điều kiện dùng được ghi nhận. Không sao chép banner/ảnh/logo trên FUTA/Vexere khi chưa có quyền dùng lại. Google Search/Images chỉ tìm nguồn, không phải giấy phép.
+
+9. GIỮ GIAO DIỆN TOÀN SITE NHẤT QUÁN VÀ CÁC TƯƠNG TÁC THẬT
+
+Nâng các phần liên quan để Bus Center nhất quán ở Home, Trips/Details, Bookings, Account, Policy, Contact, Admin/Staff/Driver. Không redesign toàn bộ dashboard hoặc backend nếu không cần cho năm yêu cầu trên.
+
+Giữ trắng–xanh, CSS variables, font hỗ trợ tiếng Việt, spacing/card/form/bảng đồng bộ. Không còn tên BusGo/véxe. ở những nơi branding phải đổi. Giữ các thông báo giao dịch thật: giá, thanh toán trực tiếp, giữ 5 phút/countdown, hết hạn/xung đột, validation, chính sách đổi/hủy, quyền thao tác và trạng thái thu/hoàn.
+
+Không tạo nút giả hoặc báo success trước server; keyboard navigation/focus/label/alt/contrast và prefers-reduced-motion tiếp tục hoạt động. Ảnh thiếu có fallback, content Razor không bị animation chặn khi JS tắt. Form/anti-forgery/loading/dropdown/menu/sidebar không đăng ký handler hai lần.
+
+10. DATABASE VÀ TRIỂN KHAI AN TOÀN
+
+Đổi tên/ContactOptions/banner/caption thường không cần schema. Ưu tiên không thêm migration nếu chỉ cập nhật cấu hình, UI hoặc dữ liệu điểm có schema phù hợp.
+
+Nếu thực sự cần cột mới cho điểm đón/trả, thêm migration tối thiểu, cập nhật đồng bộ model/DbContext/snapshot/service/ViewModel/API/Razor và test. Không xóa/sửa lịch sử InitialSqlServer/AddContactMessages/AddTripStops hay baseline đang dùng; không tự ghi nhận migration là đã áp dụng nếu schema chưa khớp.
+
+Không reset database hoặc seed lại mọi tài khoản/chuyến, không thay connection string. Đã từng gặp CREATE TABLE permission denied khi dùng tài khoản web; cung cấp hướng dẫn migration/script đúng quyền triển khai và đúng database, không bắt ứng dụng có sysadmin/db_owner thường trực. Có backup và dry-run khi cập nhật dữ liệu; không chạy legacy SQL chồng EF.
+
+Giữ SQL Server là nguồn quyết định ghế; TTL 300 giây, transaction ngắn, unique/locking chống double booking, idempotency/ownership và expiry worker. Không giữ khóa 5 phút, không dùng DOM/localStorage/SignalR thay DB. Đổi điểm không đổi giá toàn chuyến hoặc bỏ kiểm tra hạn SQL cuối confirm. Giữ đổi vé nguyên tử và thu/hoàn trực tiếp.
+
+11. KIỂM THỬ VÀ BẰNG CHỨNG
+
+Chạy restore/build/run .NET 9 và test SQL Server khi môi trường có thể. Kiểm tra:
+- Thương hiệu Bus Center nhất quán; đề tài/công nghệ/solution/database/user-secrets/role/mã vé cũ không đổi sai phạm vi.
+- Liên hệ hai cột/một cột, thông tin cấu hình đúng, tel/mailto hợp lệ, form lưu thật, Admin đọc đúng quyền, không lộ nội dung liên hệ.
+- Không còn photo-credit/figcaption nguồn trên hero/card/ảnh giao dịch; nguồn/giấy phép được đáp ứng tập trung hoặc ảnh được thay đúng quyền; tất cả ảnh local hiển thị offline.
+- Hero/banner thực sự có ảnh trên desktop/mobile, form tìm chuyến nổi bật, không có vùng rỗng hoặc layout shift lớn, không console/network error.
+- Các chiều tuyến có điểm cụ thể phù hợp; không nhầm địa phương trung gian là bến, không chọn điểm sai TripId/ngược thứ tự; cập nhật đúng ngày giờ qua nửa đêm.
+- Lệnh/data update chạy hai lần không trùng, không ghi đè điểm duyệt/hold/vé/snapshot cũ hoặc đổi tuyến/xe/giờ/giá/phân công; có báo cáo trước-sau thực từ DB được kiểm.
+- Chọn ghế → Đặt vé giữ 300 giây → confirm → xem vé; summary/total/refresh/multi-hold/đổi-hủy/thu-hoàn vẫn đúng.
+- Login/role/ownership/CSRF, Admin/Staff/Driver, SignalR/reconnect, hai người tranh cùng ghế không bị phá. Giữ test 20/50/100 request và số liệu thực khi chạy được, không lấy test DOM làm bằng chứng SQL.
+- Các kích thước 375/390/768/1024/1440px, keyboard/focus/Reduce Motion, menu/sidebar/ảnh/form và không tràn ngang.
+- Không phát sinh HTTP 500 hoặc lỗi Razor/DI/DbContext/schema; lỗi thật không báo thành công giả.
+
+Chỉ ghi PASS cho test đã chạy. Thiếu runtime/SQL/browser phải ghi CHƯA KIỂM CHỨNG đúng phần, nêu log/lỗi chặn. Không đổi các báo cáo cũ thành kết quả của lần này. Screenshot phải từ website thực sự chạy, không dùng mockup.
+
+12. TÀI LIỆU VÀ ZIP CUỐI
+
+Cập nhật README tiếng Việt, UI_CHANGELOG, FILE_CHANGES, TEST_RESULTS, ASSET_SOURCES, DESIGN_REFERENCE_REVIEW, STOP_SOURCE_REVIEW, STOP_DATA_UPDATE_GUIDE và DATABASE_CHANGELOG nếu có cập nhật schema/data. Giữ tài liệu yêu cầu gốc, tên đề tài và nghiệp vụ học thuật; không đưa mô tả kỹ thuật trở lại UI giao dịch.
+
+Nêu rõ:
+- Nơi đổi brand và tên kỹ thuật được giữ.
+- Thông tin liên hệ nào đã có nguồn/cấu hình, giá trị nào tôi cần cung cấp thêm.
+- Nguồn địa điểm, căn cứ giờ/offset, chiều tuyến, thay đổi cho DB cũ và giới hạn còn lại.
+- Ảnh nào giữ/thay, caption đã bỏ, cách xử lý ghi công/giấy phép và file local.
+- Hero/banner/CSS/JS/Razor đã sửa, responsive và kết quả test thực tế.
+
+Xuất một ZIP source hoàn chỉnh:
+BusCenter_CONTACT_STOPS_BANNER_REVIEWED.zip
+
+Chỉ đổi REVIEWED thành VERIFIED nếu thật sự build/run với SQL Server và kiểm thử các luồng cốt lõi đạt. ZIP phải có solution/project hiện tại, toàn bộ MVC/Razor/Identity/Services/Controllers/Models/DbContext/migrations/worker/SignalR, CSS/JS/animation, ảnh local có quyền dùng, command/data update, test và tài liệu.
+
+Không đóng gói bin/obj/.vs/node_modules, secrets, mật khẩu/connection string nhạy cảm, DB/backup riêng hoặc dữ liệu cá nhân thật. Không gửi lại ZIP cũ hoặc ZIP chỉ có tài liệu.
+
+Phản hồi cuối: link ZIP mới; tóm tắt 5 thay đổi; thông tin liên hệ còn thiếu nếu có; bảng điểm đón/trả và cách cập nhật DB hiện có; ảnh/banner và cách ghi nguồn; kết quả PASS/FAIL/CHƯA KIỂM CHỨNG; screenshot thật Home desktop/mobile, Contact, Trips/Details; hướng dẫn mở BusBooking.sln, giữ cấu hình SQL Server và chạy lại.
+
+HÃY THỰC HIỆN TRÊN SOURCE ĐÍNH KÈM, HOÀN THIỆN NĂM NỘI DUNG TRÊN VÀ GỬI ZIP MỚI. GIỮ NGUYÊN TÊN ĐỀ TÀI, CHUYÊN NGÀNH, .NET 9, SQL SERVER, NGHIỆP VỤ VÀ TẤT CẢ YÊU CẦU CÒN LẠI.

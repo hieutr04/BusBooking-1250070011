@@ -1,0 +1,40 @@
+@model Trip
+@{ViewData["Title"]="Chọn ghế · "+Model.Route.Label;var mayBook=User.IsInRole("Customer")||User.IsInRole("Staff")||User.IsInRole("Admin");}
+<div class="breadcrumbs"><a asp-action="Index">Tìm chuyến</a><span>/</span><span>Chọn ghế & đặt vé</span></div>
+<section class="page-heading compact transit-heading"><span class="eyebrow">HÀNH TRÌNH #@Model.Id</span><h1>@Model.Route.Label</h1><p>@BusinessTime.Text(Model.DepartureUtc) · @StopPresentation.Label(Model.Vehicle.Name) · @Model.Vehicle.Plate</p></section>
+@{var confirmed=ViewBag.ConfirmedBooking as Booking;}
+<ol class="booking-steps" aria-label="Các bước đặt vé"><li class="done"><span>1</span> Tìm chuyến</li><li class="@(confirmed is null?null:"done")" aria-current="@(confirmed is null?"step":null)"><span>2</span> Chọn ghế & thông tin</li><li aria-current="@(confirmed is null?null:"step")"><span>3</span> Thanh toán &amp; nhận vé</li></ol>
+@if(confirmed is not null){
+    <section class="panel" id="booking-confirmed" aria-labelledby="confirmed-title">
+        <h2 id="confirmed-title">@(confirmed.Status==BookingStatus.Expired?"Giữ chỗ đã hết hạn":confirmed.Status!=BookingStatus.Active?"Thông tin đặt vé":confirmed.Balance>=confirmed.Total?"Đặt vé thành công":"Thanh toán để hoàn tất đặt vé")</h2>
+        <p>Mã vé <strong>@confirmed.Code</strong></p>
+        <partial name="~/Views/Bookings/_PaymentDemo.cshtml" model="confirmed"/>
+        <a class="btn btn-outline-primary" asp-controller="Bookings" asp-action="Details" asp-route-id="@confirmed.Id">Xem chi tiết vé →</a>
+    </section>
+}
+<noscript><div class="notice" role="alert">Vui lòng bật JavaScript và tải lại trang để chọn ghế, đặt vé.</div></noscript>
+<div id="seat-app" data-trip="@Model.Id" data-auth="@mayBook.ToString().ToLowerInvariant()" data-exchange="@ViewBag.ExchangeBookingId" data-pickup="@ViewBag.PreferredPickupStopId" class="booking-grid stops-booking">
+<section class="panel seat-panel"><div class="section-heading"><div><span class="eyebrow">SƠ ĐỒ GHẾ</span><h2>Chọn vị trí của bạn</h2><p>Chọn từ 1 đến 6 ghế mỗi lượt.</p></div><span id="connection-status" class="connection" role="status">Đang kết nối…</span></div>
+<div class="seat-legend"><span><i class="legend-available"></i>Trống</span><span><i class="legend-held"></i>Đang giữ</span><span><i class="legend-booked"></i>Đã đặt</span><span><i class="legend-selected"></i>Đang chọn</span><span><i class="legend-mine"></i>Của tôi</span></div>
+<div class="seat-map-wrapper"><div id="seat-map" aria-label="Sơ đồ ghế" aria-busy="true"><p>Đang tải danh sách ghế…</p></div></div><p class="small-note">Chọn ghế và điểm đón, trả rồi bấm Giữ chỗ để bắt đầu 5 phút.</p>
+<section class="stop-selection" aria-labelledby="stop-title">
+<h3 id="stop-title">Thông tin đón trả</h3><p class="small-note">Chọn điểm đón và điểm trả phù hợp. Giá vé áp dụng cho toàn chuyến.</p>
+<div class="stop-grid"><div class="stop-field"><label for="pickup-stop">Điểm đón</label><select id="pickup-stop"><option>Đang tải lịch điểm…</option></select><small id="pickup-address" class="stop-address" hidden></small><a id="pickup-address-map" class="text-action" target="_blank" rel="noopener noreferrer" hidden>Xem vị trí điểm đón ↗</a></div>
+<div class="stop-field"><label for="dropoff-stop">Điểm trả</label><select id="dropoff-stop"><option>Đang tải lịch điểm…</option></select><small id="dropoff-address" class="stop-address" hidden></small><a id="dropoff-address-map" class="text-action" target="_blank" rel="noopener noreferrer" hidden>Xem vị trí điểm trả ↗</a></div></div>
+<a id="stop-support" class="text-action" asp-controller="Contact" asp-action="Index" hidden>Liên hệ xác nhận địa điểm cụ thể →</a>
+<p id="stop-error" class="stop-error" role="status"></p><p id="pickup-notice" class="stop-note"></p><p id="stop-duration" class="small-note"></p>
+</section>
+<button id="refresh-seats" class="btn btn-outline-secondary" type="button">↻ Đồng bộ lại</button></section>
+<aside class="booking-sidebar" aria-label="Tóm tắt và thông tin đặt vé"><section class="panel"><span class="eyebrow">THÔNG TIN ĐẶT VÉ</span><h2>Hành trình sắp tới</h2><dl class="summary"><div><dt>Khởi hành</dt><dd>@BusinessTime.Text(Model.DepartureUtc)</dd></div><div><dt>Đến dự kiến</dt><dd>@BusinessTime.Text(Model.ArrivalUtc)</dd></div><div><dt>Giá mỗi ghế</dt><dd>@BusinessTime.Money(Model.Fare)</dd></div><div class="stop-summary"><dt>Đón tại</dt><dd id="pickup-summary">Đang tải…</dd></div><div class="stop-summary"><dt>Trả tại</dt><dd id="dropoff-summary">Đang tải…</dd></div><div><dt>Ghế / giường<small id="summary-hold-label" class="summary-hold-label"></small></dt><dd id="selected-label">Chưa chọn</dd></div><div class="summary-total"><dt>Tổng dự kiến</dt><dd id="seat-total">0 ₫</dd></div></dl>
+<div id="seat-message" role="status" aria-live="polite" class="seat-message"></div>
+@if(mayBook){<button id="hold-button" class="btn btn-primary w-100" type="button" disabled>Giữ chỗ</button>}
+else if(User.Identity?.IsAuthenticated==true){<div class="notice">Vai trò tài xế chỉ xem trạng thái ghế. Dùng tài khoản Khách hàng để đặt vé.</div>}
+else{<a class="btn btn-primary w-100" asp-controller="Account" asp-action="Login" asp-route-returnUrl="@(Context.Request.Path.ToString()+Context.Request.QueryString.ToString())">Đăng nhập để đặt vé →</a>}
+<button id="continue-hold" class="btn btn-outline-primary w-100" type="button" hidden>Tiếp tục thông tin đặt vé ↓</button><p class="small-note">Thanh toán bằng QR ở bước tiếp theo.</p></section>
+<section id="checkout-panel" class="panel" hidden><h2 class="checkout-heading">Hoàn tất thông tin đặt vé</h2><span class="eyebrow">GHẾ ĐANG ĐƯỢC GIỮ</span><div class="countdown-wrap"><strong id="countdown" aria-live="off">05:00</strong><span>Thời gian còn lại để xác nhận vé</span></div><label for="hold-list">Lượt giữ chỗ của tôi</label><select id="hold-list"></select>
+<p class="checkout-method"><strong>Thanh toán trực tuyến bằng QR</strong><span>Nhập thông tin hành khách, sau đó bấm Hoàn tất trên trang QR để nhận vé.</span></p><form id="checkout-form">
+@if((User.IsInRole("Staff")||User.IsInRole("Admin"))&&ViewBag.ExchangeBookingId==null){<label for="customer-email">Email tài khoản khách (nếu có)</label><input id="customer-email" type="email" maxlength="256"/><p class="small-note">Liên kết vé vào lịch sử của tài khoản khách hàng đang hoạt động. Bỏ trống: vé do tài khoản phòng vé đứng tên.</p>}
+<label for="contact-name">Người liên hệ</label><input id="contact-name" required maxlength="100" minlength="2" autocomplete="name"/><label for="contact-phone">Số điện thoại</label><input id="contact-phone" required minlength="8" maxlength="25" type="tel" autocomplete="tel"/><h3 class="form-section-title">Thông tin hành khách</h3><div id="passenger-fields"></div><label class="check-label"><input id="policy-accept" type="checkbox" required/>Tôi đã đọc <a asp-controller="Home" asp-action="Policy" target="_blank" rel="noopener">chính sách đặt / đổi trả</a>.</label><button id="confirm-button" class="btn btn-primary w-100" type="submit">Tiếp tục thanh toán QR</button></form><button id="release-button" class="btn btn-text w-100" type="button">Nhả lượt giữ này</button>
+@if(ViewBag.ExchangeBookingId!=null){<div class="notice">Xác nhận sẽ thay thế vé cũ trong cùng giao dịch. Vé mới được thanh toán qua QR.</div>}
+</section></aside></div>
+@section Scripts{<script src="~/lib/signalr/signalr.min.js"></script><script src="~/js/seats.js" asp-append-version="true"></script>}

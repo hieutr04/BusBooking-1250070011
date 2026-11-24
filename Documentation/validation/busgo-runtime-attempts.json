@@ -1,0 +1,29 @@
+{
+  "utc": "2026-11-03T03:33:35.975186+00:00",
+  "sdk_requested": "9.0.305",
+  "results": [
+    {
+      "command": "dotnet restore BusBooking.sln",
+      "exit_code": 137,
+      "status": "BLOCKED",
+      "log": "busgo-dotnet-restore.log"
+    },
+    {
+      "command": "dotnet build BusBooking.sln --no-restore",
+      "exit_code": 137,
+      "status": "BLOCKED",
+      "log": "busgo-dotnet-build.log"
+    },
+    {
+      "command": "dotnet run --project Tests/BusBooking.SqlTests -- --planner-only",
+      "exit_code": 137,
+      "status": "BLOCKED",
+      "log": "busgo-dotnet-planner.log"
+    },
+    {
+      "test": "SQL Server / HTTP / real browser / responsive screenshots / concurrency",
+      "status": "CHƯA KIỂM CHỨNG",
+      "reason": "CoreCLR could not initialize; no SQL Server instance or sqlcmd/docker available in this environment. No actual application browser screenshots produced."
+    }
+  ]
+}

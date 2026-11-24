@@ -1,0 +1,7 @@
+@model ContactMessage
+@{Layout="_AdminLayout";ViewData["Title"]="Chi tiết liên hệ";}
+<section class="workspace-title contact-admin-heading"><div><span class="eyebrow">THÔNG TIN LIÊN HỆ</span><h1>@Model.Subject</h1><p>Tiếp nhận lúc @BusinessTime.Text(Model.CreatedUtc) · UTC+7</p></div><a class="btn btn-outline-primary" asp-action="Index">← Danh sách liên hệ</a></section>
+<article class="panel contact-detail"><dl class="contact-channels"><div><dt>Họ và tên</dt><dd>@Model.FullName</dd></div><div><dt>Email liên hệ</dt><dd>@Model.Email</dd></div><div><dt>Số điện thoại</dt><dd>@(Model.Phone??"Không cung cấp")</dd></div><div><dt>Trạng thái</dt><dd>@(Model.IsRead?"Đã đọc":"Chưa đọc")</dd></div></dl>
+<h2>Nội dung</h2><div class="contact-message-body">@Model.Body</div>
+@if(!Model.IsRead){<form asp-action="MarkRead" asp-route-id="@Model.Id" method="post"><button type="submit" class="btn btn-primary">Đánh dấu đã đọc</button></form>}
+<p class="small-note">Đánh dấu đã đọc chỉ cập nhật trạng thái trong hệ thống; không gửi email hoặc tin nhắn cho người liên hệ.</p></article>

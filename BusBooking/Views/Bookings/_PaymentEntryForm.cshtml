@@ -1,0 +1,22 @@
+@model Booking
+@{
+    var refund=Model.Status!=BookingStatus.Active;
+    var remaining=Model.Balance;
+    var wholeDong=decimal.Truncate(remaining);
+}
+@if(refund&&remaining>0){
+    <form class="payment-entry" asp-controller="Staff" asp-action="Money" method="post">
+        <input type="hidden" name="BookingId" value="@Model.Id"/>
+        <input type="hidden" name="RequestKey" value="@Guid.NewGuid()"/>
+        <input type="hidden" name="Refund" value="@(refund?"true":"false")"/>
+        <h3>Ghi nhận hoàn tiền</h3>
+        <p>Còn phải hoàn <strong>@BusinessTime.Money(remaining)</strong></p>
+        @if(wholeDong==remaining){
+            <label for="entry-amount">Số tiền hoàn (₫)</label>
+            <input id="entry-amount" name="Amount" type="number" inputmode="numeric" min="1" max="@wholeDong.ToString("0",System.Globalization.CultureInfo.InvariantCulture)" step="1" value="@wholeDong.ToString("0",System.Globalization.CultureInfo.InvariantCulture)" required/>
+        }
+        <label for="entry-note">Ghi chú giao dịch (khách có thể xem)</label>
+        <input id="entry-note" name="Note" type="text" maxlength="300" placeholder="Ghi chú xử lý hoàn tiền"/>
+        <button class="btn btn-primary" type="submit" data-confirm="Xác nhận hoàn khoản tiền này trong hệ thống đồ án?">Ghi nhận hoàn tiền</button>
+    </form>
+}

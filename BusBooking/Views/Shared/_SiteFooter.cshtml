@@ -1,0 +1,46 @@
+@inject Microsoft.Extensions.Options.IOptions<ContactOptions> FooterContact
+@{var contact=FooterContact.Value;}
+<footer class="site-footer transit-footer">
+    <div class="footer-support-band">
+        <div class="shell">
+            <div><h2>Bạn cần hỗ trợ cho chuyến đi?</h2><p>Hỏi về lịch xe, điểm đón hoặc vé đã đặt.</p></div>
+            <a asp-controller="Contact" asp-action="Index" class="btn footer-contact-action">Gửi yêu cầu hỗ trợ →</a>
+        </div>
+    </div>
+    <div class="shell transit-footer-grid">
+        <section class="footer-support" aria-labelledby="footer-care">
+            <h2 id="footer-care">Trung tâm chăm sóc khách hàng</h2>
+            <p class="footer-operator">@(string.IsNullOrWhiteSpace(contact.LegalName)?"Bus Center":contact.LegalName)</p>
+            <partial name="_SupportChannels" model="contact"/>
+            <p>Tra cứu vé bằng tài khoản đã dùng để đặt chuyến.</p>
+        </section>
+        <nav aria-labelledby="footer-explore">
+            <h2 id="footer-explore">Bus Center</h2>
+            <ul>
+                <li><a asp-controller="Home" asp-action="Index">Trang chủ</a></li>
+                <li><a asp-controller="Trips" asp-action="Index">Lịch chuyến xe</a></li>
+                <li><a asp-controller="Bookings" asp-action="Index">Vé của tôi</a></li>
+                <li><a asp-controller="Account" asp-action="Profile">Tài khoản</a></li>
+            </ul>
+        </nav>
+        <nav aria-labelledby="footer-help">
+            <h2 id="footer-help">Hỗ trợ</h2>
+            <ul>
+                <li><a asp-controller="Home" asp-action="Policy">Chính sách đặt vé</a></li>
+                <li><a asp-controller="Home" asp-action="Policy" asp-fragment="payment-policy">Chính sách thanh toán</a></li>
+                <li><a asp-controller="Home" asp-action="Policy" asp-fragment="change-policy">Đổi vé, hủy vé và hoàn tiền</a></li>
+                <li><a asp-controller="Contact" asp-action="Index">Hỗ trợ khách hàng</a></li>
+                <li><a asp-controller="Photos" asp-action="Index">Nguồn ảnh</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="footer-service-band">
+        <div class="shell footer-service-grid">
+            <a asp-controller="Home" asp-action="Index"><img src="~/images/buscenter-mark.svg" width="36" height="36" alt=""/> Bus Center</a>
+            <a asp-controller="Trips" asp-action="Index">@await Html.PartialAsync("_Icon","bus") Lịch chuyến</a>
+            <a asp-controller="Bookings" asp-action="Index">@await Html.PartialAsync("_Icon","ticket") Tra cứu vé</a>
+            <a asp-controller="Contact" asp-action="Index">@await Html.PartialAsync("_Icon","mail") Hỗ trợ</a>
+        </div>
+    </div>
+    <div class="transit-footer-bar"><div class="shell"><span>© @DateTime.UtcNow.AddHours(7).Year Bus Center</span><span>Hệ thống quản lý xe khách và đặt vé trực tuyến</span></div></div>
+</footer>

@@ -1,0 +1,8 @@
+@model IReadOnlyList<PhotoAsset>
+@{ViewData["Title"]="Nguồn ảnh & giấy phép";}
+<section class="page-heading"><span class="eyebrow">GHI CÔNG TÀI NGUYÊN</span><h1>Nguồn ảnh &amp; giấy phép</h1><p>Ảnh chụp được dùng để minh họa trải nghiệm. Xe trong ảnh không phải xe được xác nhận của một chuyến và không thể hiện quan hệ đối tác với nhà xe.</p></section>
+<div class="photo-sources">
+@foreach(var photo in Model){<article class="panel photo-source" id="@photo.Key"><img src="@Url.Content(photo.Path)" width="@photo.Width" height="@photo.Height" alt="@photo.Alt" loading="lazy" data-image-fallback="@Url.Content("~/images/landscape.svg")" data-fallback-alt="Hình minh họa hành trình"/><div><h2>@photo.OriginalTitle</h2><p>@photo.Alt</p><p>Ảnh: © @photo.Author · <a href="@photo.SourceUrl" rel="noopener noreferrer" target="_blank">Trang ảnh gốc</a> · <a href="@photo.LicenseUrl" rel="noopener noreferrer" target="_blank">@photo.License</a></p><p>Thu nhỏ, chuyển WebP, bỏ EXIF; không xóa logo/watermark hoặc chỉnh nội dung ảnh. Bản ảnh tối ưu được phân phối theo giấy phép ghi trên đây. Khung hiển thị có thể cắt mép theo tỷ lệ màn hình; không sửa logo/watermark. Giấy phép và miễn trừ bảo đảm của từng ảnh theo liên kết tương ứng.</p><small>Đối chiếu nguồn và giấy phép ngày 03/11/2026. Ghi công này không hàm ý tác giả bảo trợ hệ thống.</small></div></article>}
+</div>
+
+<section id="neutral" class="panel contact-detail"><h2>Minh họa hành trình trung tính</h2><p>Hình minh họa của Bus Center, dùng khi hành trình chưa có ảnh điểm đến phù hợp.</p></section>

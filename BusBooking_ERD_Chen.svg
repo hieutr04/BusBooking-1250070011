@@ -1,0 +1,204 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2080" height="1280" viewBox="0 0 2080 1280"><rect width="100%" height="100%" fill="white"/>
+<text x="55" y="42" text-anchor="start" dominant-baseline="central" font-family="Arial,sans-serif" font-size="31" font-weight="700" text-decoration="none" fill="#161616">ERD BUSBOOKING · MÔ HÌNH TUYẾN, CHUYẾN, XE, GHẾ VÀ VÉ</text>
+<text x="55" y="81" text-anchor="start" dominant-baseline="central" font-family="Arial,sans-serif" font-size="19" font-weight="400" text-decoration="none" fill="#161616">Ký hiệu Chen · Mục 1 tiêu chí chấm · Tên bảng SQL đặt dưới tên thực thể</text>
+<polyline points="339,160 641,160" fill="none" stroke="#303030" stroke-width="2"/>
+<polygon points="402,160 490,131 578,160 490,189 402,160" fill="white" stroke="#303030" stroke-width="2"/>
+<text x="490" y="160" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Có lịch</text>
+<text x="369" y="144" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="17" font-weight="700" text-decoration="none" fill="#161616">1</text>
+<text x="611" y="144" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="17" font-weight="700" text-decoration="none" fill="#161616">N</text>
+<polyline points="859,160 1161,160" fill="none" stroke="#303030" stroke-width="2"/>
+<polygon points="922,160 1010,131 1098,160 1010,189 922,160" fill="white" stroke="#303030" stroke-width="2"/>
+<text x="1010" y="160" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Được gán</text>
+<text x="889" y="144" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="17" font-weight="700" text-decoration="none" fill="#161616">N</text>
+<text x="1131" y="144" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="17" font-weight="700" text-decoration="none" fill="#161616">1</text>
+<polyline points="1379,160 1681,160" fill="none" stroke="#303030" stroke-width="2"/>
+<polygon points="1442,160 1530,131 1618,160 1530,189 1442,160" fill="white" stroke="#303030" stroke-width="2"/>
+<text x="1530" y="160" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Dùng sơ đồ</text>
+<text x="1409" y="144" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="17" font-weight="700" text-decoration="none" fill="#161616">N</text>
+<text x="1651" y="144" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="17" font-weight="700" text-decoration="none" fill="#161616">1</text>
+<polyline points="1790,189 1790,521" fill="none" stroke="#303030" stroke-width="2"/>
+<polygon points="1702,468 1790,439 1878,468 1790,497 1702,468" fill="white" stroke="#303030" stroke-width="2"/>
+<text x="1790" y="468" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Gồm ghế</text>
+<text x="1764" y="213" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="17" font-weight="700" text-decoration="none" fill="#161616">1</text>
+<text x="1764" y="497" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="17" font-weight="700" text-decoration="none" fill="#161616">N</text>
+<polyline points="750,189 750,521" fill="none" stroke="#303030" stroke-width="2"/>
+<polygon points="662,468 750,439 838,468 750,497 662,468" fill="white" stroke="#303030" stroke-width="2"/>
+<text x="750" y="468" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Có ghế</text>
+<text x="724" y="213" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="17" font-weight="700" text-decoration="none" fill="#161616">1</text>
+<text x="724" y="497" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="17" font-weight="700" text-decoration="none" fill="#161616">N</text>
+<polyline points="859,550 1681,550" fill="none" stroke="#303030" stroke-width="2"/>
+<polygon points="1182,550 1270,521 1358,550 1270,579 1182,550" fill="white" stroke="#303030" stroke-width="2"/>
+<text x="1270" y="550" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Lấy vị trí từ</text>
+<text x="889" y="534" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="17" font-weight="700" text-decoration="none" fill="#161616">N</text>
+<text x="1651" y="534" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="17" font-weight="700" text-decoration="none" fill="#161616">1</text>
+<polyline points="680,189 680,436 230,436 230,521" fill="none" stroke="#303030" stroke-width="2"/>
+<polygon points="364,436 452,407 540,436 452,465 364,436" fill="white" stroke="#303030" stroke-width="2"/>
+<text x="452" y="436" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Có lượt giữ</text>
+<text x="654" y="213" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="17" font-weight="700" text-decoration="none" fill="#161616">1</text>
+<text x="205" y="493" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="17" font-weight="700" text-decoration="none" fill="#161616">N</text>
+<polyline points="230,579 230,856" fill="none" stroke="#303030" stroke-width="2"/>
+<polygon points="142,792 230,763 318,792 230,821 142,792" fill="white" stroke="#303030" stroke-width="2"/>
+<text x="230" y="792" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Tạo đơn</text>
+<text x="204" y="603" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="17" font-weight="700" text-decoration="none" fill="#161616">1</text>
+<text x="204" y="832" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="17" font-weight="700" text-decoration="none" fill="#161616">0..1</text>
+<polyline points="750,579 750,856" fill="none" stroke="#303030" stroke-width="2"/>
+<polygon points="662,792 750,763 838,792 750,821 662,792" fill="white" stroke="#303030" stroke-width="2"/>
+<text x="750" y="792" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Ghi vé</text>
+<text x="724" y="603" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="17" font-weight="700" text-decoration="none" fill="#161616">1</text>
+<text x="724" y="832" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="17" font-weight="700" text-decoration="none" fill="#161616">N</text>
+<polyline points="339,885 641,885" fill="none" stroke="#303030" stroke-width="2"/>
+<polygon points="402,885 490,856 578,885 490,914 402,885" fill="white" stroke="#303030" stroke-width="2"/>
+<text x="490" y="885" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Gồm vé</text>
+<text x="369" y="869" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="17" font-weight="700" text-decoration="none" fill="#161616">1</text>
+<text x="611" y="869" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="17" font-weight="700" text-decoration="none" fill="#161616">N</text>
+<polyline points="264,189 264,222 291,222" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="384.0" cy="222.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="384" y="222" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="underline" fill="#161616">Mã tuyến</text>
+<polyline points="264,189 264,261 291,261" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="384.0" cy="261.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="384" y="261" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Nơi đi</text>
+<polyline points="264,189 264,300 291,300" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="384.0" cy="300.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="384" y="300" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Nơi đến</text>
+<polyline points="264,189 264,339 291,339" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="384.0" cy="339.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="384" y="339" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Thời lượng dự kiến</text>
+<rect x="121" y="131" width="218" height="58" fill="white" stroke="#222" stroke-width="2"/>
+<text x="230" y="152" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="20" font-weight="700" text-decoration="none" fill="#161616">TUYẾN XE</text>
+<text x="230" y="173" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" font-weight="400" text-decoration="none" fill="#161616">Routes</text>
+<polyline points="784,189 784,222 811,222" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="904.0" cy="222.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="904" y="222" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="underline" fill="#161616">Mã chuyến</text>
+<polyline points="784,189 784,261 811,261" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="904.0" cy="261.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="904" y="261" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Giờ khởi hành</text>
+<polyline points="784,189 784,300 811,300" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="904.0" cy="300.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="904" y="300" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Giờ đến dự kiến</text>
+<polyline points="784,189 784,339 811,339" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="904.0" cy="339.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="904" y="339" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Giá vé</text>
+<polyline points="784,189 784,378 811,378" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="904.0" cy="378.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="904" y="378" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Trạng thái chuyến</text>
+<rect x="641" y="131" width="218" height="58" fill="white" stroke="#222" stroke-width="2"/>
+<text x="750" y="152" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="20" font-weight="700" text-decoration="none" fill="#161616">CHUYẾN XE</text>
+<text x="750" y="173" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" font-weight="400" text-decoration="none" fill="#161616">Trips</text>
+<polyline points="1304,189 1304,222 1331,222" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="1424.0" cy="222.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="1424" y="222" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="underline" fill="#161616">Mã xe</text>
+<polyline points="1304,189 1304,261 1331,261" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="1424.0" cy="261.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="1424" y="261" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Biển số</text>
+<polyline points="1304,189 1304,300 1331,300" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="1424.0" cy="300.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="1424" y="300" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Tên xe</text>
+<polyline points="1304,189 1304,339 1331,339" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="1424.0" cy="339.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="1424" y="339" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Loại xe</text>
+<rect x="1161" y="131" width="218" height="58" fill="white" stroke="#222" stroke-width="2"/>
+<text x="1270" y="152" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="20" font-weight="700" text-decoration="none" fill="#161616">XE</text>
+<text x="1270" y="173" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" font-weight="400" text-decoration="none" fill="#161616">Vehicles</text>
+<polyline points="1824,189 1824,222 1851,222" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="1944.0" cy="222.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="1944" y="222" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="underline" fill="#161616">Mã sơ đồ</text>
+<polyline points="1824,189 1824,261 1851,261" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="1944.0" cy="261.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="1944" y="261" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Tên sơ đồ</text>
+<polyline points="1824,189 1824,300 1851,300" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="1944.0" cy="300.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="1944" y="300" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Số tầng</text>
+<polyline points="1824,189 1824,339 1851,339" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="1944.0" cy="339.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="1944" y="339" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Số hàng / cột</text>
+<rect x="1681" y="131" width="218" height="58" fill="white" stroke="#222" stroke-width="2"/>
+<text x="1790" y="152" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="20" font-weight="700" text-decoration="none" fill="#161616">SƠ ĐỒ GHẾ</text>
+<text x="1790" y="173" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" font-weight="400" text-decoration="none" fill="#161616">Layouts</text>
+<polyline points="264,579 264,612 291,612" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="384.0" cy="612.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="384" y="612" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="underline" fill="#161616">Mã lượt giữ</text>
+<polyline points="264,579 264,651 291,651" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="384.0" cy="651.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="384" y="651" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Giờ tạo</text>
+<polyline points="264,579 264,690 291,690" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="384.0" cy="690.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="384" y="690" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Hạn giữ chỗ</text>
+<polyline points="264,579 264,729 291,729" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="384.0" cy="729.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="384" y="729" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Trạng thái lượt giữ</text>
+<rect x="121" y="521" width="218" height="58" fill="white" stroke="#222" stroke-width="2"/>
+<text x="230" y="542" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="20" font-weight="700" text-decoration="none" fill="#161616">LƯỢT GIỮ CHỖ</text>
+<text x="230" y="563" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" font-weight="400" text-decoration="none" fill="#161616">SeatHolds</text>
+<polyline points="784,579 784,612 811,612" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="904.0" cy="612.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="904" y="612" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="underline" fill="#161616">Mã ghế chuyến</text>
+<polyline points="784,579 784,651 811,651" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="904.0" cy="651.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="904" y="651" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Mã hiển thị ghế</text>
+<polyline points="784,579 784,690 811,690" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="904.0" cy="690.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="904" y="690" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Tầng / hàng / cột</text>
+<polyline points="784,579 784,729 811,729" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="904.0" cy="729.0" rx="93.0" ry="16.0" fill="#eee" stroke="#222" stroke-width="1"/>
+<text x="904" y="729" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="700" text-decoration="none" fill="#161616">Trạng thái ghế</text>
+<rect x="641" y="521" width="218" height="58" fill="#f2f2f2" stroke="#222" stroke-width="2"/>
+<text x="750" y="542" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="20" font-weight="700" text-decoration="none" fill="#161616">GHẾ CHUYẾN</text>
+<text x="750" y="563" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" font-weight="400" text-decoration="none" fill="#161616">TripSeats</text>
+<polyline points="1824,579 1824,612 1851,612" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="1944.0" cy="612.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="1944" y="612" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="underline" fill="#161616">Mã ghế vật lý</text>
+<polyline points="1824,579 1824,651 1851,651" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="1944.0" cy="651.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="1944" y="651" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Mã hiển thị ghế</text>
+<polyline points="1824,579 1824,690 1851,690" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="1944.0" cy="690.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="1944" y="690" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Tầng / hàng / cột</text>
+<rect x="1681" y="521" width="218" height="58" fill="white" stroke="#222" stroke-width="2"/>
+<text x="1790" y="542" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="20" font-weight="700" text-decoration="none" fill="#161616">GHẾ VẬT LÝ</text>
+<text x="1790" y="563" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" font-weight="400" text-decoration="none" fill="#161616">PhysicalSeats</text>
+<polyline points="264,914 264,947 291,947" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="384.0" cy="947.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="384" y="947" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="underline" fill="#161616">Mã đơn</text>
+<polyline points="264,914 264,986 291,986" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="384.0" cy="986.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="384" y="986" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Mã tra cứu</text>
+<polyline points="264,914 264,1025 291,1025" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="384.0" cy="1025.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="384" y="1025" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Tổng tiền</text>
+<polyline points="264,914 264,1064 291,1064" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="384.0" cy="1064.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="384" y="1064" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Trạng thái đơn</text>
+<rect x="121" y="856" width="218" height="58" fill="white" stroke="#222" stroke-width="2"/>
+<text x="230" y="877" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="20" font-weight="700" text-decoration="none" fill="#161616">ĐƠN ĐẶT VÉ</text>
+<text x="230" y="898" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" font-weight="400" text-decoration="none" fill="#161616">Bookings</text>
+<polyline points="784,914 784,947 811,947" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="904.0" cy="947.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="904" y="947" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="underline" fill="#161616">Mã vé</text>
+<polyline points="784,914 784,986 811,986" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="904.0" cy="986.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="904" y="986" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Tên hành khách</text>
+<polyline points="784,914 784,1025 811,1025" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="904.0" cy="1025.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="904" y="1025" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Giá chốt</text>
+<polyline points="784,914 784,1064 811,1064" fill="none" stroke="#666" stroke-width="1"/>
+<ellipse cx="904.0" cy="1064.0" rx="93.0" ry="16.0" fill="white" stroke="#222" stroke-width="1"/>
+<text x="904" y="1064" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="400" text-decoration="none" fill="#161616">Còn hiệu lực</text>
+<rect x="641" y="856" width="218" height="58" fill="white" stroke="#222" stroke-width="2"/>
+<text x="750" y="877" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="20" font-weight="700" text-decoration="none" fill="#161616">VÉ</text>
+<text x="750" y="898" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" font-weight="400" text-decoration="none" fill="#161616">Tickets</text>
+<rect x="1110" y="823" width="918" height="263" fill="#f7f7f7" stroke="#aaa" stroke-width="1"/>
+<text x="1136" y="855" text-anchor="start" dominant-baseline="central" font-family="Arial,sans-serif" font-size="22" font-weight="700" text-decoration="none" fill="#161616">TRẠNG THÁI ĐƯỢC LƯU THEO TỪNG CHUYẾN</text>
+<text x="1136" y="892" text-anchor="start" dominant-baseline="central" font-family="Arial,sans-serif" font-size="20" font-weight="400" text-decoration="none" fill="#161616">TripSeats.Status · Trống / Đang giữ / Đã đặt</text>
+<text x="1136" y="937" text-anchor="start" dominant-baseline="central" font-family="Arial,sans-serif" font-size="19" font-weight="700" text-decoration="none" fill="#161616">Ví dụ minh họa · Cùng xe, cùng vị trí A01</text>
+<text x="1136" y="970" text-anchor="start" dominant-baseline="central" font-family="Arial,sans-serif" font-size="18" font-weight="400" text-decoration="none" fill="#161616">Chuyến 07:00  →  A01 đang giữ</text>
+<text x="1136" y="1000" text-anchor="start" dominant-baseline="central" font-family="Arial,sans-serif" font-size="18" font-weight="400" text-decoration="none" fill="#161616">Chuyến 08:00  →  A01 vẫn trống</text>
+<text x="1136" y="1045" text-anchor="start" dominant-baseline="central" font-family="Arial,sans-serif" font-size="18" font-weight="400" text-decoration="none" fill="#161616">Mỗi ghế chuyến có tối đa một vé hiệu lực tại một thời điểm.</text>
+<polyline points="55,1162 2028,1162" fill="none" stroke="#aaa" stroke-width="1"/>
+<text x="55" y="1195" text-anchor="start" dominant-baseline="central" font-family="Arial,sans-serif" font-size="18" font-weight="400" text-decoration="none" fill="#161616">Hình chữ nhật · Thực thể     Hình thoi · Quan hệ     Hình elip · Thuộc tính     Gạch chân · Khóa chính</text>
+<text x="55" y="1230" text-anchor="start" dominant-baseline="central" font-family="Arial,sans-serif" font-size="17" font-weight="400" text-decoration="none" fill="#161616">1/N biểu thị bội số quan hệ. Phạm vi sơ đồ là các thực thể chính phục vụ mục 1.</text>
+<polyline points="339,550 641,550" fill="none" stroke="#303030" stroke-width="2"/>
+<polygon points="402,550 490,521 578,550 490,579" fill="white" stroke="#303030" stroke-width="2"/>
+<text x="490" y="550" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16">Giữ hiện tại</text>
+<text x="367" y="533" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="700">0..1</text>
+<text x="613" y="533" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="16" font-weight="700">N</text>
+</svg>

@@ -1,0 +1,46 @@
+@model List<AppUser>
+@{ ViewData["Title"] = "Tài xế"; }
+<partial name="_AdminNav"/>
+<div class="section-heading page-heading operations-heading">
+    <div>
+        <span class="eyebrow">DANH MỤC</span>
+        <h1>Tài xế</h1>
+        <p class="screen-description">Quản lý hồ sơ, thông tin liên hệ và trạng thái tài khoản dùng để phân công chuyến.</p>
+    </div>
+    <a class="btn btn-primary" asp-action="DriverEdit">+ Thêm tài xế</a>
+</div>
+<div class="list-meta"><strong>@Model.Count tài xế</strong><span>@Model.Count(x => x.IsActive) đang hoạt động</span></div>
+@if (Model.Count == 0)
+{
+    <section class="empty panel"><h2>Chưa có tài xế</h2><p>Thêm tài xế để bắt đầu phân công chuyến.</p></section>
+}
+else
+{
+    <div class="panel table-wrap" role="region" aria-label="Danh sách tài xế" tabindex="0">
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Họ và tên</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Số điện thoại</th>
+                    <th scope="col">Ngày sinh</th>
+                    <th scope="col">Trạng thái</th>
+                    <th scope="col">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var driver in Model)
+            {
+                <tr>
+                    <td><strong>@driver.FullName</strong></td>
+                    <td>@(driver.Email ?? "—")</td>
+                    <td>@(driver.PhoneNumber ?? "—")</td>
+                    <td>@(driver.DateOfBirth?.ToString("dd/MM/yyyy") ?? "—")</td>
+                    <td>@(driver.IsActive ? "Hoạt động" : "Ngừng hoạt động")</td>
+                    <td><a asp-action="DriverEdit" asp-route-id="@driver.Id" aria-label="Chỉnh sửa @driver.FullName">Chỉnh sửa</a></td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+}

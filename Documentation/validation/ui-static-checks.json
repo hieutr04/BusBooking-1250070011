@@ -1,0 +1,418 @@
+{
+  "kind": "STATIC_ONLY_NOT_COMPILATION_SQL_HTTP_BROWSER",
+  "utc": "2026-11-01T14:20:41.840744+00:00",
+  "checks": [
+    {
+      "name": "JSON global.json",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "JSON Tests/package.json",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "JSON BusBooking/appsettings.json",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "JSON BusBooking/appsettings.Development.json",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "JSON .config/dotnet-tools.json",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "JSON BusBooking/Properties/launchSettings.json",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Target BusBooking/BusBooking.csproj",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Target Tests/BusBooking.RedirectTests/BusBooking.RedirectTests.csproj",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Target Tests/BusBooking.SqlTests/BusBooking.SqlTests.csproj",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Solution references",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "JS syntax site.js",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "JS syntax dashboard.js",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "JS syntax seats.js",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "JS syntax admin.js",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Test JS syntax browser.mjs",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Test JS syntax login-redirect-browser.mjs",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Test JS syntax ui-browser.mjs",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Local asset images/bus-journey.svg",
+      "status": "PASS",
+      "details": "BusBooking/Views/Home/Index.cshtml"
+    },
+    {
+      "name": "Local asset images/landscape.svg",
+      "status": "PASS",
+      "details": "BusBooking/Views/Home/Index.cshtml"
+    },
+    {
+      "name": "Local asset lib/chartjs/chart.umd.js",
+      "status": "PASS",
+      "details": "BusBooking/Views/Admin/Index.cshtml"
+    },
+    {
+      "name": "Local asset js/dashboard.js",
+      "status": "PASS",
+      "details": "BusBooking/Views/Admin/Index.cshtml"
+    },
+    {
+      "name": "Local asset images/bus-small.svg",
+      "status": "PASS",
+      "details": "BusBooking/Views/Trips/Index.cshtml"
+    },
+    {
+      "name": "Local asset lib/signalr/signalr.min.js",
+      "status": "PASS",
+      "details": "BusBooking/Views/Trips/Details.cshtml"
+    },
+    {
+      "name": "Local asset js/seats.js",
+      "status": "PASS",
+      "details": "BusBooking/Views/Trips/Details.cshtml"
+    },
+    {
+      "name": "Local asset images/favicon.svg",
+      "status": "PASS",
+      "details": "BusBooking/Views/Shared/_AdminLayout.cshtml"
+    },
+    {
+      "name": "Local asset lib/bootstrap/css/bootstrap.min.css",
+      "status": "PASS",
+      "details": "BusBooking/Views/Shared/_AdminLayout.cshtml"
+    },
+    {
+      "name": "Local asset css/site.css",
+      "status": "PASS",
+      "details": "BusBooking/Views/Shared/_AdminLayout.cshtml"
+    },
+    {
+      "name": "Local asset css/ui.css",
+      "status": "PASS",
+      "details": "BusBooking/Views/Shared/_AdminLayout.cshtml"
+    },
+    {
+      "name": "Local asset css/admin.css",
+      "status": "PASS",
+      "details": "BusBooking/Views/Shared/_AdminLayout.cshtml"
+    },
+    {
+      "name": "Local asset lib/bootstrap/js/bootstrap.bundle.min.js",
+      "status": "PASS",
+      "details": "BusBooking/Views/Shared/_AdminLayout.cshtml"
+    },
+    {
+      "name": "Local asset js/site.js",
+      "status": "PASS",
+      "details": "BusBooking/Views/Shared/_AdminLayout.cshtml"
+    },
+    {
+      "name": "Local asset js/admin.js",
+      "status": "PASS",
+      "details": "BusBooking/Views/Shared/_AdminLayout.cshtml"
+    },
+    {
+      "name": "Local asset images/favicon.svg",
+      "status": "PASS",
+      "details": "BusBooking/Views/Shared/_Layout.cshtml"
+    },
+    {
+      "name": "Local asset lib/bootstrap/css/bootstrap.min.css",
+      "status": "PASS",
+      "details": "BusBooking/Views/Shared/_Layout.cshtml"
+    },
+    {
+      "name": "Local asset css/site.css",
+      "status": "PASS",
+      "details": "BusBooking/Views/Shared/_Layout.cshtml"
+    },
+    {
+      "name": "Local asset css/ui.css",
+      "status": "PASS",
+      "details": "BusBooking/Views/Shared/_Layout.cshtml"
+    },
+    {
+      "name": "Local asset lib/bootstrap/js/bootstrap.bundle.min.js",
+      "status": "PASS",
+      "details": "BusBooking/Views/Shared/_Layout.cshtml"
+    },
+    {
+      "name": "Local asset js/site.js",
+      "status": "PASS",
+      "details": "BusBooking/Views/Shared/_Layout.cshtml"
+    },
+    {
+      "name": "Local asset images/bus-journey.svg",
+      "status": "PASS",
+      "details": "BusBooking/Views/Account/Login.cshtml"
+    },
+    {
+      "name": "Local asset images/bus-journey.svg",
+      "status": "PASS",
+      "details": "BusBooking/Views/Account/Profile.cshtml"
+    },
+    {
+      "name": "Local asset images/bus-journey.svg",
+      "status": "PASS",
+      "details": "BusBooking/Views/Account/Register.cshtml"
+    },
+    {
+      "name": "Seat page DOM IDs preserved",
+      "status": "PASS",
+      "details": "[]"
+    },
+    {
+      "name": "data-trip preserved",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "data-auth preserved",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "data-exchange preserved",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Register Logout Profile unchanged",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/BusBooking/BackgroundServices/HoldExpiryWorker.cs",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/BusBooking/BusBooking.csproj",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/BusBooking/Controllers/AdminController.cs",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/BusBooking/Controllers/BookingsController.cs",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/BusBooking/Controllers/DriverController.cs",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/BusBooking/Controllers/HomeController.cs",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/BusBooking/Controllers/SeatsApiController.cs",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/BusBooking/Controllers/StaffController.cs",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/BusBooking/Controllers/TripsController.cs",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/BusBooking/Data/AppDbContext.cs",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/BusBooking/Data/AppDbContextFactory.cs",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/BusBooking/Data/Migrations/20261029000100_InitialSqlServer.cs",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/BusBooking/Data/Migrations/AppDbContextModelSnapshot.cs",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/BusBooking/Data/Migrations/InitialModelV1.cs",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/BusBooking/Data/SeedData.cs",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/BusBooking/Hubs/SeatsHub.cs",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/BusBooking/Models/Entities.cs",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/BusBooking/Program.cs",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/BusBooking/Properties/launchSettings.json",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/BusBooking/Services/BookingService.cs",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/BusBooking/Services/CatalogService.cs",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/BusBooking/Services/ExceptionFilter.cs",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/BusBooking/Services/Infrastructure.cs",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/BusBooking/Services/RealtimeMetrics.cs",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/BusBooking/Services/RealtimePublisher.cs",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/BusBooking/Services/ReportService.cs",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/BusBooking/ViewModels/Forms.cs",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/BusBooking/appsettings.Development.json",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/BusBooking/appsettings.json",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/BusBooking/wwwroot/js/seats.js",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/Tests/BusBooking.SqlTests/Program.cs",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Core hash BusBooking/global.json",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Original requirements exact",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "All31 baseline Razor files retained",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "No new migration",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "SQL/concurrency report not falsely passed",
+      "status": "PASS",
+      "details": ""
+    }
+  ],
+  "failed": 0,
+  "passed": 82
+}

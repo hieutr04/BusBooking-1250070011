@@ -1,0 +1,59 @@
+@model List<Trip>
+@{ViewData["Title"]="Tìm chuyến xe";var routes=(List<BusRoute>)ViewBag.Routes;var available=(Dictionary<int,int>)ViewBag.Available;var places=ProvinceSearch.Options(routes.SelectMany(r=>new[]{r.Origin,r.Destination}));var matchingStops=(Dictionary<int,TripStop>)ViewBag.MatchingStops;}
+<section class="page-heading transit-heading"><span class="eyebrow">TÌM CHUYẾN · CHỌN GHẾ · ĐẶT VÉ</span><h1>Tìm chuyến xe</h1><p>Tất cả thời gian được hiển thị theo giờ Việt Nam (UTC+7).</p></section>
+<form asp-action="Index" method="get" class="search-form panel results-search" aria-label="Tìm lại chuyến">
+    <input type="hidden" name="exchangeBookingId" value="@ViewBag.ExchangeBookingId"/>
+    <div>
+        <label for="origin">Nơi đi</label>
+        <select id="origin" name="origin">
+            <option value="">Tất cả</option>
+            @foreach(var place in places){<option selected="@(place==(string?)ViewBag.Origin)">@place</option>}
+        </select>
+    </div>
+    <div>
+        <label for="destination">Nơi đến</label>
+        <select id="destination" name="destination">
+            <option value="">Tất cả</option>
+            @foreach(var place in places){<option selected="@(place==(string?)ViewBag.Destination)">@place</option>}
+        </select>
+    </div>
+    <div>
+        <label for="date">Ngày đi</label>
+        <input id="date" name="date" type="date" value="@(((DateTime)ViewBag.Date).ToString("yyyy-MM-dd"))" required/>
+    </div>
+    <button class="btn btn-primary" type="submit">Tìm chuyến →</button>
+    <partial name="_TripSearchQuickActions"/>
+    <div class="trip-search-filters" role="group" aria-label="Lọc kết quả tìm chuyến">
+        <div>
+            <label for="departure-hour">Giờ khởi hành</label>
+            <select id="departure-hour" name="departureHour">
+                <option value="">Cả ngày</option>
+                @for(var hour=0;hour<24;hour+=6){
+                    <option value="@hour" selected="@(hour==(int?)ViewBag.DepartureHour)">@($"{hour:00}:00 – {hour+5:00}:59")</option>
+                }
+            </select>
+        </div>
+        <div>
+            <label for="vehicle-kind">Loại xe</label>
+            <select id="vehicle-kind" name="vehicleKind">
+                <option value="">Tất cả loại xe</option>
+                <option value="@VehicleKind.Seated" selected="@((VehicleKind?)ViewBag.VehicleKind==VehicleKind.Seated)">Xe ghế ngồi</option>
+                <option value="@VehicleKind.Sleeper" selected="@((VehicleKind?)ViewBag.VehicleKind==VehicleKind.Sleeper)">Xe giường nằm</option>
+            </select>
+        </div>
+        <div>
+            <label for="search-pickup">Điểm đón</label>
+            <select id="search-pickup" name="pickup">
+                <option value="">Tất cả điểm đón</option>
+                @foreach(var stop in (List<KeyValuePair<string,string>>)ViewBag.PickupOptions){
+                    <option value="@stop.Value" selected="@(stop.Key==(string)ViewBag.PickupKey)">@stop.Value</option>
+                }
+            </select>
+        </div>
+    </div>
+</form>
+@if(ViewBag.ExchangeBookingId!=null){<div class="notice">Đang chọn ghế thay thế cho một yêu cầu đổi vé. Vé cũ chỉ bị thay thế khi xác nhận thành công.</div>}
+<div class="results-heading"><strong>@ViewBag.TotalMatches chuyến phù hợp</strong><span>@(((DateTime)ViewBag.Date).ToString("dd/MM/yyyy")) · Giờ Việt Nam</span></div>
+@if(Model.Count==0){<div class="empty panel"><span>⌕</span><h2>Không tìm thấy chuyến xe</h2><p>Thử ngày khác hoặc điều chỉnh bộ lọc hành trình.</p></div>}
+@if(ViewBag.TotalMatches>Model.Count){<p class="small-note">Đang hiển thị @Model.Count chuyến khởi hành sớm nhất. Bạn có thể lọc thêm để tìm chuyến phù hợp.</p>}
+@foreach(var t in Model){var matchedPickup=matchingStops.GetValueOrDefault(t.Id);<article class="trip-card panel" aria-label="Chuyến @t.Id từ @t.Route.Origin đến @t.Route.Destination"><div class="trip-vehicle"><figure class="trip-photo">@await Html.PartialAsync("_Photo",new PhotoDisplay(PhotoCatalog.CoachExterior,true))</figure><div><span class="trip-type">@await Html.PartialAsync("_Icon","bus") Chuyến #@t.Id</span><strong>@StopPresentation.Label(t.Vehicle.Name)</strong><small>@t.Vehicle.Plate · @BusinessTime.TripLabel(t.Status)</small>@if(matchedPickup!=null){<small class="trip-matched-pickup">Đón tại @StopPresentation.Name(matchedPickup.Name) · @BusinessTime.Vietnam(TripStopService.AtUtc(t,matchedPickup)).ToString("HH:mm")</small>}</div></div><div class="trip-timeline"><div><strong>@BusinessTime.Vietnam(t.DepartureUtc).ToString("HH:mm")</strong><span>@t.Route.Origin</span></div><div class="trip-line"><span>@StopPresentation.Duration((int)(t.ArrivalUtc-t.DepartureUtc).TotalMinutes)</span><i></i><small>@BusinessTime.Vietnam(t.DepartureUtc).ToString("dd/MM/yyyy")</small></div><div><strong>@BusinessTime.Vietnam(t.ArrivalUtc).ToString("HH:mm")</strong><span>@t.Route.Destination</span></div></div><div class="trip-buy"><span class="fare-label">GIÁ MỖI GHẾ</span><strong>@BusinessTime.Money(t.Fare)</strong><small class="availability" data-empty="@(available.GetValueOrDefault(t.Id)==0?"true":"false")">@available.GetValueOrDefault(t.Id) ghế còn trống</small><a class="btn btn-primary" asp-action="Details" asp-route-id="@t.Id" asp-route-pickupStopId="@matchedPickup?.Id" asp-route-exchangeBookingId="@ViewBag.ExchangeBookingId">Chọn ghế →</a></div></article>}

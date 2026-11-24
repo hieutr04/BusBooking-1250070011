@@ -1,0 +1,61 @@
+{
+  "scope": "Representative CSS text pairs only, not rendered whole-page accessibility verification",
+  "samples": [
+    {
+      "label": "Text main",
+      "foreground": "#15343b",
+      "background": "#ffffff",
+      "ratio": 13.24,
+      "passes_4_5": true
+    },
+    {
+      "label": "Text muted",
+      "foreground": "#52666d",
+      "background": "#ffffff",
+      "ratio": 6.03,
+      "passes_4_5": true
+    },
+    {
+      "label": "Button white on brand",
+      "foreground": "#ffffff",
+      "background": "#087f73",
+      "ratio": 4.89,
+      "passes_4_5": true
+    },
+    {
+      "label": "Brand hover white",
+      "foreground": "#ffffff",
+      "background": "#06675e",
+      "ratio": 6.75,
+      "passes_4_5": true
+    },
+    {
+      "label": "Soft badge",
+      "foreground": "#075e55",
+      "background": "#e6f4ef",
+      "ratio": 6.77,
+      "passes_4_5": true
+    },
+    {
+      "label": "Workspace muted",
+      "foreground": "#52666d",
+      "background": "#f4f7f5",
+      "ratio": 5.59,
+      "passes_4_5": true
+    },
+    {
+      "label": "Sidebar active",
+      "foreground": "#086c56",
+      "background": "#e5f3eb",
+      "ratio": 5.58,
+      "passes_4_5": true
+    },
+    {
+      "label": "Error text",
+      "foreground": "#b42318",
+      "background": "#ffffff",
+      "ratio": 6.57,
+      "passes_4_5": true
+    }
+  ]
+}

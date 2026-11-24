@@ -1,0 +1,46 @@
+@model List<Vehicle>
+@{ ViewData["Title"] = "Quản lý xe"; }
+<partial name="_AdminNav"/>
+<div class="section-heading page-heading operations-heading">
+    <div>
+        <span class="eyebrow">DANH MỤC</span>
+        <h1>Quản lý xe</h1>
+        <p class="screen-description">Quản lý phương tiện, loại xe và sơ đồ dùng để xếp chuyến.</p>
+    </div>
+    <a class="btn btn-primary" asp-action="VehicleEdit">+ Thêm xe</a>
+</div>
+<div class="list-meta"><strong>@Model.Count xe</strong><span>@Model.Count(x => x.IsActive) đang hoạt động</span></div>
+@if (Model.Count == 0)
+{
+    <section class="empty panel"><h2>Chưa có xe</h2><p>Thêm xe và chọn sơ đồ để bắt đầu xếp chuyến.</p></section>
+}
+else
+{
+    <div class="panel table-wrap" role="region" aria-label="Danh sách xe" tabindex="0">
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Biển số</th>
+                    <th scope="col">Tên xe</th>
+                    <th scope="col">Loại xe</th>
+                    <th scope="col">Sơ đồ</th>
+                    <th scope="col">Trạng thái</th>
+                    <th scope="col">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var vehicle in Model)
+            {
+                <tr>
+                    <td><strong>@vehicle.Plate</strong></td>
+                    <td>@StopPresentation.Label(vehicle.Name)</td>
+                    <td>@Html.DisplayFor(_ => vehicle.Kind)</td>
+                    <td>@vehicle.Layout.Name</td>
+                    <td>@(vehicle.IsActive ? "Hoạt động" : "Ngừng dùng")</td>
+                    <td><a asp-action="VehicleEdit" asp-route-id="@vehicle.Id" aria-label="Chỉnh sửa xe @vehicle.Plate">Chỉnh sửa</a></td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+}

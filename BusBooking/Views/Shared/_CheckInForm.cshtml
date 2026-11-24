@@ -1,0 +1,22 @@
+@model Trip
+<section class="panel checkin-panel" aria-labelledby="checkin-title">
+    <h2 id="checkin-title">Check-in lên xe</h2>
+    @if(TempData["CheckInError"] is string error){<p class="notice" role="alert">@error</p>}
+    @if(TicketCheckIn.IsBoarding(Model)){
+        <p>Quét mã trên vé điện tử hoặc nhập mã do hành khách cung cấp.</p>
+        <form asp-controller="CheckIn" asp-action="Record" method="post" id="checkin-form">
+            <input type="hidden" name="tripId" value="@Model.Id"/>
+            <label for="checkin-code">Mã check-in</label>
+            <input id="checkin-code" name="code" autocomplete="off" spellcheck="false" maxlength="64" required/>
+            <button type="submit" class="btn btn-primary">Xác nhận lên xe</button>
+        </form>
+        <div id="checkin-scanner" hidden>
+            <div class="actions"><button id="checkin-camera" type="button" class="btn btn-outline-primary">Mở camera</button>
+            <div><label for="checkin-file">Quét từ ảnh QR</label><input id="checkin-file" type="file" accept="image/*"/></div></div>
+            <video id="checkin-preview" muted playsinline hidden aria-label="Hình ảnh camera"></video>
+            <p id="checkin-status" role="status"></p>
+        </div>
+    }else{
+        <p>Check-in mở khi chuyến chuyển sang trạng thái chuẩn bị chạy hoặc đang chạy.</p>
+    }
+</section>

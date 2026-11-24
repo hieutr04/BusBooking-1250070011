@@ -1,0 +1,57 @@
+@model Booking
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+@{ViewData["Title"]="Vé "+Model.Code;var staff=User.IsInRole("Admin")||User.IsInRole("Staff");var requests=(List<ChangeRequest>)ViewBag.Requests;var canChange=ViewBag.CanChange is true;var paymentExpired=Model.Status==BookingStatus.Expired||(Model.Status==BookingStatus.Active&&Model.PaymentExpiresUtc<=((DateTime?)ViewBag.PaymentServerUtc));var showDemo=paymentExpired||Model.Status==BookingStatus.Active&&Model.Balance>=Model.Total||ViewBag.CanSimulate is true&&!string.IsNullOrWhiteSpace(Configuration["DemoPayment:Account"])&&!string.IsNullOrWhiteSpace(Configuration["DemoPayment:Bank"]);}
+@if(TempData["BookingActionError"] is string actionError){<p class="notice" role="alert">@actionError</p>}
+@{
+    var replacement=ViewBag.Replacement as Booking;
+    var waitingForReplacement=replacement?.Status==BookingStatus.Active&&replacement.PaymentExpiresUtc>((DateTime?)ViewBag.PaymentServerUtc)&&
+        requests.Any(r=>r.Status==RequestStatus.Pending&&r.Kind==ChangeKind.Exchange);
+    var replacementExpired=replacement?.Status==BookingStatus.Expired||replacement?.Status==BookingStatus.Active&&
+        replacement.PaymentExpiresUtc<=((DateTime?)ViewBag.PaymentServerUtc);
+    var received=Model.Payments.Where(p=>p.Kind==MoneyKind.Receipt).Sum(p=>p.Amount);
+    var refunded=-Model.Payments.Where(p=>p.Kind==MoneyKind.Refund).Sum(p=>p.Amount);
+}
+<div class="breadcrumbs"><a asp-action="Index">Vé của tôi</a><span>/</span><span>@Model.Code</span></div>
+<section class="page-heading transit-heading ticket-heading"><span class="eyebrow">CHI TIẾT ĐẶT VÉ</span><h1>@Model.Hold.Trip.Route.Label</h1><p>@BusinessTime.Text(Model.Hold.Trip.DepartureUtc)</p><div class="ticket-code"><small>MÃ VÉ</small><strong>@Model.Code</strong></div>@if(showDemo){<a class="ticket-qr-link" href="#payment-qr">@(paymentExpired?"Xem hạn thanh toán":Model.Balance>=Model.Total?"Xem thanh toán":"Xem QR chuyển khoản")</a>}</section>
+@if(Model.Status==BookingStatus.Active&&Model.Balance>=Model.Total&&Model.Tickets.Any(t=>t.IsActive)){
+    <partial name="_BoardingPasses" model="Model"/>
+}
+<partial name="_BookingStops" model="Model"/><div class="ticket-finances"><div><small>TỔNG GIÁ VÉ</small><strong>@BusinessTime.Money(Model.Total)</strong></div><div><small>ĐÃ THANH TOÁN</small><strong>@BusinessTime.Money(Model.Payments.Where(x=>x.Amount>0).Sum(x=>x.Amount))</strong></div><div><small>ĐÃ HOÀN TIỀN</small><strong>@BusinessTime.Money(-Model.Payments.Where(x=>x.Amount<0).Sum(x=>x.Amount))</strong></div><div><small>@(Model.Status==BookingStatus.Active?"CHỜ THANH TOÁN":"CHỜ HOÀN")</small><strong>@BusinessTime.Money(Math.Max(0,Model.Status==BookingStatus.Active?Model.Total-Model.Balance:Model.Balance))</strong></div></div>
+<div class="policy-grid ticket-detail-grid"><section class="panel"><span class="pill">@(paymentExpired?"HẾT HẠN THANH TOÁN":Model.Status==BookingStatus.Active?(Model.Balance>=Model.Total?"VÉ ĐÃ THANH TOÁN":"VÉ CHỜ THANH TOÁN"):Model.Status==BookingStatus.Cancelled?"VÉ ĐÃ HỦY":"VÉ ĐÃ ĐỔI")</span><h2>Hành khách & ghế ngồi</h2><div class="table-wrap"><table><thead><tr><th>Ghế</th><th>Hành khách</th><th>Giá chốt</th><th>Hiệu lực</th></tr></thead><tbody>@foreach(var t in Model.Tickets){<tr><td><strong>@t.Seat.Code</strong></td><td>@t.PassengerName</td><td>@BusinessTime.Money(t.Fare)</td><td>@(paymentExpired||!t.IsActive?"Không":Model.PaymentExpiresUtc!=null?"Chờ thanh toán":"Có")</td></tr>}</tbody></table></div><dl class="summary"><div><dt>Liên hệ</dt><dd>@Model.ContactName</dd></div><div><dt>Số điện thoại</dt><dd>@Model.ContactPhone</dd></div><div><dt>Ngày đặt</dt><dd>@BusinessTime.Text(Model.CreatedUtc)</dd></div><div><dt>Tổng giá vé</dt><dd>@BusinessTime.Money(Model.Total)</dd></div><div><dt>Đã thu ròng</dt><dd>@BusinessTime.Money(Model.Balance)</dd></div></dl><p class="notice">@(paymentExpired?"Đơn đặt vé đã hết thời gian thanh toán.":Model.Status==BookingStatus.Active?(Model.Balance>=Model.Total?"Đặt vé thành công. Thanh toán đã được ghi nhận.":"Vui lòng mở QR và bấm Hoàn tất để hoàn thành đặt vé."):(Model.Balance>0?"Khoản đã thanh toán đang chờ xử lý hoàn tiền.":"Vé không còn hiệu lực; xem lịch sử đối soát bên dưới."))</p>
+@if(Model.ReplacesBookingId!=null){
+    @if(ViewBag.ExchangeUnavailable is true){<p class="notice">Yêu cầu đổi vé đã hết hiệu lực. Vui lòng xem vé ban đầu để kiểm tra tình trạng.</p>}
+    else if(Model.Status==BookingStatus.Active&&Model.PaymentExpiresUtc!=null&&!paymentExpired&&ViewBag.OriginalActive is true){<p class="notice">Vé cũ được giữ trong khi chờ hoàn tất thanh toán cho vé mới.</p>}
+    <a asp-action="Details" asp-route-id="@Model.ReplacesBookingId">Xem vé ban đầu →</a>
+}
+@if(staff){
+    <partial name="_PaymentEntryForm" model="Model"/>
+    @if(canChange){
+        <div class="actions">
+            <form asp-controller="Staff" asp-action="Cancel" method="post"><input type="hidden" name="id" value="@Model.Id"/><button class="btn btn-outline-danger" data-confirm="Hủy vé và nhả tất cả ghế? Khoản đã thanh toán sẽ chờ xử lý hoàn tiền.">Hủy vé / nhả ghế</button></form>
+            @if(!waitingForReplacement&&requests.Any(x=>x.Status==RequestStatus.Pending&&x.Kind==ChangeKind.Exchange)){
+                <a class="btn btn-outline-primary" asp-controller="Trips" asp-action="Index" asp-route-exchangeBookingId="@Model.Id">Chọn chuyến / ghế để đổi →</a>
+            }
+        </div>
+    }
+}
+<h3 class="form-section-title">Lịch sử thanh toán / hoàn tiền</h3>@if(!Model.Payments.Any()){<p>Chưa có khoản thu / hoàn.</p>}@foreach(var p in Model.Payments.OrderBy(x=>x.CreatedUtc)){<div class="ledger-row"><span>@BusinessTime.Text(p.CreatedUtc) · @(p.Kind==MoneyKind.Receipt?"Thanh toán":"Hoàn tiền")</span><strong>@BusinessTime.Money(p.Amount)</strong><small>@p.Note</small></div>}</section>
+<section class="panel change-request-panel">
+@if(showDemo){<partial name="_PaymentDemo" model="Model"/>}<span class="eyebrow">HỖ TRỢ ĐẶT VÉ</span><h2>Yêu cầu đổi / trả</h2><p>Vé vẫn hiệu lực khi yêu cầu đang chờ. <a asp-controller="Home" asp-action="Policy">Xem chính sách</a>.</p>
+@if(replacement!=null){
+    <article class="request-card">
+        <strong>@(Model.Status==BookingStatus.Exchanged?"Đã đổi vé":Model.Status!=BookingStatus.Active?"Vé ban đầu đã ngừng hiệu lực":waitingForReplacement?"Vé mới đang chờ thanh toán":replacementExpired?"Phương án đổi đã hết hạn":"Phương án đổi gần nhất")</strong>
+        @if(Model.Status==BookingStatus.Active&&waitingForReplacement){<p>Vé hiện tại vẫn dùng được. Mở vé mới để xem thời hạn và hoàn tất QR.</p>}
+        @if(Model.Status==BookingStatus.Active&&replacementExpired){<p>Ghế mới được trả về sơ đồ. Nhân viên có thể chọn lại chuyến hoặc ghế.</p>}
+        <a asp-action="Details" asp-route-id="@replacement.Id">Xem vé mới @replacement.Code →</a>
+    </article>
+}
+@if(Model.Status!=BookingStatus.Active&&received>0){
+    <article class="request-card">
+        <strong>@(refunded>=received?"Đã hoàn đủ":refunded>0?"Đã hoàn một phần":"Chờ hoàn tiền")</strong>
+        <p>Đã hoàn @BusinessTime.Money(refunded) trên @BusinessTime.Money(received).</p>
+    </article>
+}
+@if(canChange&&!staff&&Model.PaymentExpiresUtc==null){<form asp-action="Request" method="post"><input type="hidden" name="BookingId" value="@Model.Id"/><label for="kind">Loại yêu cầu</label><select id="kind" name="Kind"><option value="Cancel">Hủy vé</option><option value="Exchange">Đổi vé</option></select><label for="reason">Lý do & hành trình mong muốn</label><textarea id="reason" name="Reason" required minlength="5" maxlength="500" rows="4"></textarea><button class="btn btn-primary">Gửi yêu cầu</button></form>}
+@if(Model.Status==BookingStatus.Active&&!canChange){<p class="notice">Chỉ hỗ trợ hủy hoặc đổi vé trước khi chuyến khởi hành và còn ở trạng thái sắp khởi hành.</p>}
+@foreach(var r in requests){<article class="request-card"><strong>@(r.Kind==ChangeKind.Cancel?"Hủy vé":"Đổi vé") · @(r.Status==RequestStatus.Pending?"Chờ xử lý":r.Status==RequestStatus.Approved?"Đã xử lý":"Từ chối")</strong><small>@BusinessTime.Text(r.CreatedUtc)</small><p>@r.Reason</p><p>@r.Resolution</p></article>}
+</section></div>

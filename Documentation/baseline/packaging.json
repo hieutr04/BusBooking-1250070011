@@ -1,0 +1,13 @@
+{
+  "kind": "PACKAGING_ONLY_NOT_RUNTIME_VERIFICATION",
+  "utc": "2026-10-29T03:27:30.869498+00:00",
+  "status": "PASS",
+  "forbidden_entries": [],
+  "original_prompt_sha256": "da052b97726701471e8cca195489b62328107a4fc1eb2a1d9a0e6316d675764d",
+  "original_prompt_preserved_byte_for_byte": true,
+  "has_solution": true,
+  "database_provider": "SQL Server only",
+  "archive_name": "QuanLyXeKhach_DatVe_GiuCho_REALTIME_REVIEWED.zip",
+  "crc": "PASS (checked after building final archive)",
+  "runtime_status": "UNVERIFIED - CoreCLR blocked and SQL Server unavailable"
+}

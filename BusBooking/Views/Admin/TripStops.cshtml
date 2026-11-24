@@ -1,0 +1,68 @@
+@model TripStopsForm
+@{
+    ViewData["Title"]="Điểm đón / trả";
+    var preview=(StopAppendPreview)ViewBag.AppendPreview;
+    var specific=ViewBag.SpecificForm as SpecificStopForm??new SpecificStopForm{TripId=Model.TripId,Revision=preview.Revision};
+    var draft=ViewBag.AppendForm as StopAppendForm??new StopAppendForm{TripId=Model.TripId,Revision=preview.Revision};
+}
+<section class="page-heading"><span class="eyebrow">CHUYẾN #@Model.TripId</span><h1>Điểm đón / trả</h1><p>@Model.RouteLabel · @BusinessTime.Text(Model.DepartureUtc) → @BusinessTime.Text(Model.ArrivalUtc)</p></section>
+<a class="back-link" asp-action="Trips">← Danh sách chuyến</a>
+<div asp-validation-summary="All" class="validation" role="alert"></div>
+@if(Model.Locked){<p class="notice">Lịch hiện tại được khóa để bảo toàn thông tin đặt vé. Chỉ có thể bổ sung điểm mới khi chuyến chưa khởi hành và lịch còn khoảng phù hợp.</p>}
+<section class="panel stop-editor">
+<h2>Lịch điểm hiện tại</h2><p class="small-note">Điểm đầu/cuối khớp giờ chuyến. Thời gian các điểm phải tăng dần.</p>
+<form asp-action="TripStops" method="post" id="stops-editor" data-locked="@Model.Locked.ToString().ToLowerInvariant()" data-start-utc="@BusinessTime.Utc(Model.DepartureUtc).ToString("O")">
+<fieldset disabled="@Model.Locked"><input asp-for="TripId" type="hidden"/><input asp-for="Revision" type="hidden"/>
+<div class="table-wrap"><table><thead><tr><th>Điểm theo hành trình</th><th>Địa chỉ</th><th>Phút sau khởi hành</th><th>Giờ đón/trả</th><th>Điều kiện</th><th></th></tr></thead><tbody id="stop-rows">
+@for(int i=0;i<Model.Stops.Count;i++){
+    var row=Model.Stops[i];
+    <tr><td><input name="Stops[@i].Id" type="hidden" value="@row.Id"/><input class="name-input" name="Stops[@i].Name" value="@row.Name" maxlength="160" required aria-label="Tên điểm"/></td>
+    <td><input name="Stops[@i].Address" value="@row.Address" maxlength="500" aria-label="Địa chỉ điểm"/></td>
+    <td><input name="Stops[@i].OffsetMinutes" value="@row.OffsetMinutes" type="number" min="0" max="10080" required aria-label="Phút sau khởi hành"/></td>
+    <td><small class="stop-local-time">@BusinessTime.Text(Model.DepartureUtc.AddMinutes(row.OffsetMinutes))</small></td>
+    <td class="checkbox-cell">
+    @foreach(var flag in new[]{("CanPickup","Đón",row.CanPickup),("CanDropoff","Trả",row.CanDropoff),("IsActive","Hoạt động",row.IsActive)}){
+        <label><input type="checkbox" name="Stops[@i].@flag.Item1" value="true" checked="@flag.Item3"/>@flag.Item2</label><input type="hidden" name="Stops[@i].@flag.Item1" value="false"/>
+    }
+    <input type="hidden" name="Stops[@i].IsIllustrative" value="@row.IsIllustrative.ToString().ToLowerInvariant()"/>
+    </td><td><button class="btn-text remove-stop" type="button">Bỏ dòng</button></td></tr>
+}
+</tbody></table></div>
+@if(!Model.Locked){<div class="stop-edit-tools"><button class="btn btn-outline-primary" type="button" id="add-stop">+ Chèn điểm trước điểm cuối</button><button class="btn btn-primary" type="submit">Lưu lịch điểm</button></div>}
+</fieldset></form></section>
+@if(preview.CanAddSpecific){
+<section class="panel specific-stop-panel" aria-labelledby="specific-title"><span class="eyebrow">ĐIỂM CHO LƯỢT ĐẶT MỚI</span><h2 id="specific-title">Thêm địa điểm đón / trả cụ thể</h2><p>Chỉ dùng bến, văn phòng hoặc điểm hẹn chuyến được phép đón/trả. Địa chỉ phải được đối chiếu. Điểm và lựa chọn đã phát sinh được giữ nguyên.</p>
+<form asp-action="SpecificStop" method="post" id="specific-stop-form" data-start-utc="@BusinessTime.Utc(Model.DepartureUtc).ToString("O")" data-end-utc="@BusinessTime.Utc(Model.ArrivalUtc).ToString("O")" data-duration="@((int)(Model.ArrivalUtc-Model.DepartureUtc).TotalMinutes)">
+<input name="TripId" value="@Model.TripId" type="hidden"/><input name="Revision" value="@preview.Revision" type="hidden"/>
+<div class="form-grid"><div class="field"><label for="specific-name">Tên bến / văn phòng / điểm hẹn</label><input id="specific-name" name="Name" value="@specific.Name" maxlength="160" required/>@Html.ValidationMessage("Name")</div>
+<div class="field"><label for="specific-area">Khu vực</label><input id="specific-area" name="Area" value="@specific.Area" maxlength="160" required/><small class="small-note">Điểm đầu: @(Model.RouteLabel.Split(" → ")[0]). Điểm cuối: @(Model.RouteLabel.Split(" → ").Last()).</small>@Html.ValidationMessage("Area")</div>
+<div class="field wide"><label for="specific-address">Địa chỉ đã đối chiếu</label><input id="specific-address" name="Address" value="@specific.Address" required minlength="5" maxlength="500"/>@Html.ValidationMessage("Address")</div>
+<div class="field"><label for="specific-minutes">Phút sau giờ khởi hành</label><input id="specific-minutes" name="OffsetMinutes" value="@specific.OffsetMinutes" type="number" min="0" max="@((int)(Model.ArrivalUtc-Model.DepartureUtc).TotalMinutes)" required aria-describedby="specific-time"/><small id="specific-time" class="stop-time-hint"></small><small class="small-note">0: điểm đón đầu. @((int)(Model.ArrivalUtc-Model.DepartureUtc).TotalMinutes): điểm trả cuối.</small>@Html.ValidationMessage("OffsetMinutes")</div>
+<div class="field choice-flags"><label><input type="checkbox" name="CanPickup" value="true" checked="@specific.CanPickup"/> Cho phép đón</label><input type="hidden" name="CanPickup" value="false"/><label><input type="checkbox" name="CanDropoff" value="true" checked="@specific.CanDropoff"/> Cho phép trả</label><input type="hidden" name="CanDropoff" value="false"/></div>
+<div class="field wide"><label for="specific-source">Nguồn địa điểm và căn cứ đón/trả của chuyến</label><textarea id="specific-source" name="SourceReference" rows="3" maxlength="500" required>@specific.SourceReference</textarea>@Html.ValidationMessage("SourceReference")</div>
+<label class="check-label wide"><input type="checkbox" name="OperatorConfirmed" value="true" checked="@specific.OperatorConfirmed" required/> Tôi đã đối chiếu địa chỉ, khu vực, chiều tuyến, giờ và quyền đón/trả của chuyến này. Thông tin tham khảo của hãng khác không thay cho xác nhận khai thác.</label><input type="hidden" name="OperatorConfirmed" value="false"/>
+</div><button class="btn btn-primary" type="submit" data-confirm="Bổ sung địa điểm đã duyệt cho lượt đặt mới? Điểm và thông tin đã giữ/đặt được giữ nguyên.">Thêm điểm đã duyệt</button></form></section>
+}else{<p class="notice">@preview.SpecificReason</p>}
+<details class="legacy-stop-tools"><summary>Công cụ lịch điểm cũ</summary><p class="small-note">Điểm địa phương mẫu không được mở cho lượt đặt mới. Dùng địa điểm cụ thể đã duyệt ở trên để hoàn thiện thông tin đón/trả.</p>
+<section class="panel stop-append-panel" aria-labelledby="append-template-title"><h2 id="append-template-title">Bổ sung điểm còn thiếu</h2>
+@if(preview.Plan.Ready){
+    <p>Chỉ thêm các điểm dưới đây; giữ nguyên điểm hiện tại và thông tin đặt vé.</p>
+    <div class="table-wrap"><table><thead><tr><th>Điểm bổ sung</th><th>Giờ dự kiến · UTC+7</th><th>Đón / trả</th></tr></thead><tbody>
+    @foreach(var stop in preview.Plan.NewStops){<tr><td>@StopPresentation.Name(stop.Name)</td><td>@BusinessTime.Text(Model.DepartureUtc.AddMinutes(stop.OffsetMinutes))</td><td>@(stop.CanPickup?"Đón":"") @(stop.CanDropoff?"Trả":"")</td></tr>}
+    </tbody></table></div>
+    <form asp-action="CompleteDalatStops" method="post"><input name="id" value="@Model.TripId" type="hidden"/><input name="revision" value="@preview.Revision" type="hidden"/><button type="submit" class="btn btn-primary" data-confirm="Bổ sung các điểm trong danh sách và giữ nguyên lịch hiện tại?">Bổ sung các điểm này</button></form>
+}else{<p>@preview.Plan.Message</p>}
+</section>
+@if(preview.CanAppend){
+<section class="panel stop-append-panel" aria-labelledby="append-custom-title"><h2 id="append-custom-title">Thêm một điểm mới</h2><p>Nhập tên và thời gian nằm giữa hai điểm đã có. Để trống địa chỉ nếu chưa có thông tin phù hợp.</p>
+<form asp-action="AppendTripStop" method="post" id="append-stop-form" data-start-utc="@BusinessTime.Utc(Model.DepartureUtc).ToString("O")">
+<input name="TripId" value="@Model.TripId" type="hidden"/><input name="Revision" value="@preview.Revision" type="hidden"/>
+<div class="form-grid"><div class="field"><label for="append-name">Tên điểm</label><input id="append-name" name="Name" value="@draft.Name" required maxlength="160"/>@Html.ValidationMessage("Name")</div>
+<div class="field"><label for="append-address">Địa chỉ (nếu có)</label><input id="append-address" name="Address" value="@draft.Address" maxlength="500"/>@Html.ValidationMessage("Address")</div>
+<div class="field"><label for="append-minutes">Phút sau khởi hành</label><input id="append-minutes" name="OffsetMinutes" value="@draft.OffsetMinutes" type="number" min="1" max="@((int)(Model.ArrivalUtc-Model.DepartureUtc).TotalMinutes-1)" required aria-describedby="append-time"/><small id="append-time" class="small-note"></small>@Html.ValidationMessage("OffsetMinutes")</div>
+<div class="field append-flags"><label><input type="checkbox" name="CanPickup" value="true" checked="@draft.CanPickup"/> Cho phép đón</label><input type="hidden" name="CanPickup" value="false"/><label><input type="checkbox" name="CanDropoff" value="true" checked="@draft.CanDropoff"/> Cho phép trả</label><input type="hidden" name="CanDropoff" value="false"/></div></div>
+<button type="submit" class="btn btn-primary" data-confirm="Thêm điểm mới vào chuyến? Các điểm hiện tại sẽ được giữ nguyên.">Thêm điểm</button>
+</form></section>
+}else{<p class="small-note">@preview.AppendReason</p>}
+</details>
+@section Scripts{<script src="~/js/stop-editor.js" asp-append-version="true"></script>}

@@ -1,0 +1,81 @@
+{
+  "utc": "2026-11-03T09:22:07.824Z",
+  "scope": "Production seat-layout.js and seats.js with jsdom/HTTP fixtures. Not a server/SQL/SignalR, CSS layout or screenshot test.",
+  "cases": [
+    {
+      "name": "32 seats preserve IDs/codes, visual aisle and unique coordinates",
+      "status": "PASS",
+      "scope": "DOM/HTTP fixtures, production JavaScript"
+    },
+    {
+      "name": "24 berths, two decks of 12, no phantom aisle seats",
+      "status": "PASS",
+      "scope": "DOM/HTTP fixtures, production JavaScript"
+    },
+    {
+      "name": "Dropdown dates use Vietnam timezone and midnight next date",
+      "status": "PASS",
+      "scope": "DOM/HTTP fixtures, production JavaScript"
+    },
+    {
+      "name": "BusGo stop presentation hides blank addresses, removes only known labels, keeps IDs",
+      "status": "PASS",
+      "scope": "DOM/HTTP fixtures, production JavaScript"
+    },
+    {
+      "name": "Acquire clears selection but summary shows held seats and actual total",
+      "status": "PASS",
+      "scope": "DOM/HTTP fixtures, production JavaScript"
+    },
+    {
+      "name": "Change stop persists through API without acquiring/extending hold",
+      "status": "PASS",
+      "scope": "DOM/HTTP fixtures, production JavaScript"
+    },
+    {
+      "name": "Configured address is shown accessibly after changing points",
+      "status": "PASS",
+      "scope": "DOM/HTTP fixtures, production JavaScript"
+    },
+    {
+      "name": "Snapshot refresh preserves draft, chosen stops, held total and 300s deadline",
+      "status": "PASS",
+      "scope": "DOM/HTTP fixtures, production JavaScript"
+    },
+    {
+      "name": "New page restores hold, point selection, passenger inputs and total from snapshot",
+      "status": "PASS",
+      "scope": "DOM/HTTP fixtures, production JavaScript"
+    },
+    {
+      "name": "Multiple holds show own seat/total/point selection",
+      "status": "PASS",
+      "scope": "DOM/HTTP fixtures, production JavaScript"
+    },
+    {
+      "name": "Switch back restores correct passenger draft and stop IDs",
+      "status": "PASS",
+      "scope": "DOM/HTTP fixtures, production JavaScript"
+    },
+    {
+      "name": "HTTP 409 displays failure, creates no fake hold or success panel",
+      "status": "PASS",
+      "scope": "DOM/HTTP fixtures, production JavaScript"
+    },
+    {
+      "name": "Retained legacy point remains selected only for its own active hold",
+      "status": "PASS",
+      "scope": "DOM/HTTP fixtures, production JavaScript"
+    },
+    {
+      "name": "Switching holds exposes that hold saved point without offering another legacy choice",
+      "status": "PASS",
+      "scope": "DOM/HTTP fixtures, production JavaScript"
+    },
+    {
+      "name": "New booking sees specific endpoints only; no old locality/held-only options",
+      "status": "PASS",
+      "scope": "DOM/HTTP fixtures, production JavaScript"
+    }
+  ]
+}

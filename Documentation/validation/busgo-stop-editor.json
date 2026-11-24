@@ -1,0 +1,16 @@
+{
+  "utc": "2026-11-03T03:39:01.857Z",
+  "scope": "No SQL, MVC, browser rendering or screenshots",
+  "cases": [
+    {
+      "name": "Manual append preview works while full editor remains locked",
+      "status": "PASS",
+      "scope": "DOM fixture, production stop-editor.js"
+    },
+    {
+      "name": "Full editor inserts before endpoint, reindexes names, retains provenance hidden",
+      "status": "PASS",
+      "scope": "DOM fixture, production stop-editor.js"
+    }
+  ]
+}

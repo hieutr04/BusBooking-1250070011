@@ -1,0 +1,83 @@
+# Thay đổi STOPS_SEATS — 03/11/2026
+
+Sửa trực tiếp IMAGES_CONTACT_REVIEWED(9); không tạo lại project. Giữ toàn bộ file đầu vào, không xóa module. FILE_CHANGES.csv liệt kê mọi file thêm/sửa (không tự liệt kê hai file FILE_CHANGES và manifest).
+
+- Entity/DbContext/StopModelV1/migration mới: TripStops, hold choices, booking snapshots; migrations cũ bất biến.
+- TripStopService/Maintenance, BookingService, CatalogService, SeatsApi, Admin: validation/schedule/admin/command/hold/confirm. Giữ gate, TTL, tiền, trạng thái nghiệp vụ.
+- Forms, Razor, CSS, JS: điểm/giờ, CTA, hold summary/checkout, shared layout renderer/preview, lưu/đọc snapshot.
+- Tests: DOM fixtures đã chạy; case SQL và browser bổ sung, chưa chạy thực. Reports ghi đúng phạm vi.
+- README, hướng dẫn cập nhật và tài liệu liên quan. Xem TEST_RESULTS, PICKUP_DROPOFF_GUIDE.
+
+## File thêm/sửa
+
+- `ASSET_SOURCES.md` — EDIT
+- `BusBooking/Controllers/AdminController.cs` — EDIT
+- `BusBooking/Controllers/SeatsApiController.cs` — EDIT
+- `BusBooking/Data/AppDbContext.cs` — EDIT
+- `BusBooking/Data/Migrations/20261103000100_AddTripStops.cs` — ADD
+- `BusBooking/Data/Migrations/AppDbContextModelSnapshot.cs` — EDIT
+- `BusBooking/Data/StopModelV1.cs` — ADD
+- `BusBooking/Models/Entities.cs` — EDIT
+- `BusBooking/Models/TripStop.cs` — ADD
+- `BusBooking/Program.cs` — EDIT
+- `BusBooking/Services/BookingService.cs` — EDIT
+- `BusBooking/Services/CatalogService.cs` — EDIT
+- `BusBooking/Services/Infrastructure.cs` — EDIT
+- `BusBooking/Services/TripStopMaintenance.cs` — ADD
+- `BusBooking/Services/TripStopService.cs` — ADD
+- `BusBooking/ViewModels/Forms.cs` — EDIT
+- `BusBooking/ViewModels/TripStopForms.cs` — ADD
+- `BusBooking/Views/Admin/LayoutEdit.cshtml` — EDIT
+- `BusBooking/Views/Admin/Layouts.cshtml` — EDIT
+- `BusBooking/Views/Admin/TripStops.cshtml` — ADD
+- `BusBooking/Views/Admin/Trips.cshtml` — EDIT
+- `BusBooking/Views/Bookings/Details.cshtml` — EDIT
+- `BusBooking/Views/Bookings/Index.cshtml` — EDIT
+- `BusBooking/Views/Shared/Passengers.cshtml` — EDIT
+- `BusBooking/Views/Shared/_AdminLayout.cshtml` — EDIT
+- `BusBooking/Views/Shared/_BookingStops.cshtml` — ADD
+- `BusBooking/Views/Shared/_Layout.cshtml` — EDIT
+- `BusBooking/Views/Trips/Details.cshtml` — EDIT
+- `BusBooking/appsettings.json` — EDIT
+- `BusBooking/wwwroot/css/booking.css` — ADD
+- `BusBooking/wwwroot/js/admin.js` — EDIT
+- `BusBooking/wwwroot/js/layout-previews.js` — ADD
+- `BusBooking/wwwroot/js/seat-layout.js` — ADD
+- `BusBooking/wwwroot/js/seats.js` — EDIT
+- `BusBooking/wwwroot/js/stop-editor.js` — ADD
+- `DATABASE_CHANGELOG.md` — EDIT
+- `DATABASE_DESIGN.md` — EDIT
+- `DESIGN_REFERENCE_REVIEW.md` — EDIT
+- `Database/REVIEW_TRIP_STOPS.sql` — ADD
+- `Documentation/INPUT_STOPS_SEATS_REQUIREMENTS.md` — ADD
+- `Documentation/validation/PREVIOUS_TEST_RESULTS_IMAGES_CONTACT.md` — ADD
+- `Documentation/validation/stops-csharp-syntax.json` — ADD
+- `Documentation/validation/stops-dom-test-output.log` — ADD
+- `Documentation/validation/stops-dotnet-0.log` — ADD
+- `Documentation/validation/stops-dotnet-1.log` — ADD
+- `Documentation/validation/stops-dotnet-2.log` — ADD
+- `Documentation/validation/stops-dotnet-3.log` — ADD
+- `Documentation/validation/stops-dotnet-4.log` — ADD
+- `Documentation/validation/stops-dotnet-5.log` — ADD
+- `Documentation/validation/stops-migration-review.json` — ADD
+- `Documentation/validation/stops-review.json` — ADD
+- `Documentation/validation/stops-runtime-attempts.json` — ADD
+- `Documentation/validation/stops-seat-ui.json` — ADD
+- `Documentation/validation/stops-static-source.json` — ADD
+- `ERD.md` — EDIT
+- `HOLD_ALGORITHM.md` — EDIT
+- `LIMITATIONS.md` — EDIT
+- `PERMISSION_MATRIX.md` — EDIT
+- `PICKUP_DROPOFF_GUIDE.md` — ADD
+- `README.md` — EDIT
+- `REALTIME_DESIGN.md` — EDIT
+- `REQUIREMENTS_TRACEABILITY.md` — EDIT
+- `SEAT_LAYOUT_REVIEW.md` — ADD
+- `START_HERE.txt` — EDIT
+- `TEST_RESULTS.md` — EDIT
+- `Tests/BusBooking.SqlTests/Program.cs` — EDIT
+- `Tests/README.md` — EDIT
+- `Tests/browser.mjs` — EDIT
+- `Tests/package.json` — EDIT
+- `Tests/seat-ui.test.cjs` — ADD
+- `UI_CHANGELOG.md` — EDIT

@@ -1,0 +1,49 @@
+{
+  "utc": "2026-11-02T18:02:58.856500+00:00",
+  "attempts": [
+    {
+      "command": "dotnet --info",
+      "exit_code": 137,
+      "status": "CHƯA KIỂM CHỨNG",
+      "log": "stops-dotnet-0.log",
+      "reason": "CoreCLR startup failure"
+    },
+    {
+      "command": "dotnet tool restore",
+      "exit_code": 137,
+      "status": "CHƯA KIỂM CHỨNG",
+      "log": "stops-dotnet-1.log",
+      "reason": "CoreCLR startup failure"
+    },
+    {
+      "command": "dotnet restore BusBooking.sln",
+      "exit_code": 137,
+      "status": "CHƯA KIỂM CHỨNG",
+      "log": "stops-dotnet-2.log",
+      "reason": "CoreCLR startup failure"
+    },
+    {
+      "command": "dotnet build BusBooking.sln --no-restore",
+      "exit_code": 137,
+      "status": "CHƯA KIỂM CHỨNG",
+      "log": "stops-dotnet-3.log",
+      "reason": "CoreCLR startup failure"
+    },
+    {
+      "command": "dotnet ef migrations has-pending-model-changes --project BusBooking",
+      "exit_code": 137,
+      "status": "CHƯA KIỂM CHỨNG",
+      "log": "stops-dotnet-4.log",
+      "reason": "CoreCLR startup failure"
+    },
+    {
+      "command": "dotnet run --project BusBooking --launch-profile SqlServer --no-restore",
+      "exit_code": 137,
+      "status": "CHƯA KIỂM CHỨNG",
+      "log": "stops-dotnet-5.log",
+      "reason": "CoreCLR startup failure"
+    }
+  ],
+  "sql_server_available": false,
+  "screenshots_actual_mvc": false
+}

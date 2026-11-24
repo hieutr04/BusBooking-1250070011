@@ -1,0 +1,190 @@
+{
+  "scope": "Tree-sitter syntax only; not C# compilation or Razor",
+  "files": [
+    {
+      "file": "BusBooking/Program.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Models/ContactMessage.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Models/Entities.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Models/TripStop.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Controllers/AdminContactsController.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Controllers/AccountController.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Controllers/DriverController.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Controllers/SeatsApiController.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Controllers/HomeController.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Controllers/StaffController.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Controllers/PhotosController.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Controllers/BookingsController.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Controllers/ContactController.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Controllers/TripsController.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Controllers/AdminController.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/ViewModels/Forms.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/ViewModels/TripStopForms.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/ViewModels/ContactForms.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Data/AppDbContextFactory.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Data/ContactModelV1.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Data/AppDbContext.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Data/SeedData.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Data/StopModelV1.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/BackgroundServices/HoldExpiryWorker.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Hubs/SeatsHub.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Services/ContactService.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Services/ContactTokens.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Services/LoginDestination.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Services/ContactOptions.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Services/CatalogService.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Services/RealtimePublisher.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Services/ExceptionFilter.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Services/BookingService.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Services/Infrastructure.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Services/PhotoCatalog.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Services/TripStopService.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Services/RealtimeMetrics.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Services/TripStopMaintenance.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Services/ReportService.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Data/Migrations/20261102000100_AddContactMessages.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Data/Migrations/20261103000100_AddTripStops.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Data/Migrations/AppDbContextModelSnapshot.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Data/Migrations/20261029000100_InitialSqlServer.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "BusBooking/Data/Migrations/InitialModelV1.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "Tests/BusBooking.RedirectTests/Program.cs",
+      "syntax_errors": false
+    },
+    {
+      "file": "Tests/BusBooking.SqlTests/Program.cs",
+      "syntax_errors": false
+    }
+  ],
+  "error_count": 0
+}

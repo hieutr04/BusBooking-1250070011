@@ -1,0 +1,36 @@
+{
+  "utc": "2026-11-03T09:25:45.915Z",
+  "scope": "DOM only; not Razor, SQL persistence, HTTP success, CSS layout or screenshot evidence",
+  "cases": [
+    {
+      "name": "Empty contact submission focuses first field and never shows successful/loading state",
+      "status": "PASS",
+      "scope": "DOM fixture, production contact.js/site.js; no SQL or HTTP server"
+    },
+    {
+      "name": "Valid contact submission enters pending state; duplicate submit is blocked",
+      "status": "PASS",
+      "scope": "DOM fixture, production contact.js/site.js; no SQL or HTTP server"
+    },
+    {
+      "name": "Back/forward restores usable contact submit and counter tracks content",
+      "status": "PASS",
+      "scope": "DOM fixture, production contact.js/site.js; no SQL or HTTP server"
+    },
+    {
+      "name": "Phone containing no digits is rejected in Vietnamese",
+      "status": "PASS",
+      "scope": "DOM fixture, production contact.js/site.js; no SQL or HTTP server"
+    },
+    {
+      "name": "Menu keyboard state/active Contact route are preserved",
+      "status": "PASS",
+      "scope": "DOM fixture, production contact.js/site.js; no SQL or HTTP server"
+    },
+    {
+      "name": "Image failure switches to local fallback once, without retry loop",
+      "status": "PASS",
+      "scope": "DOM fixture, production contact.js/site.js; no SQL or HTTP server"
+    }
+  ]
+}

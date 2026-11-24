@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "browser": "node browser.mjs",
+    "seat-ui": "node seat-ui.test.cjs",
+    "stop-editor": "node stop-editor.test.cjs",
+    "contact-dom": "node contact-dom.test.cjs",
+    "buscenter-browser": "node buscenter-browser.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1",
+    "jsdom": "26.1.0"
+  }
+}

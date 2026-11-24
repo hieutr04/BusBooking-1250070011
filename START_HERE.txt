@@ -1,0 +1,7 @@
+BUS CENTER — CONTACT_STOPS_BANNER_REVIEWED
+
+1. Sao lưu source/SQL. Mở BusBooking.sln với .NET9, giữ cấu hình SQL đang chạy.
+2. Chọn SqlServer (hoặc profile Https đang dùng), chạy --check-db; cần Pending migrations0. Bản này không có migration mới, không cần seed lại.
+3. Xem web Home/Liên hệ/Nguồn ảnh. Thông tin liên hệ thật chưa được cung cấp: điền theo CONTACT_CONFIGURATION.md, không copy thông tin FUTA.
+4. Admin → Chuyến → Điểm đón/trả → Thêm địa điểm cụ thể. Đọc STOP_SOURCE_REVIEW và STOP_DATA_UPDATE_GUIDE trước khi xác nhận dữ liệu. Không tự gán bến hãng khác.
+5. Source/DOM đã kiểm; .NET/SQL/HTTP/browser/screenshots chưa kiểm chứng do CoreCLR0x8007000E. Xem TEST_RESULTS.md, không coi REVIEWED là VERIFIED.

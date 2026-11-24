@@ -1,0 +1,50 @@
+@model Booking
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+@{
+    var account=Configuration["DemoPayment:Account"];
+    var bank=Configuration["DemoPayment:Bank"];
+    var amount=Model.Total-Model.Balance;
+}
+@if(Model.Status==BookingStatus.Expired||(Model.Status==BookingStatus.Active&&Model.PaymentExpiresUtc<=((DateTime?)ViewBag.PaymentServerUtc))){
+    <section class="payment-demo" id="payment-qr" aria-labelledby="payment-demo-title">
+        <div class="payment-demo-header"><h3 id="payment-demo-title">Đã hết hạn thanh toán</h3></div>
+        <p>Ghế được trả về sơ đồ. Vui lòng chọn ghế và đặt lại.</p>
+        <a class="btn btn-outline-primary" asp-controller="Trips" asp-action="Details" asp-route-id="@Model.Hold?.TripId" asp-fragment="seat-app">Chọn ghế lại →</a>
+    </section>
+}else if(Model.Status==BookingStatus.Active&&Model.Balance>=Model.Total){
+    <section class="payment-demo" id="payment-qr" aria-labelledby="payment-demo-title">
+        <div class="payment-demo-header"><h3 id="payment-demo-title">Đã thanh toán</h3><span class="pill">ĐỒ ÁN</span></div>
+        <dl class="payment-demo-data">
+            <div><dt>Số tiền thanh toán</dt><dd>@BusinessTime.Money(Model.Balance)</dd></div>
+            @if(Model.SimulatedPaidUtc is DateTime paidAt){
+                <div><dt>Thời điểm hoàn tất</dt><dd>@BusinessTime.Text(paidAt)</dd></div>
+            }
+        </dl>
+        <p>Vé đã sẵn sàng. Xem mã check-in để xuất trình khi lên xe.</p>
+    </section>
+}else if(ViewBag.CanSimulate is true&&!string.IsNullOrWhiteSpace(account)&&!string.IsNullOrWhiteSpace(bank)){
+    var qr=VietQr.CreateImage(Configuration["DemoPayment:BankBin"],account,amount,Model.Code);
+    <section class="payment-demo" id="payment-qr" aria-labelledby="payment-demo-title">
+        <div class="payment-demo-header"><h3 id="payment-demo-title">Thanh toán QR · @bank</h3><span class="pill">CHỜ THANH TOÁN</span></div>
+        @if(Model.PaymentExpiresUtc is DateTime deadline&&ViewBag.PaymentServerUtc is DateTime serverNow){
+            <div class="notice qr-deadline" data-payment-deadline="@BusinessTime.Utc(deadline).ToString("O")" data-payment-now="@serverNow.ToString("O")">
+                <strong data-payment-clock role="timer" aria-label="Thời gian thanh toán còn lại"></strong>
+                <span>Hoàn tất trước <time datetime="@BusinessTime.Utc(deadline).ToString("O")">@BusinessTime.Text(deadline)</time> (giờ Việt Nam).</span>
+            </div>
+            <p class="notice" data-payment-expired role="status" hidden>Đã hết hạn thanh toán. Vui lòng tải lại trang để chọn ghế và đặt lại.</p>
+        }
+        <p>Bấm Hoàn tất để xác nhận đặt vé trong hệ thống đồ án. Bạn có thể bấm ngay để trải nghiệm, hệ thống không kiểm tra giao dịch ngân hàng.</p>
+        @if(qr is not null){
+            <figure class="payment-qr-image"><img src="@qr" width="252" height="252" alt="Mã VietQR cho vé @Model.Code"/><figcaption>@BusinessTime.Money(amount) · @Model.Code</figcaption></figure>
+        }
+        <dl class="payment-demo-data">
+            <div><dt>Ngân hàng</dt><dd>@bank</dd></div>
+            <div><dt>Số tài khoản</dt><dd>@account</dd></div>
+            <div><dt>Số tiền thanh toán</dt><dd>@BusinessTime.Money(amount)</dd></div>
+            <div><dt>Nội dung chuyển khoản</dt><dd>@VietQr.Memo(Model.Code)</dd></div>
+        </dl>
+        <form asp-controller="Bookings" asp-action="SimulatePayment" asp-route-id="@Model.Id" method="post">
+            <button type="submit" id="simulate-payment" class="btn btn-primary">Hoàn tất</button>
+        </form>
+    </section>
+}

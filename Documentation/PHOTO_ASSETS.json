@@ -1,0 +1,134 @@
+[
+  {
+    "key": "coach-hero",
+    "file": "wwwroot/images/buses/coach-hero.webp",
+    "title": "Mercedes-Benz Tourismo Länsiväylä 20260906.jpg",
+    "alt": "Xe khách đường dài màu trắng trên đường tại Espoo, Phần Lan",
+    "usage": "Hero trang chủ; Login/Register/Profile",
+    "source": "https://commons.wikimedia.org/wiki/File:Mercedes-Benz_Tourismo_L%C3%A4nsiv%C3%A4yl%C3%A4_20260906.jpg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Mercedes-Benz_Tourismo_L%C3%A4nsiv%C3%A4yl%C3%A4_20260906.jpg",
+    "author": "VynedJ",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "verified_on": "2026-11-02",
+    "original_dimensions": [
+      4043,
+      2888
+    ],
+    "width": 1600,
+    "height": 1143,
+    "bytes": 392934,
+    "sha256": "a3134c992f28b3c538eb3bbf3d4672ab419e9b9279a45a427944c234eebb887e",
+    "modifications": "Thu nhỏ, chuyển WebP, bỏ EXIF; không xóa logo/watermark, không chỉnh nội dung ảnh. Bản WebP giữ giấy phép gốc."
+  },
+  {
+    "key": "coach-exterior",
+    "file": "wwwroot/images/buses/coach-exterior.webp",
+    "title": "Mercedes-Benz O 350 Tourismo 01.jpg",
+    "alt": "Xe khách đường dài Mercedes-Benz Tourismo tại Uetersen, Đức",
+    "usage": "Thumbnail tìm chuyến — ảnh minh họa chung",
+    "source": "https://commons.wikimedia.org/wiki/File:Mercedes-Benz_O_350_Tourismo_01.jpg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Mercedes-Benz_O_350_Tourismo_01.jpg",
+    "author": "Huhu Uet alias Frank Schwichtenberg",
+    "license": "CC BY 3.0",
+    "license_url": "https://creativecommons.org/licenses/by/3.0",
+    "verified_on": "2026-11-02",
+    "original_dimensions": [
+      6000,
+      4000
+    ],
+    "width": 640,
+    "height": 427,
+    "bytes": 31856,
+    "sha256": "14f633c0a049b97dfe94c7161cefd6cb29fdee7b0d9d533beef4d76e22b0833f",
+    "modifications": "Thu nhỏ, chuyển WebP, bỏ EXIF; không xóa logo/watermark, không chỉnh nội dung ảnh. Bản WebP giữ giấy phép gốc."
+  },
+  {
+    "key": "da-lat",
+    "file": "wwwroot/images/destinations/da-lat.webp",
+    "title": "Xuan Huong Lake.jpg",
+    "alt": "Hồ Xuân Hương, Đà Lạt",
+    "usage": "Card điểm đến Đà Lạt",
+    "source": "https://commons.wikimedia.org/wiki/File:Xuan_Huong_Lake.jpg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/a/aa/Xuan_Huong_Lake.jpg",
+    "author": "Tu",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "verified_on": "2026-11-02",
+    "original_dimensions": [
+      1280,
+      756
+    ],
+    "width": 1280,
+    "height": 756,
+    "bytes": 115392,
+    "sha256": "2dcffe98d099b5bd18328136a5569545536cea953c73d3e650a7b180ebb157d1",
+    "modifications": "Thu nhỏ, chuyển WebP, bỏ EXIF; không xóa logo/watermark, không chỉnh nội dung ảnh. Bản WebP giữ giấy phép gốc."
+  },
+  {
+    "key": "nha-trang",
+    "file": "wwwroot/images/destinations/nha-trang.webp",
+    "title": "Nha Trang - Hòn Đỏ island panoramic Mar 2024.jpg",
+    "alt": "Hòn Đỏ và chùa Từ Tôn, Nha Trang",
+    "usage": "Card điểm đến Nha Trang",
+    "source": "https://commons.wikimedia.org/wiki/File:Nha_Trang_-_H%C3%B2n_%C4%90%E1%BB%8F_island_panoramic_Mar_2024.jpg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/0/09/Nha_Trang_-_H%C3%B2n_%C4%90%E1%BB%8F_island_panoramic_Mar_2024.jpg",
+    "author": "Dominic Nelson",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "verified_on": "2026-11-02",
+    "original_dimensions": [
+      10528,
+      3666
+    ],
+    "width": 1600,
+    "height": 557,
+    "bytes": 144940,
+    "sha256": "f06b4d46f094b6583895a59776ed0e11027213026345c2aa00e710394e6c4967",
+    "modifications": "Thu nhỏ, chuyển WebP, bỏ EXIF; không xóa logo/watermark, không chỉnh nội dung ảnh. Bản WebP giữ giấy phép gốc."
+  },
+  {
+    "key": "ho-chi-minh-city",
+    "file": "wwwroot/images/destinations/ho-chi-minh-city.webp",
+    "title": "Ho Chi Minh City skyline.jpg",
+    "alt": "Đường chân trời TP. Hồ Chí Minh về đêm, ảnh năm 2011",
+    "usage": "Card điểm đến TP. Hồ Chí Minh",
+    "source": "https://commons.wikimedia.org/wiki/File:Ho_Chi_Minh_City_skyline.jpg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Ho_Chi_Minh_City_skyline.jpg",
+    "author": "Tri Nguyen",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0",
+    "verified_on": "2026-11-02",
+    "original_dimensions": [
+      1500,
+      454
+    ],
+    "width": 1500,
+    "height": 454,
+    "bytes": 53582,
+    "sha256": "9e84866f3da907087f006379d0f18d601ae945b579d61d1be2eb8cabe4921b24",
+    "modifications": "Thu nhỏ, chuyển WebP, bỏ EXIF; không xóa logo/watermark, không chỉnh nội dung ảnh. Bản WebP giữ giấy phép gốc."
+  },
+  {
+    "key": "contact-journey",
+    "file": "wwwroot/images/banners/contact-journey.webp",
+    "title": "Hai Van Pass, Vietnam, View northwards.jpg",
+    "alt": "Đường đèo Hải Vân nhìn về phía bắc",
+    "usage": "Banner Liên hệ — minh họa hành trình, không gắn với tuyến trong dữ liệu",
+    "source": "https://commons.wikimedia.org/wiki/File:Hai_Van_Pass,_Vietnam,_View_northwards.jpg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/4/47/Hai_Van_Pass%2C_Vietnam%2C_View_northwards.jpg",
+    "author": "Vyacheslav Argenberg",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0",
+    "verified_on": "2026-11-02",
+    "original_dimensions": [
+      3984,
+      2656
+    ],
+    "width": 1600,
+    "height": 1067,
+    "bytes": 62598,
+    "sha256": "960ac983fc4d989d6a32ff6d606df94c32d9fcffba2d8f7a5f31486ab9b1c337",
+    "modifications": "Thu nhỏ, chuyển WebP, bỏ EXIF; không xóa logo/watermark, không chỉnh nội dung ảnh. Bản WebP giữ giấy phép gốc."
+  }
+]

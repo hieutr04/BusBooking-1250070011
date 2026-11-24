@@ -1,0 +1,7 @@
+@{
+ var c=ViewContext.RouteData.Values["controller"]?.ToString();var a=ViewContext.RouteData.Values["action"]?.ToString();
+ var operations=c is "Admin" or "Staff" or "Driver";
+ var team=User.IsInRole("Admin")||User.IsInRole("Staff");
+ var accountWorkspace=c=="Account"&&(a is "Profile" or "ChangePassword")&&(team||User.IsInRole("Driver"));
+ Layout=operations||(team&&c=="Bookings"&&a=="Details")||accountWorkspace?"_AdminLayout":"_Layout";
+}

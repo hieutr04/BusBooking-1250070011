@@ -1,0 +1,5 @@
+@model PhotoDisplay
+@{
+    var photo=Model.Asset;
+}
+<img src="@Url.Content(photo.Path)" width="@photo.Width" height="@photo.Height" alt="@photo.Alt" loading="@(Model.Lazy?"lazy":"eager")" fetchpriority="@(Model.Lazy?"auto":"high")" decoding="async" data-image-fallback="@Url.Content("~/images/landscape.svg")" data-fallback-alt="Hình minh họa hành trình"/>

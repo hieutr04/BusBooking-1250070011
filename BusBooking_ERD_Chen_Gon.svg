@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1150" height="795" viewBox="0 0 1150 795"><rect width="100%" height="100%" fill="white"/>
+<text x="560" y="26" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="23" font-weight="700">ERD BUSBOOKING</text>
+<polyline fill="none" stroke="black" points="193,90 416,90"/>
+<polygon fill="white" stroke="black" points="247,90 304,67 361,90 304,113"/>
+<text x="304" y="90" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="400">Co lich</text>
+<text x="212" y="77" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="700">1</text>
+<text x="398" y="77" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="700">N</text>
+<polyline fill="none" stroke="black" points="570,90 788,90"/>
+<polygon fill="white" stroke="black" points="622,90 679,67 736,90 679,113"/>
+<text x="679" y="90" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="400">Gan xe</text>
+<text x="589" y="77" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="700">N</text>
+<text x="770" y="77" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="700">1</text>
+<polyline fill="none" stroke="black" points="493,109 493,357"/>
+<polygon fill="white" stroke="black" points="436,287 493,264 550,287 493,310"/>
+<text x="493" y="287" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="400">Co ghe</text>
+<text x="474" y="125" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="700">1</text>
+<text x="474" y="341" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="700">N</text>
+<polyline fill="none" stroke="black" points="445,109 445,247 116,247 116,357"/>
+<polygon fill="white" stroke="black" points="217,247 274,224 331,247 274,270"/>
+<text x="274" y="247" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="400">Co luot giu</text>
+<text x="428" y="128" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="700">1</text>
+<text x="99" y="339" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="700">N</text>
+<polyline fill="none" stroke="black" points="193,376 416,376"/>
+<polygon fill="white" stroke="black" points="247,376 304,353 361,376 304,399"/>
+<text x="304" y="376" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="400">Giu hien tai</text>
+<text x="212" y="363" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="700">0..1</text>
+<text x="398" y="363" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="700">N</text>
+<polyline fill="none" stroke="black" points="570,376 788,376"/>
+<polygon fill="white" stroke="black" points="622,376 679,353 736,376 679,399"/>
+<text x="679" y="376" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="400">Lay vi tri</text>
+<text x="589" y="363" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="700">N</text>
+<text x="770" y="363" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="700">1</text>
+<polyline fill="none" stroke="black" points="116,395 116,623"/>
+<polygon fill="white" stroke="black" points="59,555 116,532 173,555 116,578"/>
+<text x="116" y="555" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="400">Tao don</text>
+<text x="97" y="411" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="700">1</text>
+<text x="97" y="607" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="700">0..1</text>
+<polyline fill="none" stroke="black" points="493,395 493,623"/>
+<polygon fill="white" stroke="black" points="436,555 493,532 550,555 493,578"/>
+<text x="493" y="555" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="400">Ghi ve</text>
+<text x="474" y="411" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="700">1</text>
+<text x="474" y="607" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="700">N</text>
+<polyline fill="none" stroke="black" points="865,395 865,623"/>
+<polygon fill="white" stroke="black" points="808,555 865,532 922,555 865,578"/>
+<text x="865" y="555" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="400">Gom ghe</text>
+<text x="846" y="411" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="700">N</text>
+<text x="846" y="607" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="700">1</text>
+<polyline fill="none" stroke="black" points="193,642 416,642"/>
+<polygon fill="white" stroke="black" points="247,642 304,619 361,642 304,665"/>
+<text x="304" y="642" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="400">Gom ve</text>
+<text x="212" y="629" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="700">1</text>
+<text x="398" y="629" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="700">N</text>
+<polyline fill="none" stroke="black" points="942,90 1070,90 1070,642 942,642"/>
+<polygon fill="white" stroke="black" points="1013,508 1070,485 1127,508 1070,531"/>
+<text x="1070" y="508" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="400">Dung so do</text>
+<text x="961" y="76" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="700">N</text>
+<text x="961" y="628" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="14" font-weight="700">1</text>
+<rect x="39" y="71" width="154" height="38" fill="white" stroke="black"/>
+<text x="116" y="90" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="18" font-weight="700">TUYEN XE</text>
+<polyline fill="none" stroke="black" points="131,109 131,137 143,137"/>
+<ellipse cx="208" cy="137" rx="65" ry="12" fill="white" stroke="black"/>
+<text x="208" y="137" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" text-decoration="underline">MaTuyen</text>
+<polyline fill="none" stroke="black" points="131,109 131,167 143,167"/>
+<ellipse cx="208" cy="167" rx="65" ry="12" fill="white" stroke="black"/>
+<text x="208" y="167" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" font-weight="400">NoiDi</text>
+<polyline fill="none" stroke="black" points="131,109 131,197 143,197"/>
+<ellipse cx="208" cy="197" rx="65" ry="12" fill="white" stroke="black"/>
+<text x="208" y="197" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" font-weight="400">NoiDen</text>
+<polyline fill="none" stroke="black" points="131,109 131,227 143,227"/>
+<ellipse cx="208" cy="227" rx="65" ry="12" fill="white" stroke="black"/>
+<text x="208" y="227" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" font-weight="400">ThoiLuong</text>
+<rect x="416" y="71" width="154" height="38" fill="white" stroke="black"/>
+<text x="493" y="90" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="18" font-weight="700">CHUYEN XE</text>
+<polyline fill="none" stroke="black" points="508,109 508,137 520,137"/>
+<ellipse cx="585" cy="137" rx="65" ry="12" fill="white" stroke="black"/>
+<text x="585" y="137" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" text-decoration="underline">MaChuyen</text>
+<polyline fill="none" stroke="black" points="508,109 508,167 520,167"/>
+<ellipse cx="585" cy="167" rx="65" ry="12" fill="white" stroke="black"/>
+<text x="585" y="167" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" font-weight="400">GioKhoiHanh</text>
+<polyline fill="none" stroke="black" points="508,109 508,197 520,197"/>
+<ellipse cx="585" cy="197" rx="65" ry="12" fill="white" stroke="black"/>
+<text x="585" y="197" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" font-weight="400">GioDen</text>
+<polyline fill="none" stroke="black" points="508,109 508,227 520,227"/>
+<ellipse cx="585" cy="227" rx="65" ry="12" fill="white" stroke="black"/>
+<text x="585" y="227" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" font-weight="400">GiaVe</text>
+<rect x="788" y="71" width="154" height="38" fill="white" stroke="black"/>
+<text x="865" y="90" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="18" font-weight="700">XE</text>
+<polyline fill="none" stroke="black" points="880,109 880,137 892,137"/>
+<ellipse cx="957" cy="137" rx="65" ry="12" fill="white" stroke="black"/>
+<text x="957" y="137" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" text-decoration="underline">MaXe</text>
+<polyline fill="none" stroke="black" points="880,109 880,167 892,167"/>
+<ellipse cx="957" cy="167" rx="65" ry="12" fill="white" stroke="black"/>
+<text x="957" y="167" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" font-weight="400">BienSo</text>
+<polyline fill="none" stroke="black" points="880,109 880,197 892,197"/>
+<ellipse cx="957" cy="197" rx="65" ry="12" fill="white" stroke="black"/>
+<text x="957" y="197" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" font-weight="400">LoaiXe</text>
+<rect x="39" y="357" width="154" height="38" fill="white" stroke="black"/>
+<text x="116" y="376" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="18" font-weight="700">LUOT GIU CHO</text>
+<polyline fill="none" stroke="black" points="131,395 131,423 143,423"/>
+<ellipse cx="208" cy="423" rx="65" ry="12" fill="white" stroke="black"/>
+<text x="208" y="423" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" text-decoration="underline">MaLuotGiu</text>
+<polyline fill="none" stroke="black" points="131,395 131,453 143,453"/>
+<ellipse cx="208" cy="453" rx="65" ry="12" fill="white" stroke="black"/>
+<text x="208" y="453" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" font-weight="400">HanGiuCho</text>
+<polyline fill="none" stroke="black" points="131,395 131,483 143,483"/>
+<ellipse cx="208" cy="483" rx="65" ry="12" fill="white" stroke="black"/>
+<text x="208" y="483" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" font-weight="400">TrangThai</text>
+<rect x="416" y="357" width="154" height="38" fill="white" stroke="black"/>
+<text x="493" y="376" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="18" font-weight="700">GHE CHUYEN</text>
+<polyline fill="none" stroke="black" points="508,395 508,423 520,423"/>
+<ellipse cx="585" cy="423" rx="65" ry="12" fill="white" stroke="black"/>
+<text x="585" y="423" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" text-decoration="underline">MaGheChuyen</text>
+<polyline fill="none" stroke="black" points="508,395 508,453 520,453"/>
+<ellipse cx="585" cy="453" rx="65" ry="12" fill="white" stroke="black"/>
+<text x="585" y="453" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" font-weight="400">MaHienThi</text>
+<polyline fill="none" stroke="black" points="508,395 508,483 520,483"/>
+<ellipse cx="585" cy="483" rx="65" ry="12" fill="white" stroke="black"/>
+<text x="585" y="483" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" font-weight="700">TrangThaiGhe</text>
+<rect x="788" y="357" width="154" height="38" fill="white" stroke="black"/>
+<text x="865" y="376" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="18" font-weight="700">GHE VAT LY</text>
+<polyline fill="none" stroke="black" points="880,395 880,423 892,423"/>
+<ellipse cx="957" cy="423" rx="65" ry="12" fill="white" stroke="black"/>
+<text x="957" y="423" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" text-decoration="underline">MaGheVatLy</text>
+<polyline fill="none" stroke="black" points="880,395 880,453 892,453"/>
+<ellipse cx="957" cy="453" rx="65" ry="12" fill="white" stroke="black"/>
+<text x="957" y="453" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" font-weight="400">MaHienThi</text>
+<polyline fill="none" stroke="black" points="880,395 880,483 892,483"/>
+<ellipse cx="957" cy="483" rx="65" ry="12" fill="white" stroke="black"/>
+<text x="957" y="483" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" font-weight="400">Tang/Hang/Cot</text>
+<rect x="39" y="623" width="154" height="38" fill="white" stroke="black"/>
+<text x="116" y="642" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="18" font-weight="700">DON DAT VE</text>
+<polyline fill="none" stroke="black" points="131,661 131,689 143,689"/>
+<ellipse cx="208" cy="689" rx="65" ry="12" fill="white" stroke="black"/>
+<text x="208" y="689" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" text-decoration="underline">MaDon</text>
+<polyline fill="none" stroke="black" points="131,661 131,719 143,719"/>
+<ellipse cx="208" cy="719" rx="65" ry="12" fill="white" stroke="black"/>
+<text x="208" y="719" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" font-weight="400">MaTraCuu</text>
+<polyline fill="none" stroke="black" points="131,661 131,749 143,749"/>
+<ellipse cx="208" cy="749" rx="65" ry="12" fill="white" stroke="black"/>
+<text x="208" y="749" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" font-weight="400">TongTien</text>
+<rect x="416" y="623" width="154" height="38" fill="white" stroke="black"/>
+<text x="493" y="642" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="18" font-weight="700">VE</text>
+<polyline fill="none" stroke="black" points="508,661 508,689 520,689"/>
+<ellipse cx="585" cy="689" rx="65" ry="12" fill="white" stroke="black"/>
+<text x="585" y="689" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" text-decoration="underline">MaVe</text>
+<polyline fill="none" stroke="black" points="508,661 508,719 520,719"/>
+<ellipse cx="585" cy="719" rx="65" ry="12" fill="white" stroke="black"/>
+<text x="585" y="719" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" font-weight="400">TenHanhKhach</text>
+<polyline fill="none" stroke="black" points="508,661 508,749 520,749"/>
+<ellipse cx="585" cy="749" rx="65" ry="12" fill="white" stroke="black"/>
+<text x="585" y="749" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" font-weight="400">ConHieuLuc</text>
+<rect x="788" y="623" width="154" height="38" fill="white" stroke="black"/>
+<text x="865" y="642" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="18" font-weight="700">SO DO GHE</text>
+<polyline fill="none" stroke="black" points="880,661 880,689 892,689"/>
+<ellipse cx="957" cy="689" rx="65" ry="12" fill="white" stroke="black"/>
+<text x="957" y="689" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" text-decoration="underline">MaSoDo</text>
+<polyline fill="none" stroke="black" points="880,661 880,719 892,719"/>
+<ellipse cx="957" cy="719" rx="65" ry="12" fill="white" stroke="black"/>
+<text x="957" y="719" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" font-weight="400">TenSoDo</text>
+<polyline fill="none" stroke="black" points="880,661 880,749 892,749"/>
+<ellipse cx="957" cy="749" rx="65" ry="12" fill="white" stroke="black"/>
+<text x="957" y="749" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="15" font-weight="400">SoTang</text>
+</svg>

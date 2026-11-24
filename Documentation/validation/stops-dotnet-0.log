@@ -1,0 +1,29 @@
+
+Host:
+  Version:      9.0.9
+  Architecture: x64
+  Commit:       893c2ebbd4
+  RID:          linux-x64
+
+.NET SDKs installed:
+  9.0.305 [/workspace/scratch/36172abbd3df/tooling/dotnet9/sdk]
+
+.NET runtimes installed:
+  Microsoft.AspNetCore.App 9.0.9 [/workspace/scratch/36172abbd3df/tooling/dotnet9/shared/Microsoft.AspNetCore.App]
+  Microsoft.NETCore.App 9.0.9 [/workspace/scratch/36172abbd3df/tooling/dotnet9/shared/Microsoft.NETCore.App]
+
+Other architectures found:
+  None
+
+Environment variables:
+  DOTNET_ROOT       [/workspace/scratch/36172abbd3df/tooling/dotnet9]
+
+global.json file:
+  /workspace/scratch/36172abbd3df/implementation_stops/BusBooking/global.json
+
+Learn more:
+  https://aka.ms/dotnet/info
+
+Download .NET:
+  https://aka.ms/dotnet/download
+Failed to create CoreCLR, HRESULT: 0x8007000E

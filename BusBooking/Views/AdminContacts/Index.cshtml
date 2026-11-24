@@ -1,0 +1,9 @@
+@model ContactInbox
+@{Layout="_AdminLayout";ViewData["Title"]="Liên hệ";}
+<section class="workspace-title contact-admin-heading"><div><span class="eyebrow">TIẾP NHẬN THÔNG TIN</span><h1>Liên hệ từ người dùng</h1><p>@Model.Total liên hệ @(Model.UnreadOnly?"chưa đọc":"trong hệ thống"). Nội dung chỉ dành cho quản trị viên.</p></div></section>
+<form asp-action="Index" method="get" class="panel contact-inbox-filter"><label for="unread">Hiển thị</label><select name="unread" id="unread"><option value="false" selected="@(!Model.UnreadOnly)">Tất cả liên hệ</option><option value="true" selected="@(Model.UnreadOnly)">Chưa đọc</option></select><button class="btn btn-primary" type="submit">Áp dụng</button></form>
+<div class="panel table-wrap"><table><caption class="visually-hidden">Danh sách liên hệ, trang @Model.Page</caption><thead><tr><th>Trạng thái</th><th>Tiêu đề</th><th>Người gửi</th><th>Ngày gửi · UTC+7</th><th>Thao tác</th></tr></thead><tbody>
+@foreach(var item in Model.Items){<tr><td><span class="pill">@(item.IsRead?"Đã đọc":"Chưa đọc")</span></td><td class="contact-subject">@item.Subject</td><td>@item.FullName<br/><small>@item.Email</small></td><td>@BusinessTime.Text(item.CreatedUtc)</td><td><a class="btn btn-outline-primary btn-sm" asp-action="Details" asp-route-id="@item.Id">Xem chi tiết</a></td></tr>}
+@if(Model.Items.Count==0){<tr><td colspan="5" class="empty">Chưa có liên hệ trong bộ lọc này.</td></tr>}
+</tbody></table></div>
+<nav class="contact-pagination" aria-label="Phân trang liên hệ">@if(Model.Page>1){<a asp-action="Index" asp-route-page="@(Model.Page-1)" asp-route-unread="@Model.UnreadOnly">← Trang trước</a>}<span>Trang @Model.Page / @Model.PageCount</span>@if(Model.Page<Model.PageCount){<a asp-action="Index" asp-route-page="@(Model.Page+1)" asp-route-unread="@Model.UnreadOnly">Trang sau →</a>}</nav>

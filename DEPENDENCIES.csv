@@ -1,0 +1,8 @@
+"System","Name","Version","DeclaredIn"
+"NuGet","QRCoder","1.8.1","BusBooking\BusBooking.csproj"
+"NuGet","Microsoft.AspNetCore.Identity.EntityFrameworkCore","9.0.9","BusBooking\BusBooking.csproj"
+"NuGet","Microsoft.EntityFrameworkCore.SqlServer","9.0.9","BusBooking\BusBooking.csproj"
+"NuGet","Microsoft.EntityFrameworkCore.Design","9.0.9","BusBooking\BusBooking.csproj"
+"dotnet tool","dotnet-ef","9.0.9",".config/dotnet-tools.json"
+"npm dev","@playwright/test","1.56.1","Tests/package.json"
+"npm dev","jsdom","26.1.0","Tests/package.json"

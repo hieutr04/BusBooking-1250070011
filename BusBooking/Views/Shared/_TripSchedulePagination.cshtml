@@ -1,0 +1,15 @@
+@model TripScheduleVm
+@if(Model.PageCount>1){
+    var date=Model.Date.ToString("yyyy-MM-dd");
+    <nav class="contact-pagination" aria-label="Phân trang lịch chuyến">
+        @if(Model.Page>1){
+            <a class="btn btn-outline-primary" asp-action="Trips" asp-route-date="@date" asp-route-routeId="@Model.RouteId"
+               asp-route-vehicleId="@Model.VehicleId" asp-route-driverId="@Model.DriverId" asp-route-page="@(Model.Page-1)">← Trang trước</a>
+        }
+        <span>Trang @Model.Page / @Model.PageCount</span>
+        @if(Model.Page<Model.PageCount){
+            <a class="btn btn-outline-primary" asp-action="Trips" asp-route-date="@date" asp-route-routeId="@Model.RouteId"
+               asp-route-vehicleId="@Model.VehicleId" asp-route-driverId="@Model.DriverId" asp-route-page="@(Model.Page+1)">Trang sau →</a>
+        }
+    </nav>
+}

@@ -1,0 +1,19 @@
+{
+  "utc": "2026-11-03T03:41:39.174958+00:00",
+  "input_zip_sha256": "2ccbe1c6b016a0c5d554e0fbcbe303be716aa69477919514d12999cd6ba1c2f6",
+  "original_files": 213,
+  "all_original_files_retained": true,
+  "original_requirements_unchanged": [
+    "Documentation/INPUT_IMAGES_CONTACT_REQUIREMENTS_ORIGINAL.md",
+    "Documentation/INPUT_REQUIREMENTS_ORIGINAL.md",
+    "Documentation/INPUT_STOPS_SEATS_REQUIREMENTS.md",
+    "Documentation/INPUT_UI_REQUIREMENTS_ORIGINAL.md"
+  ],
+  "forbidden_files": [],
+  "source_checks": 187,
+  "legacy_source_checks": 76,
+  "seat_dom_cases": 12,
+  "editor_dom_cases": 2,
+  "release_status": "REVIEWED; .NET/SQL/HTTP/browser unverified",
+  "screenshot_count": 0
+}

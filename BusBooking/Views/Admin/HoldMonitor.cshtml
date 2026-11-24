@@ -1,0 +1,36 @@
+@model List<Trip>
+@{ViewData["Title"]="Giám sát giữ chỗ"; int? selected=ViewBag.TripId;}
+<section class="page-heading role-heading">
+    <div><h1>Giám sát giữ chỗ trực tiếp</h1><p>Theo dõi ghế trống, ghế đã đặt và thời gian còn lại của từng lượt giữ.</p></div>
+</section>
+@if(selected is int tripId){
+    <form asp-action="HoldMonitor" method="get" class="panel filter-form">
+        <div class="flex-grow-1"><label for="monitor-trip">Chuyến cần theo dõi</label>
+            <select id="monitor-trip" name="id">
+                @foreach(var trip in Model){
+                    <option value="@trip.Id" selected="@(trip.Id==tripId)">#@trip.Id · @trip.Route.Label · @BusinessTime.Text(trip.DepartureUtc)</option>
+                }
+            </select>
+        </div>
+        <button class="btn btn-primary">Mở sơ đồ</button>
+    </form>
+    <div id="hold-monitor" data-trip="@tripId" data-url="@Url.Action("HoldMonitorData",new{id=tripId})">
+        <div class="panel monitor-toolbar"><span id="monitor-status" role="status">Đang tải dữ liệu…</span><button id="monitor-refresh" type="button" class="btn btn-outline-primary">Cập nhật</button></div>
+        <dl class="monitor-totals" id="monitor-totals" hidden>
+            <div><dt>Ghế trống</dt><dd id="count-available">—</dd></div>
+            <div><dt>Ghế đang giữ</dt><dd id="count-held">—</dd></div>
+            <div><dt>Ghế đã đặt</dt><dd id="count-booked">—</dd></div>
+            <div><dt>Lượt ghế đã nhả do hết hạn</dt><dd id="count-expired">—</dd></div>
+        </dl>
+        <div class="monitor-grid">
+            <section class="panel"><h2>Sơ đồ ghế</h2><div id="monitor-map"></div></section>
+            <section class="panel"><h2>Lượt giữ đang hiệu lực</h2><p class="small-note">Một lượt giữ có thể chứa nhiều ghế. Bộ đếm tính theo giờ máy chủ.</p><ul id="monitor-holds" class="monitor-holds"></ul></section>
+        </div>
+    </div>
+    @section Scripts {
+        <script src="~/lib/signalr/signalr.min.js"></script>
+        <script src="~/js/hold-monitor.js" asp-append-version="true"></script>
+    }
+}else{
+    <section class="panel empty"><h2>Chưa có chuyến để theo dõi</h2><a asp-action="TripEdit">Tạo chuyến xe</a></section>
+}

@@ -1,0 +1,37 @@
+@model VehicleForm
+@{ ViewData["Title"] = Model.Id == 0 ? "Thêm xe" : "Chỉnh sửa xe"; }
+<partial name="_AdminNav"/>
+<section class="page-heading"><h1>@ViewData["Title"]</h1></section>
+<a class="back-link" asp-action="Vehicles">← Danh sách xe</a>
+<section class="panel edit-panel">
+    <form asp-action="VehicleEdit" method="post">
+        <input asp-for="Id" type="hidden"/>
+        <div asp-validation-summary="ModelOnly" class="validation"></div>
+        <fieldset class="form-fieldset">
+            <legend>Thông tin phương tiện</legend>
+            <div class="form-grid">
+                <div class="field"><label asp-for="Name"></label><input asp-for="Name"/><span asp-validation-for="Name"></span></div>
+                <div class="field"><label asp-for="Plate"></label><input asp-for="Plate"/><span asp-validation-for="Plate"></span></div>
+                <div class="field">
+                    <label asp-for="Kind"></label>
+                    <select asp-for="Kind" asp-items="Html.GetEnumSelectList<VehicleKind>()"><option value="">Chọn loại xe</option></select>
+                    <span asp-validation-for="Kind"></span>
+                </div>
+                <div class="field">
+                    <label asp-for="SeatLayoutId"></label>
+                    <select asp-for="SeatLayoutId" asp-items="ViewBag.Layouts"><option value="">Chọn sơ đồ</option></select>
+                    <span asp-validation-for="SeatLayoutId"></span>
+                </div>
+                <div class="field">
+                    <label asp-for="IsActive"></label>
+                    <select asp-for="IsActive"><option value="true">Hoạt động</option><option value="false">Ngừng dùng</option></select>
+                    <span asp-validation-for="IsActive"></span>
+                </div>
+            </div>
+        </fieldset>
+        <div class="form-savebar">
+            <a class="btn btn-outline-secondary" asp-action="Vehicles">Quay lại danh sách</a>
+            <button class="btn btn-primary" type="submit">@(Model.Id == 0 ? "Thêm xe" : "Lưu thay đổi")</button>
+        </div>
+    </form>
+</section>

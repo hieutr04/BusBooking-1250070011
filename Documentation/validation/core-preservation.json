@@ -1,0 +1,7 @@
+{
+  "kind": "CORE_HASH_PRESERVATION_NOT_RUNTIME_TEST",
+  "protected_count": 29,
+  "violations": [],
+  "status": "PASS",
+  "exception": "AccountController.cs: role-aware server login redirect only"
+}

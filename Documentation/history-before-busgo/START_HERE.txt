@@ -1,0 +1,17 @@
+﻿BẢN STOPS_SEATS — .NET 9 / SQL SERVER — REVIEWED
+
+1. Giữ nguyên tên đề tài và dữ liệu. Đọc PICKUP_DROPOFF_GUIDE.md trước khi F5.
+2. Backup database hiện có qua SSMS. Không xóa database/history/baseline, không chạy lại Initial SQL.
+3. Mở BusBooking.sln, dùng startup project BusBooking, profile SqlServer. UserSecretsId giữ nguyên để dùng cấu hình cũ.
+4. Tại thư mục solution: dotnet tool restore; dotnet restore BusBooking.sln; dotnet build BusBooking.sln (chạy từng lệnh).
+5. dotnet ef migrations list --project BusBooking
+   dotnet ef migrations has-pending-model-changes --project BusBooking
+   Nếu Initial Pending nhưng DB đã có bảng, dừng kiểm đúng history/connection string theo bản cũ.
+6. Khi history/model đúng: dotnet ef database update --project BusBooking
+7. dotnet run --project BusBooking --launch-profile SqlServer -- --update-trip-stops --study-stops
+   Chỉ thêm ví dụ học tập cho lịch mặc định chưa có hold. CSV thật nằm trong BusBooking/trip-stops-report.csv.
+8. dotnet run --project BusBooking --launch-profile SqlServer
+9. Chọn ghế + điểm đón/trả -> Đặt vé (giữ 5 phút) -> nhập hành khách -> Xác nhận đặt vé.
+10. Admin -> Chuyến & phân công -> Điểm đón/trả để chỉnh lịch trước khi phát sinh hold.
+
+Môi trường bàn giao lỗi CoreCLR 0x8007000E/137: chưa build/run/SQL/HTTP/browser. DOM JavaScript đã chạy 10 case đạt; không coi là bằng chứng toàn hệ thống. Đọc TEST_RESULTS.md.

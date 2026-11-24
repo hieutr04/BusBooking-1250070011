@@ -1,0 +1,31 @@
+@model TripScheduleVm
+<form class="panel filter-form trip-schedule-filter" asp-action="Trips" method="get" aria-label="Lọc lịch chuyến">
+    <div>
+        <label for="schedule-date">Ngày khởi hành</label>
+        <input id="schedule-date" name="date" type="date" value="@Model.Date.ToString("yyyy-MM-dd")" required/>
+    </div>
+    <div>
+        <label for="schedule-route">Tuyến xe</label>
+        <select id="schedule-route" name="routeId">
+            <option value="">Tất cả tuyến</option>
+            @foreach(var option in Model.Routes){<option value="@option.Value" selected="@(option.Value==Model.RouteId?.ToString())">@option.Label</option>}
+        </select>
+    </div>
+    <div>
+        <label for="schedule-vehicle">Xe</label>
+        <select id="schedule-vehicle" name="vehicleId">
+            <option value="">Tất cả xe</option>
+            @foreach(var option in Model.Vehicles){<option value="@option.Value" selected="@(option.Value==Model.VehicleId?.ToString())">@option.Label</option>}
+        </select>
+    </div>
+    <div>
+        <label for="schedule-driver">Tài xế chính hoặc phụ</label>
+        <select id="schedule-driver" name="driverId">
+            <option value="">Tất cả tài xế</option>
+            @foreach(var option in Model.Drivers){<option value="@option.Value" selected="@(option.Value==Model.DriverId)">@option.Label</option>}
+        </select>
+    </div>
+    <button class="btn btn-primary" type="submit">Áp dụng</button>
+    <a class="btn btn-outline-primary" asp-action="Trips">Về hôm nay</a>
+</form>
+<div class="list-meta"><strong>@Model.Total chuyến phù hợp</strong><span>@Model.Date.ToString("dd/MM/yyyy") · Giờ Việt Nam</span></div>

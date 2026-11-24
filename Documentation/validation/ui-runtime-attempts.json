@@ -1,0 +1,51 @@
+[
+  {
+    "command": "dotnet --info",
+    "exit": 137,
+    "stdout": "\nHost:\n  Version:      9.0.9\n  Architecture: x64\n  Commit:       893c2ebbd4\n  RID:          linux-x64\n\n.NET SDKs installed:\n  9.0.305 [/workspace/scratch/1b1ee9aaadba/.ui-tools/dotnet/sdk]\n\n.NET runtimes installed:\n  Microsoft.AspNetCore.App 9.0.9 [/workspace/scratch/1b1ee9aaadba/.ui-tools/dotnet/shared/Microsoft.AspNetCore.App]\n  Microsoft.NETCore.App 9.0.9 [/workspace/scratch/1b1ee9aaadba/.ui-tools/dotnet/shared/Microsoft.NETCore.App]\n\nOther architectures found:\n  None\n\nEnvironment variables:\n  DOTNET_ROOT       [/workspace/scratch/1b1ee9aaadba/.ui-tools/dotnet]\n\nglobal.json file:\n  /workspace/scratch/1b1ee9aaadba/ui-upgrade/BusBooking/global.json\n\nLearn more:\n  https://aka.ms/dotnet/info\n\nDownload .NET:\n  https://aka.ms/dotnet/download\n",
+    "stderr": "Failed to create CoreCLR, HRESULT: 0x8007000E\n",
+    "status": "ENVIRONMENT_BLOCKED"
+  },
+  {
+    "command": "dotnet tool restore",
+    "exit": 137,
+    "stdout": "",
+    "stderr": "Failed to create CoreCLR, HRESULT: 0x8007000E\n",
+    "status": "ENVIRONMENT_BLOCKED"
+  },
+  {
+    "command": "dotnet restore BusBooking.sln --disable-parallel",
+    "exit": 137,
+    "stdout": "",
+    "stderr": "Failed to create CoreCLR, HRESULT: 0x8007000E\n",
+    "status": "ENVIRONMENT_BLOCKED"
+  },
+  {
+    "command": "dotnet build BusBooking.sln --no-restore",
+    "exit": 137,
+    "stdout": "",
+    "stderr": "Failed to create CoreCLR, HRESULT: 0x8007000E\n",
+    "status": "ENVIRONMENT_BLOCKED"
+  },
+  {
+    "command": "dotnet ef migrations has-pending-model-changes --project BusBooking",
+    "exit": 137,
+    "stdout": "",
+    "stderr": "Failed to create CoreCLR, HRESULT: 0x8007000E\n",
+    "status": "ENVIRONMENT_BLOCKED"
+  },
+  {
+    "command": "dotnet run --project Tests/BusBooking.RedirectTests",
+    "exit": 137,
+    "stdout": "",
+    "stderr": "Failed to create CoreCLR, HRESULT: 0x8007000E\n",
+    "status": "ENVIRONMENT_BLOCKED"
+  },
+  {
+    "command": "dotnet run --project BusBooking --launch-profile SqlServer",
+    "exit": 137,
+    "stdout": "",
+    "stderr": "Failed to create CoreCLR, HRESULT: 0x8007000E\n",
+    "status": "ENVIRONMENT_BLOCKED"
+  }
+]

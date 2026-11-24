@@ -1,0 +1,55 @@
+@model TripBatchForm
+@{
+    ViewData["Title"]="Tạo lịch hàng loạt";
+    var rows=ViewBag.BatchRows as IReadOnlyList<TripBatchRow>;
+    var created=ViewBag.BatchCreated is true;
+}
+<section class="page-heading operations-heading">
+    <span class="eyebrow">CHUYẾN &amp; PHÂN CÔNG</span>
+    <h1>Tạo lịch hàng loạt</h1>
+    <p>Tạo một chuyến mỗi ngày theo giờ Việt Nam. Giờ đến dự kiến được tính từ thời lượng của tuyến.</p>
+</section>
+<a class="back-link" asp-action="Trips">← Danh sách chuyến</a>
+<form class="panel edit-panel" asp-action="TripBatch" method="post">
+    <div asp-validation-summary="All" class="validation" role="alert"></div>
+    <fieldset class="form-fieldset">
+        <legend>Lịch và phân công</legend>
+        <div class="form-grid">
+            <div class="field"><label asp-for="BusRouteId"></label><select asp-for="BusRouteId" asp-items="ViewBag.Routes" required><option value="">Chọn tuyến</option></select></div>
+            <div class="field"><label asp-for="VehicleId"></label><select asp-for="VehicleId" asp-items="ViewBag.Vehicles" required><option value="">Chọn xe</option></select></div>
+            <div class="field"><label asp-for="From"></label><input asp-for="From" type="date" asp-format="{0:yyyy-MM-dd}" required/></div>
+            <div class="field"><label asp-for="To"></label><input asp-for="To" type="date" asp-format="{0:yyyy-MM-dd}" required/></div>
+            <div class="field"><label asp-for="DepartureTime"></label><input asp-for="DepartureTime" type="time" asp-format="{0:HH\:mm}" required/></div>
+            <div class="field"><label asp-for="Fare"></label><input asp-for="Fare" type="number" min="0" max="10000000" required/></div>
+            <div class="field"><label asp-for="DriverId"></label><select asp-for="DriverId" asp-items="ViewBag.Drivers" required><option value="">Chọn tài xế chính</option></select></div>
+            <div class="field"><label asp-for="CoDriverId"></label><select asp-for="CoDriverId" asp-items="ViewBag.Drivers" required><option value="">Chọn tài xế phụ</option></select></div>
+            <div class="field"><label asp-for="StaffId"></label><select asp-for="StaffId" asp-items="ViewBag.Staffs"><option value="">Chưa phân công</option></select></div>
+        </div>
+    </fieldset>
+    <p class="small-note">Tối đa 93 ngày mỗi đợt. Chuyến đã tồn tại và ngày bị trùng lịch được đánh dấu để bạn kiểm tra.</p>
+    <div class="form-savebar">
+        <button class="btn @(rows==null?"btn-primary":"btn-outline-primary")" name="operation" value="preview">Xem trước</button>
+        @if(!created&&rows?.Any(r=>r.Ready)==true){
+            <button class="btn btn-primary" name="operation" value="create" data-confirm="Tạo các chuyến hợp lệ theo thông tin đang nhập?">Tạo các chuyến hợp lệ</button>
+        }
+    </div>
+</form>
+@if(rows!=null){
+    <section class="panel table-wrap" aria-labelledby="trip-batch-result">
+        <h2 id="trip-batch-result">@(created?"Kết quả tạo lịch":"Xem trước lịch")</h2>
+        <p>@(created?rows.Count(r=>r.Status=="Đã tạo"):rows.Count(r=>r.Ready)) / @rows.Count chuyến @(created?"đã tạo":"có thể tạo")</p>
+        <table>
+            <thead><tr><th>Khởi hành</th><th>Đến dự kiến</th><th>Trạng thái</th><th>Chuyến</th></tr></thead>
+            <tbody>
+            @foreach(var row in rows){
+                <tr>
+                    <td>@row.Departure.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>@row.Arrival.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>@row.Status</td>
+                    <td>@if(row.TripId.HasValue){<a asp-action="TripEdit" asp-route-id="@row.TripId">#@row.TripId</a>}</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </section>
+}

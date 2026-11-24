@@ -1,0 +1,39 @@
+{
+  "utc": "2026-11-03T09:28:17.043041+00:00",
+  "sdk_requested": "9.0.305",
+  "results": [
+    {
+      "command": "dotnet restore BusBooking.sln",
+      "exit_code": 137,
+      "status": "BLOCKED",
+      "log": "buscenter-dotnet-restore.log"
+    },
+    {
+      "command": "dotnet build BusBooking.sln --no-restore",
+      "exit_code": 137,
+      "status": "BLOCKED",
+      "log": "buscenter-dotnet-build.log"
+    },
+    {
+      "command": "dotnet run --project Tests/BusBooking.SqlTests -- --planner-only",
+      "exit_code": 137,
+      "status": "BLOCKED",
+      "log": "buscenter-dotnet-planner.log"
+    },
+    {
+      "test": "SQL Server / schema/model diff / controlled stop update",
+      "status": "CHƯA KIỂM CHỨNG",
+      "reason": "CoreCLR cannot initialize; no accessible SQL Server test instance. No real MVC browser screenshots."
+    },
+    {
+      "test": "HTTP / real Home desktop+mobile / Contact / Trips-Details screenshots",
+      "status": "CHƯA KIỂM CHỨNG",
+      "reason": "CoreCLR cannot initialize; no accessible SQL Server test instance. No real MVC browser screenshots."
+    },
+    {
+      "test": "20/50/100 request / real300s / restart / SignalR",
+      "status": "CHƯA KIỂM CHỨNG",
+      "reason": "CoreCLR cannot initialize; no accessible SQL Server test instance. No real MVC browser screenshots."
+    }
+  ]
+}

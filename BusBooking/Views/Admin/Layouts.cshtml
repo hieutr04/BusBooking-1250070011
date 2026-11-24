@@ -1,0 +1,8 @@
+@model List<SeatLayout>
+@{ViewData["Title"]="Sơ đồ ghế";}
+<partial name="_AdminNav"/><div class="section-heading page-heading operations-heading"><div><span class="eyebrow">CẤU HÌNH XE</span><h1>Sơ đồ ghế & ghế vật lý</h1><p class="screen-description">Ghế vật lý theo hàng, cột và tầng. Cấu hình đã dùng được bảo vệ khỏi thay đổi không an toàn.</p><p>Sơ đồ gắn xe được khóa cấu trúc để bảo toàn lịch sử.</p></div><a class="btn btn-primary" asp-action="LayoutEdit">+ Thêm sơ đồ</a></div>
+<div class="route-grid">@foreach(var x in Model){<article class="panel"><h2>@StopPresentation.Label(x.Name)</h2><p>@x.Rows hàng × @x.Columns cột × @x.Floors tầng · @x.Seats.Count ghế</p><p>@(x.IsActive?"Đang dùng":"Ngừng dùng")</p><div class="layout-saved-preview"><script type="application/json">@Html.Raw(System.Text.Json.JsonSerializer.Serialize(x.Seats.Select(s=>new {id=s.Id,code=s.Code,row=s.Row,column=s.Column,floor=s.Floor,status="Available"})))</script><div class="saved-seat-map"></div></div><a class="btn btn-outline-primary" asp-action="LayoutEdit" asp-route-id="@x.Id">Chỉnh sửa</a></article>}</div>
+
+@if(Model.Count==0){<section class="empty panel"><h2>Chưa có dữ liệu phù hợp</h2><p>Không tìm thấy bản ghi phù hợp.</p></section>}
+
+@section Scripts{<script src="~/js/layout-previews.js" asp-append-version="true"></script>}

@@ -1,0 +1,45 @@
+@model List<Booking>
+@{ViewData["Title"]="Phòng vé"; var payment=(string?)ViewBag.Payment;}
+<section class="page-heading operations-heading role-heading">
+    <div><span class="eyebrow">PHÒNG VÉ</span><h1>Tra cứu và xử lý vé</h1><p>Tìm đơn, kiểm tra số dư và theo dõi thanh toán QR và xử lý hoàn tiền.</p></div>
+    <a class="btn btn-primary" asp-action="Sell">+ Bán vé hỗ trợ</a>
+</section>
+<form method="get" class="panel counter-filter">
+    <div><label for="q">Mã vé, người liên hệ hoặc số điện thoại</label><input id="q" name="q" value="@ViewBag.Query" maxlength="100" type="search"/></div>
+    <div><label for="payment">Thanh toán</label><select id="payment" name="payment">
+        <option value="">Tất cả</option>
+        <option value="due" selected="@(payment=="due")">Chờ thanh toán</option>
+        <option value="paid" selected="@(payment=="paid")">Đã thanh toán</option>
+        <option value="refund" selected="@(payment=="refund")">Chờ hoàn</option>
+    </select></div>
+    <button class="btn btn-primary">Tra cứu</button>
+</form>
+<section class="panel counter-results" aria-labelledby="counter-title">
+    <div class="panel-heading"><h2 id="counter-title">Kết quả tra cứu</h2><span>@Model.Count bản ghi · Tối đa 100</span></div>
+    @if(Model.Count==0){
+        <div class="empty"><h3>Chưa có vé phù hợp</h3><p>Thử từ khóa khác hoặc chọn lại bộ lọc thanh toán.</p></div>
+    }else{
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Bảng kết quả tra cứu">
+            <table>
+                <thead><tr><th scope="col">Mã vé / liên hệ</th><th scope="col">Chuyến</th><th scope="col" class="money-col">Giá vé</th><th scope="col">Thanh toán</th><th scope="col">Thao tác</th></tr></thead>
+                <tbody>
+                @foreach(var b in Model){
+                    var due=b.Status==BookingStatus.Active?Math.Max(0,b.Total-b.Balance):Math.Max(0,b.Balance);
+                    var status=b.Status==BookingStatus.Expired&&due==0?"Hết hạn thanh toán":b.Status==BookingStatus.Active?(due>0?"Chờ thanh toán":"Đã thanh toán"):(due>0?"Chờ hoàn":"Đã đối soát");
+                    <tr>
+                        <td><strong>@b.Code</strong><small>@b.ContactName · @b.ContactPhone</small></td>
+                        <td><strong>@b.Hold.Trip.Route.Label</strong><small>@BusinessTime.Text(b.Hold.Trip.DepartureUtc)</small></td>
+                        <td class="money-col">@BusinessTime.Money(b.Total)</td>
+                        <td>
+                            <span class="payment-state @(due>0?"outstanding":"settled")">@status</span>
+                            @if(due>0){<small>@BusinessTime.Money(due)</small>}
+                            @if(b.SimulatedPaidUtc.HasValue&&b.Payments.Any(p=>p.Kind==MoneyKind.Receipt&&p.RequestKey==b.Id&&p.ActorId==b.OwnerId)){<small>Thanh toán QR</small>}
+                        </td>
+                        <td><a asp-controller="Bookings" asp-action="Details" asp-route-id="@b.Id">Mở vé →</a></td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    }
+</section>

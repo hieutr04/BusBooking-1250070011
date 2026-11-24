@@ -1,0 +1,10 @@
+BUSGO_UI_CLEANUP_STOPS_REVIEWED — 03/11/2026
+
+1. Sao lưu source/database. Mở BusBooking.sln bằng Visual Studio có .NET 9.
+2. Giữ cấu hình SQL đang chạy của máy bạn; không thay User Secrets bằng LocalDB.
+3. Chạy --check-db đúng profile SqlServer (hoặc Https nếu đó là profile bạn đang dùng).
+4. Pending migrations 0: đọc PICKUP_DROPOFF_GUIDE.md, dùng Admin → Chuyến → Điểm đón/trả để xem trước và bổ sung đúng chuyến; hoặc lệnh --review-dalat-stops rồi --complete-dalat-stops.
+5. Bản BusGo không có migration mới, không cần seed lại tài khoản/dữ liệu.
+6. Chọn SqlServer và F5 mở web. Website không tự chèn dữ liệu vào DB mỗi lần chạy.
+
+Đây là source REVIEWED. Đã kiểm tra tĩnh/DOM JavaScript; chưa build/run .NET + SQL/HTTP/browser thật do CoreCLR không khởi tạo ở môi trường bàn giao. Không có screenshot runtime. Chi tiết/test cần chạy ở TEST_RESULTS.md.

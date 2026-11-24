@@ -1,0 +1,128 @@
+@model DashboardVm
+@{
+    ViewData["Title"]="Tổng quan vận hành";
+    var period=(string?)ViewBag.ReportPeriod??"custom";
+    var periods=new[]{("day","Theo ngày"),("month","Theo tháng"),("quarter","Theo quý"),("year","Theo năm"),("custom","Khoảng ngày")};
+    var comparison=period=="year"?"năm trước":"kỳ trước";
+    var change=Model.Receipts-Model.PreviousReceipts;
+    var growth=Model.PreviousReceipts>0
+        ? $"{(change/Model.PreviousReceipts*100).ToString("+0.#;-0.#;0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))}% so với {comparison}"
+        : Model.Receipts>0?$"Có doanh thu mới · Doanh thu {comparison} là 0 ₫":"Cả hai kỳ chưa có doanh thu";
+    var ticketGroups=new[]{
+        (Label:"Đã thanh toán",Count:Model.Paid,Style:"paid"),
+        (Label:"Chờ thanh toán",Count:Model.Unpaid,Style:"pending"),
+        (Label:"Hủy, đổi hoặc hết hạn",Count:Model.ClosedTickets,Style:"closed")};
+    var tripGroups=new[]{
+        (Label:"Đã chạy xong",Count:Model.CompletedTrips),
+        (Label:"Đang chạy",Count:Model.RunningTrips),
+        (Label:"Sắp chạy",Count:Model.ScheduledTrips),
+        (Label:"Đã hủy",Count:Model.CancelledTrips),
+        (Label:"Qua giờ, chưa cập nhật",Count:Model.OverdueTrips)};
+}
+<div class="admin-overview">
+<section class="page-heading dashboard-heading role-heading"><div><h1>Trung tâm điều hành</h1><p>Theo dõi doanh thu, vé và lịch khởi hành của Bus Center.</p></div><a class="btn btn-primary" asp-action="TripEdit">+ Tạo chuyến xe</a></section>
+<section class="panel overview-period" aria-labelledby="report-period-title">
+    <div class="overview-period-heading">
+        <h2 id="report-period-title">Kỳ báo cáo</h2>
+        <small>@Model.From.ToString("dd/MM/yyyy") – @Model.To.ToString("dd/MM/yyyy") · Giờ Việt Nam</small>
+    </div>
+    <div class="overview-period-controls">
+    <nav class="report-period-options" aria-label="Loại kỳ báo cáo">
+        @foreach(var option in periods){
+            <a asp-action="Index" asp-route-period="@option.Item1" class="btn @(period==option.Item1?"btn-primary":"btn-outline-secondary")" aria-current="@(period==option.Item1?"page":null)">@option.Item2</a>
+        }
+    </nav>
+    <form method="get" class="filter-form report-period-form">
+        <input type="hidden" name="period" value="@period"/>
+        @if(period=="custom"){
+            <div><label for="from">Từ ngày</label><input id="from" name="from" type="date" value="@Model.From.ToString("yyyy-MM-dd")" required/></div>
+            <div><label for="to">Đến ngày</label><input id="to" name="to" type="date" value="@Model.To.ToString("yyyy-MM-dd")" required/></div>
+        }else if(period=="day"){
+            <div><label for="on">Ngày báo cáo</label><input id="on" name="on" type="date" value="@Model.From.ToString("yyyy-MM-dd")" required/></div>
+        }else{
+            <div><label for="year">Năm</label><input id="year" name="year" type="number" min="1900" max="9998" value="@Model.From.Year" required/></div>
+            @if(period=="month"){
+                <div><label for="month">Tháng</label><select id="month" name="month">
+                    @for(var i=1;i<=12;i++){<option value="@i" selected="@(i==Model.From.Month)">Tháng @i</option>}
+                </select></div>
+            }else if(period=="quarter"){
+                <div><label for="quarter">Quý</label><select id="quarter" name="quarter">
+                    @for(var i=1;i<=4;i++){<option value="@i" selected="@(i==(Model.From.Month-1)/3+1)">Quý @i</option>}
+                </select></div>
+            }
+        }
+        <button class="btn btn-primary">Áp dụng</button>
+    </form>
+    <a class="btn btn-outline-primary overview-export" asp-action="ExportRevenue" asp-route-from="@Model.From.ToString("yyyy-MM-dd")"
+       asp-route-to="@Model.To.ToString("yyyy-MM-dd")">Tải doanh thu CSV</a>
+    </div>
+</section>
+<div class="kpi-grid">
+    <article class="kpi panel"><div class="kpi-top">Doanh thu</div><strong>@BusinessTime.Money(Model.Receipts)</strong><span>Theo ngày hoàn tất thanh toán</span></article>
+    <article class="kpi panel"><div class="kpi-top">Vé đã thanh toán</div><strong>@Model.Paid</strong><span>Trong @Model.Tickets vé tạo trong kỳ</span></article>
+    <article class="kpi panel"><div class="kpi-top">Chuyến trong kỳ</div><strong>@Model.Trips</strong><span>Theo ngày khởi hành</span>
+        <dl class="trip-breakdown">
+        @foreach(var group in tripGroups){
+            <div><dt>@group.Label</dt><dd>@group.Count</dd></div>
+        }
+        </dl>
+    </article>
+    <article class="kpi panel kpi-highlight"><div class="kpi-top">Thu ròng</div><strong>@BusinessTime.Money(Model.Receipts-Model.Refunds)</strong><span>Sau khi trừ tiền đã hoàn trong kỳ</span></article>
+</div>
+<div class="overview-grid">
+    <section class="panel overview-trend" aria-labelledby="trend-title">
+        <div class="panel-heading"><div><h2 id="trend-title">Xu hướng doanh thu</h2><small class="overview-growth @(change>0?"increase":change<0?"decrease":null)">@growth</small></div><span class="pill">VND</span></div>
+        <div class="chart-wrap"><canvas id="revenue-trend" data-yearly="@(period=="year"?"true":"false")" role="img" aria-label="So sánh doanh thu với @comparison. Kỳ đang xem @BusinessTime.Money(Model.Receipts), @comparison @BusinessTime.Money(Model.PreviousReceipts)."></canvas></div>
+        <script id="trend-data" type="application/json">@Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.RevenueTrend))</script>
+    </section>
+    <section class="panel overview-tickets" aria-labelledby="ticket-title">
+        <div class="panel-heading"><div><h2 id="ticket-title">Thống kê vé</h2><small>Theo ngày tạo vé trong kỳ</small></div></div>
+        <div class="ticket-total"><strong>@Model.Tickets</strong><span>vé đã tạo</span></div>
+        <div class="ticket-meter" aria-hidden="true">
+        @foreach(var group in ticketGroups.Where(x=>x.Count>0)){
+            <span class="@group.Style" style="flex-grow:@group.Count"></span>
+        }
+        </div>
+        <dl class="ticket-breakdown">
+        @foreach(var group in ticketGroups){
+            <div class="@group.Style"><dt><i aria-hidden="true"></i>@group.Label</dt><dd>@group.Count</dd></div>
+        }
+        </dl>
+        <a class="text-action" asp-controller="Staff" asp-action="Index">Mở phòng vé →</a>
+    </section>
+    <section class="panel overview-departures" aria-labelledby="departures-title">
+        <div class="panel-heading"><div><h2 id="departures-title">Chuyến sắp khởi hành</h2><small>Giờ Việt Nam · UTC+7</small></div><a class="text-action overview-link" asp-action="Trips">Xem lịch xe @await Html.PartialAsync("_Icon","lucide-arrow-up-right")</a></div>
+        @if(Model.Upcoming.Count==0){
+            <p class="table-empty">Chưa có chuyến sắp khởi hành.</p>
+        }else{
+            <div class="table-wrap" tabindex="0" role="region" aria-labelledby="departures-title">
+                <table><thead><tr><th scope="col">Tuyến xe</th><th scope="col">Khởi hành</th><th scope="col">Biển số</th><th scope="col">Trạng thái</th></tr></thead><tbody>
+                @foreach(var trip in Model.Upcoming){
+                    <tr><td><a asp-action="TripEdit" asp-route-id="@trip.Id"><strong>@trip.Origin → @trip.Destination</strong><small>Chuyến #@trip.Id</small></a></td><td>@BusinessTime.Text(trip.DepartureUtc)</td><td>@trip.Plate</td><td><span class="departure-status @(trip.Status==TripStatus.Boarding?"boarding":null)">@BusinessTime.TripLabel(trip.Status)</span></td></tr>
+                }
+                </tbody></table>
+            </div>
+        }
+    </section>
+    <section class="panel overview-resources" aria-labelledby="resources-title">
+        <div class="panel-heading"><h2 id="resources-title">Xe, tuyến và lịch trình</h2></div>
+        <a asp-action="Vehicles">@await Html.PartialAsync("_Icon","bus") <span>Xe đang hoạt động</span><strong>@Model.ActiveVehicles</strong></a>
+        <a asp-action="Routes">@await Html.PartialAsync("_Icon","route") <span>Tuyến đang hoạt động</span><strong>@Model.ActiveRoutes</strong></a>
+        <a asp-action="Trips">@await Html.PartialAsync("_Icon","calendar") <span>Chuyến hôm nay</span><strong>@Model.DeparturesToday</strong></a>
+    </section>
+</div>
+<nav class="admin-action-bar" aria-label="Lối tắt điều hành">
+    <a asp-action="HoldMonitor">@await Html.PartialAsync("_Icon","clock") <span><strong>Giám sát giữ chỗ</strong><small>Xem trạng thái ghế trực tiếp</small></span></a>
+    <a asp-controller="Staff" asp-action="Index" asp-route-payment="due">@await Html.PartialAsync("_Icon","ticket") <span><strong>Vé chờ thanh toán</strong><small>Mở danh sách phòng vé</small></span></a>
+    <a asp-controller="Staff" asp-action="Index" asp-route-payment="refund">@await Html.PartialAsync("_Icon","history") <span><strong>Vé chờ hoàn</strong><small>@BusinessTime.Money(Model.RefundDue) toàn hệ thống</small></span></a>
+    <a asp-controller="Staff" asp-action="Requests">@await Html.PartialAsync("_Icon","route") <span><strong>Yêu cầu đổi / trả</strong><small>Xử lý yêu cầu của khách</small></span></a>
+</nav>
+<div class="dashboard-detail"><section class="panel revenue-panel"><div class="panel-heading"><div><span class="eyebrow">THANH TOÁN VÉ</span><h2>Thu / hoàn theo tuyến</h2></div><span class="pill">VND</span></div>
+@if(Model.Revenue.Count>0){<div class="chart-wrap"><canvas id="revenue-chart" aria-label="Biểu đồ thanh toán và hoàn tiền theo tuyến, đơn vị VND" role="img">Số liệu chi tiết nằm trong bảng doanh thu theo tuyến bên dưới.</canvas></div>}
+else{<div class="chart-empty">@await Html.PartialAsync("_Icon","dashboard")<h3>Chưa có khoản thu / hoàn trong kỳ</h3><p>Chọn kỳ khác hoặc xem dữ liệu sau khi khách hoàn tất thanh toán QR.</p></div>}
+<script id="chart-data" type="application/json">@Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.Revenue))</script></section><section class="panel reconciliation-panel"><div class="panel-heading"><div><span class="eyebrow">ĐỐI SOÁT</span><h2>Trạng thái thanh toán</h2></div>@await Html.PartialAsync("_Icon","ticket")</div><dl class="summary"><div><dt>Vé đã thanh toán</dt><dd class="payment-ok">@Model.Paid</dd></div><div><dt>Vé chờ thanh toán</dt><dd>@Model.Unpaid</dd></div><div><dt>Đã hoàn trong kỳ</dt><dd>@BusinessTime.Money(Model.Refunds)</dd></div><div class="refund-total"><dt>Chờ hoàn toàn hệ thống</dt><dd>@BusinessTime.Money(Model.RefundDue)</dd></div></dl><a class="text-action" asp-controller="Staff" asp-action="Index">Mở phòng vé để đối soát →</a></section></div>
+<section class="panel report-table"><div class="panel-heading"><div><span class="eyebrow">CHI TIẾT THEO TUYẾN</span><h2>Doanh thu & hoàn tiền</h2></div><small>@Model.From.ToString("dd/MM/yyyy") – @Model.To.ToString("dd/MM/yyyy")</small></div><div class="table-wrap admin-report-scroll" tabindex="0" role="region" aria-label="Bảng thu và hoàn theo tuyến"><table><caption class="visually-hidden">Tiền ghi sổ theo tuyến trong kỳ, đơn vị VND</caption><thead><tr><th>Tuyến xe</th><th>Đã thanh toán</th><th>Đã hoàn tiền</th><th>Thu ròng</th></tr></thead><tbody>@foreach(var r in Model.Revenue){<tr><td><strong>@r.Label</strong></td><td>@BusinessTime.Money(r.Receipts)</td><td>@BusinessTime.Money(r.Refunds)</td><td class="money-cell">@BusinessTime.Money(r.Receipts-r.Refunds)</td></tr>}</tbody></table></div>@if(Model.Revenue.Count==0){<div class="table-empty">Không có giao dịch tiền trong khoảng ngày đã chọn.</div>}</section>
+<div class="report-explainer"><span class="explain-icon">i</span><p>Chuyến tính theo ngày khởi hành. Vé tính theo ngày tạo đơn và trạng thái hiện tại. Doanh thu tính theo ngày khách bấm Hoàn tất thanh toán QR, theo giờ Việt Nam. Chờ hoàn là số dư đã thu của vé hủy/đổi trên toàn hệ thống. Giữ chỗ chưa phải vé bán; khoản chưa thu chưa được tính vào doanh thu.</p></div>
+<div class="quick-actions"><a asp-action="Trips">@await Html.PartialAsync("_Icon","calendar")<div><strong>Chuyến & phân công</strong><span>Sắp lịch, điều chỉnh người phụ trách</span></div><span>→</span></a><a asp-controller="Staff" asp-action="Requests">@await Html.PartialAsync("_Icon","history")<div><strong>Yêu cầu đổi / trả</strong><span>Xem và xử lý yêu cầu của khách</span></div><span>→</span></a><a asp-action="Audit">@await Html.PartialAsync("_Icon","users")<div><strong>Nhật ký tác nghiệp</strong><span>Theo dõi thay đổi trong hệ thống</span></div><span>→</span></a></div>
+</div>
+@section Scripts{<script src="~/lib/chartjs/chart.umd.js"></script><script src="~/js/dashboard.js" asp-append-version="true"></script>}

@@ -1,0 +1,25 @@
+@model List<Booking>
+@{
+    ViewData["Title"]="Vé của tôi";
+    var state=(string)ViewBag.TicketState;
+    var page=(int)ViewBag.Page;
+    var pageCount=(int)ViewBag.PageCount;
+    var now=(DateTime)ViewBag.Now;
+    var filters=new[]{("all","Tất cả"),("upcoming","Sắp đi"),("due","Chờ thanh toán"),("past","Đã đi / qua giờ"),("closed","Đã hủy / đổi / hết hạn")};
+}
+<section class="page-heading"><span class="eyebrow">TÀI KHOẢN CÁ NHÂN</span><h1>Vé & hành trình của tôi</h1><p>Lịch sử đặt vé, thanh toán và yêu cầu đổi/trả.</p></section>
+<nav class="report-period-options" aria-label="Lọc vé theo trạng thái">
+    @foreach(var (value,label) in filters){
+        <a class="btn @(state==value?"btn-primary":"btn-outline-primary")" asp-action="Index" asp-route-state="@value" aria-current="@(state==value?"page":null)">@label</a>
+    }
+</nav>
+@if(Model.Count==0){<div class="empty panel"><h2>@(state=="all"?"Bạn chưa có vé nào":"Không có vé trong mục này")</h2><a class="btn btn-primary" asp-controller="Trips" asp-action="Index">Tìm chuyến xe →</a></div>}
+@foreach(var b in Model){var expired=b.Status==BookingStatus.Expired||(b.Status==BookingStatus.Active&&b.PaymentExpiresUtc<=now);<article class="panel booking-row ticket-card"><div><span class="pill">@(expired?"Hết hạn thanh toán":b.Status==BookingStatus.Active?(b.Balance>=b.Total?"Đã thanh toán":"Chờ thanh toán"):b.Status==BookingStatus.Cancelled?"Đã hủy":"Đã đổi")</span><h2>@b.Hold.Trip.Route.Label</h2><p class="ticket-departure">@await Html.PartialAsync("_Icon","calendar") @BusinessTime.Text(b.Hold.Trip.DepartureUtc) · @b.Tickets.Count ghế</p><span class="ticket-code-label">Mã tra cứu <code>@b.Code</code></span></div><div><strong>@BusinessTime.Money(b.Total)</strong><p>@(expired&&b.Balance<=0?"Đã nhả ghế":b.Status!=BookingStatus.Active?(b.Balance>0?"Chờ hoàn tiền":"Đã đối soát / chưa thu"):b.Balance>=b.Total?"Đã thanh toán":"Chờ thanh toán")</p>@if(b.PickupAtUtc.HasValue&&b.DropoffAtUtc.HasValue){<p class="small-note">Đón: @StopPresentation.Name(b.PickupName) · @BusinessTime.Text(b.PickupAtUtc.Value)<br/>Trả: @StopPresentation.Name(b.DropoffName) · @BusinessTime.Text(b.DropoffAtUtc.Value)</p>}<a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@b.Id">Chi tiết vé →</a></div></article>}
+
+@if(pageCount>1){
+    <nav class="contact-pagination" aria-label="Phân trang vé">
+        @if(page>1){<a class="btn btn-outline-primary" asp-action="Index" asp-route-state="@state" asp-route-page="@(page-1)">← Trang trước</a>}
+        <span>Trang @(page) / @pageCount</span>
+        @if(page<pageCount){<a class="btn btn-outline-primary" asp-action="Index" asp-route-state="@state" asp-route-page="@(page+1)">Trang sau →</a>}
+    </nav>
+}

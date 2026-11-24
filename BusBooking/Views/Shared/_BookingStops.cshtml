@@ -1,0 +1,7 @@
+@model Booking
+<section class="saved-stops" aria-label="Thông tin đón trả trên vé"><h3>Thông tin đón trả</h3>
+@if(Model.PickupAtUtc.HasValue&&Model.DropoffAtUtc.HasValue){
+    <p>Đón: <strong>@StopPresentation.Name(Model.PickupName) · @BusinessTime.Text(Model.PickupAtUtc.Value)</strong>@if(StopPresentation.Address(Model.PickupAddress) is string pickupAddress){<small>@pickupAddress</small>}</p>
+    <p>Trả dự kiến: <strong>@StopPresentation.Name(Model.DropoffName) · @BusinessTime.Text(Model.DropoffAtUtc.Value)</strong>@if(StopPresentation.Address(Model.DropoffAddress) is string dropoffAddress){<small>@dropoffAddress</small>}</p>
+}else{<p><a asp-controller="Contact" asp-action="Index">Liên hệ hỗ trợ để xác nhận điểm đón/trả.</a></p>}
+</section>
